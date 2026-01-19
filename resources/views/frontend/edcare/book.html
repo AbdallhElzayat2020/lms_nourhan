@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+
+    <!-- Site Title -->
+    <title>Sister Nourhan - Book Now</title>
+
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/css/venobox.min.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/keyframe-animation.css">
+    <link rel="stylesheet" href="assets/css/odometer.min.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/daterangepicker.css">
+    <link rel="stylesheet" href="assets/css/swiper.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <style>
+        /* Fix Time Zone dropdown height */
+        .nice-select.open .list {
+            max-height: 300px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .nice-select .list {
+            max-height: 300px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        /* Custom scrollbar for dropdown */
+        .nice-select .list::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .nice-select .list::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .nice-select .list::-webkit-scrollbar-thumb {
+            background: var(--ed-color-theme-primary);
+            border-radius: 4px;
+        }
+
+        .nice-select .list::-webkit-scrollbar-thumb:hover {
+            background: var(--ed-color-heading-primary);
+        }
+
+        /* Ensure options are properly displayed */
+        .nice-select .list li {
+            display: block;
+            padding: 10px 20px;
+            cursor: pointer;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- header-area-start -->
+    <header class="header header-3 header-6 header-7 sticky-active">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-inner">
+                    <div class="top-bar-left">
+                        <ul class="top-bar-list">
+                            <li><i class="fa-regular fa-phone"></i><a href="tel:0000000000">00000000</a></li>
+                            <li><i class="fa-regular fa-location-dot"></i><span>address here</span></li>
+                            <li><i class="fa-regular fa-clock"></i><span>Mon - Sat: 8:00 - 15:00</span></li>
+                        </ul>
+                    </div>
+                    <div class="top-bar-right">
+                        <div class="top-social-wrap">
+                            <span>Follow Us</span>
+                            <ul class="social-list">
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="primary-header">
+            <div class="container">
+                <div class="primary-header-inner">
+                    <div class="header-logo d-lg-block">
+                        <a href="#">
+                            LOGO
+                            <!-- <img src="assets/img/logo/logo-1.png" alt="Logo"> -->
+                        </a>
+                    </div>
+                    <div class="header-menu-wrap">
+                        <div class="mobile-menu-items">
+                            <ul class="sub-menu">
+                                <li class="menu-item-has-children active mega-menu">
+                                    <a href="master.html">Home</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="about.html">About <i class="fa-solid fa-chevron-down"></i></a>
+                                    <ul>
+                                        <li><a href="teachers.html">Teachers</a></li>
+                                        <li><a href="feedback.html">Testimonials</a></li>
+                                        <li><a href="event.html">Events</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="course.html">Courses</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="pricing.html">Pricing</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="blog.html">Blog</a>
+                                </li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.header-menu-wrap -->
+                    <div class="header-right-wrap">
+                        <div class="header-right">
+                            <a href="book.html" class="ed-primary-btn header-btn">Book Now</a>
+                            <div class="header-logo d-none d-lg-none">
+                                <a href="#">
+                                    <!--                                    <img src="assets/img/logo/logo-1.png" alt="Logo">-->
+                                    LOGO
+                                </a>
+                            </div>
+                            <div class="header-right-item d-lg-none d-md-block">
+                                <a href="javascript:void(0)" class="mobile-side-menu-toggle"><i
+                                        class="fa-sharp fa-solid fa-bars"></i></a>
+                            </div>
+                        </div>
+                        <!-- /.header-right -->
+                    </div>
+                </div>
+                <!-- /.primary-header-inner -->
+            </div>
+        </div>
+    </header>
+    <!-- /.Main Header -->
+
+    <div id="popup-search-box">
+        <div class="box-inner-wrap d-flex align-items-center">
+            <form id="form" action="#" method="get" role="search">
+                <input id="popup-search" type="text" name="s" placeholder="Type keywords here...">
+            </form>
+            <div class="search-close"><i class="fa-sharp fa-regular fa-xmark"></i></div>
+        </div>
+    </div>
+    <!-- /#popup-search-box -->
+
+    <div class="mobile-side-menu">
+        <div class="side-menu-content">
+            <div class="side-menu-head">
+                <a href="master.html">
+                    <!--                    <img src="assets/img/logo/logo-1.png" alt="logo">-->
+                    LOGO
+                </a>
+                <button class="mobile-side-menu-close"><i class="fa-regular fa-xmark"></i></button>
+            </div>
+            <div class="side-menu-wrap"></div>
+            <ul class="side-menu-list">
+                <li><i class="fa-light fa-location-dot"></i>Address : <span>STREET</span></li>
+                <li><i class="fa-light fa-phone"></i>Phone : <a href="tel:+000000">+000000000</a></li>
+                <li><i class="fa-light fa-envelope"></i>Email : <a href="mailto:info@example.com">info@example.com</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- /.mobile-side-menu -->
+    <div class="mobile-side-menu-overlay"></div>
+
+    <div id="preloader">
+        <div class="spinner-logo">
+            LOGO
+            <!-- <img src="assets/img/favicon.png" alt="logo"> -->
+        </div>
+        <div class="spinner"></div>
+    </div>
+    <!-- ./ preloader -->
+
+
+    <section class="page-header">
+        <div class="bg-item">
+            <div class="bg-img" data-background="assets/img/bg-img/page-header-bg.png"></div>
+            <div class="overlay"></div>
+            <div class="shapes">
+                <div class="shape shape-1"><img src="assets/img/shapes/page-header-shape-1.png" alt="shape"></div>
+                <div class="shape shape-2"><img src="assets/img/shapes/page-header-shape-2.png" alt="shape"></div>
+                <div class="shape shape-3"><img src="assets/img/shapes/page-header-shape-3.png" alt="shape"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="page-header-content">
+                <h1 class="title">Book Now</h1>
+                <h4 class="sub-title"><a class="home" href="index.html">Home </a><span class="icon">/</span><a
+                        class="inner-page" href="book.html"> Book Now</a></h4>
+            </div>
+        </div>
+    </section>
+    <!-- ./ page-header -->
+
+    <section class="contact-section pt-120 pb-120">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="blog-contact-form contact-form">
+                        <h2 class="title mb-0">Book Your Session</h2>
+                        <p class="mb-30 mt-10">Please fill out the form below to book your session</p>
+                        <div class="request-form">
+                            <form action="mail.php" method="post" id="ajax_contact" class="form-horizontal">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <div class="form-item">
+                                            <input type="text" id="fullname" name="fullname" class="form-control"
+                                                placeholder="Your Name" required>
+                                            <div class="icon"><i class="fa-regular fa-user"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <div class="form-item">
+                                            <input type="tel" id="phone" name="phone" class="form-control"
+                                                placeholder="Phone" required>
+                                            <div class="icon"><i class="fa-sharp fa-solid fa-phone"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <div class="form-item">
+                                            <input type="email" id="email" name="email" class="form-control"
+                                                placeholder="Your Email" required>
+                                            <div class="icon"><i class="fa-sharp fa-regular fa-envelope"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <div class="form-item">
+                                            <select name="timezone" id="timezone"
+                                                class="niceSelect select-control form-control" required>
+                                                <option value="">Select Time Zone</option>
+                                                <option value="UTC-12">UTC-12:00 (Baker Island Time)</option>
+                                                <option value="UTC-11">UTC-11:00 (Hawaii-Aleutian Standard Time)
+                                                </option>
+                                                <option value="UTC-10">UTC-10:00 (Hawaii Standard Time)</option>
+                                                <option value="UTC-9">UTC-09:00 (Alaska Standard Time)</option>
+                                                <option value="UTC-8">UTC-08:00 (Pacific Standard Time)</option>
+                                                <option value="UTC-7">UTC-07:00 (Mountain Standard Time)</option>
+                                                <option value="UTC-6">UTC-06:00 (Central Standard Time)</option>
+                                                <option value="UTC-5">UTC-05:00 (Eastern Standard Time)</option>
+                                                <option value="UTC-4">UTC-04:00 (Atlantic Standard Time)</option>
+                                                <option value="UTC-3">UTC-03:00 (Argentina Time)</option>
+                                                <option value="UTC-2">UTC-02:00 (South Georgia Time)</option>
+                                                <option value="UTC-1">UTC-01:00 (Cape Verde Time)</option>
+                                                <option value="UTC+0">UTC+00:00 (Greenwich Mean Time)</option>
+                                                <option value="UTC+1">UTC+01:00 (Central European Time)</option>
+                                                <option value="UTC+2">UTC+02:00 (Eastern European Time)</option>
+                                                <option value="UTC+3">UTC+03:00 (Moscow Time)</option>
+                                                <option value="UTC+4">UTC+04:00 (Gulf Standard Time)</option>
+                                                <option value="UTC+5">UTC+05:00 (Pakistan Standard Time)</option>
+                                                <option value="UTC+6">UTC+06:00 (Bangladesh Standard Time)</option>
+                                                <option value="UTC+7">UTC+07:00 (Indochina Time)</option>
+                                                <option value="UTC+8">UTC+08:00 (China Standard Time)</option>
+                                                <option value="UTC+9">UTC+09:00 (Japan Standard Time)</option>
+                                                <option value="UTC+10">UTC+10:00 (Australian Eastern Standard Time)
+                                                </option>
+                                                <option value="UTC+11">UTC+11:00 (Solomon Islands Time)</option>
+                                                <option value="UTC+12">UTC+12:00 (New Zealand Standard Time)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <div class="form-item">
+                                            <select name="country" id="country"
+                                                class="niceSelect select-control form-control" required>
+                                                <option value="">Select Country</option>
+                                                <option value="AF">Afghanistan</option>
+                                                <option value="AL">Albania</option>
+                                                <option value="DZ">Algeria</option>
+                                                <option value="AR">Argentina</option>
+                                                <option value="AU">Australia</option>
+                                                <option value="AT">Austria</option>
+                                                <option value="BH">Bahrain</option>
+                                                <option value="BD">Bangladesh</option>
+                                                <option value="BE">Belgium</option>
+                                                <option value="BR">Brazil</option>
+                                                <option value="CA">Canada</option>
+                                                <option value="CN">China</option>
+                                                <option value="EG">Egypt</option>
+                                                <option value="FR">France</option>
+                                                <option value="DE">Germany</option>
+                                                <option value="IN">India</option>
+                                                <option value="ID">Indonesia</option>
+                                                <option value="IR">Iran</option>
+                                                <option value="IQ">Iraq</option>
+                                                <option value="IE">Ireland</option>
+                                                <option value="IT">Italy</option>
+                                                <option value="JP">Japan</option>
+                                                <option value="JO">Jordan</option>
+                                                <option value="KW">Kuwait</option>
+                                                <option value="LB">Lebanon</option>
+                                                <option value="MY">Malaysia</option>
+                                                <option value="MX">Mexico</option>
+                                                <option value="MA">Morocco</option>
+                                                <option value="NL">Netherlands</option>
+                                                <option value="NZ">New Zealand</option>
+                                                <option value="NG">Nigeria</option>
+                                                <option value="OM">Oman</option>
+                                                <option value="PK">Pakistan</option>
+                                                <option value="PH">Philippines</option>
+                                                <option value="QA">Qatar</option>
+                                                <option value="SA">Saudi Arabia</option>
+                                                <option value="SG">Singapore</option>
+                                                <option value="ZA">South Africa</option>
+                                                <option value="KR">South Korea</option>
+                                                <option value="ES">Spain</option>
+                                                <option value="SE">Sweden</option>
+                                                <option value="CH">Switzerland</option>
+                                                <option value="TH">Thailand</option>
+                                                <option value="TR">Turkey</option>
+                                                <option value="AE">United Arab Emirates</option>
+                                                <option value="GB">United Kingdom</option>
+                                                <option value="US">United States</option>
+                                                <option value="VN">Vietnam</option>
+                                                <option value="YE">Yemen</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="submit-btn">
+                                    <button id="submit" class="ed-primary-btn" type="submit">Submit Booking</button>
+                                </div>
+                            </form>
+                            <div id="form-messages" class="alert mt-20"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ./ contact-section -->
+
+    <footer class="footer-section pt-120" data-background="assets/img/bg-img/footer-bg.png">
+        <div class="footer-top-wrap">
+            <div class="container">
+                <div class="footer-top text-center">
+                    <h2 class="title">Subscribe Our Newsletter For <br>Latest Updates</h2>
+                    <div class="footer-form-wrap">
+                        <form action="https://html.rrdevs.net/edcare/mail.php" class="footer-form">
+                            <div class="form-item">
+                                <input type="text" id="email-2" name="email" class="form-control"
+                                    placeholder="Enter Your E-mail">
+                                <div class="icon"><i class="fa-light fa-envelope"></i></div>
+                            </div>
+                            <button class="ed-primary-btn">Subscribe Now</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="row footer-wrap">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h3 class="widget-header">Get in touch!</h3>
+                            <p class="mb-30">Fusce varius, dolor tempor interdum tristiquei bibendum.</p>
+                            <div class="footer-contact">
+                                <span class="number"><i class="fa-regular fa-phone"></i><a href="tel:0000000">
+                                        000000000
+                                    </a></span>
+                                <a href="mailto:info@company.com" class="mail">info@company.com</a>
+                            </div>
+                            <ul class="footer-social">
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget widget-2">
+                            <h3 class="widget-header">Company Info</h3>
+                            <ul class="footer-list">
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="#">Resource Center</a></li>
+                                <li><a href="team.html">Team</a></li>
+                                <li><a href="teachers.html">Instructor</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget widget-2">
+                            <h3 class="widget-header">Useful Links</h3>
+                            <ul class="footer-list">
+                                <li><a href="#">All Courses</a></li>
+                                <li><a href="#">Digital Marketing</a></li>
+                                <li><a href="#">Design & Branding</a></li>
+                                <li><a href="#">Storytelling & Voice Over</a></li>
+                                <li><a href="#">News & Blogs</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h3 class="widget-header">Recent Post</h3>
+                            <div class="sidebar-post mb-20">
+                                <img src="assets/img/images/footer-post-1.png" alt="post">
+                                <div class="post-content">
+                                    <h3 class="title"><a href="#">Where Dreams Find a Home</a></h3>
+                                    <ul class="post-meta">
+                                        <li><i class="fa-light fa-calendar"></i>20 April, 2025</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sidebar-post">
+                                <img src="assets/img/images/footer-post-2.png" alt="post">
+                                <div class="post-content">
+                                    <h3 class="title"><a href="#">Where Dreams Find a Home</a></h3>
+                                    <ul class="post-meta">
+                                        <li><i class="fa-light fa-calendar"></i>20 April, 2025</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-area">
+            <div class="container">
+                <div class="copyright-content">
+                    <p>Copyright © 2026 <a href="#">Abdullah Elzayat</a>. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ./ footer-section -->
+
+    <div id="scrollup">
+        <button id="scroll-top" class="scroll-to-top"><i class="fa-regular fa-arrow-up-long"></i></button>
+    </div>
+    <!--scrollup-->
+
+    <!-- JS here -->
+    <script src="assets/js/vendor/jquary-3.6.0.min.js"></script>
+    <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <script src="assets/js/vendor/bootstrap-bundle.js"></script>
+    <script src="assets/js/vendor/jquery.isotope.js"></script>
+    <script src="assets/js/vendor/waypoints.min.js"></script>
+    <script src="assets/js/vendor/moment.min.js"></script>
+    <script src="assets/js/vendor/daterangepicker.min.js"></script>
+    <script src="assets/js/vendor/venobox.min.js"></script>
+    <script src="assets/js/vendor/odometer.min.js"></script>
+    <script src="assets/js/vendor/countdown.js"></script>
+    <script src="assets/js/vendor/meanmenu.js"></script>
+    <script src="assets/js/vendor/smooth-scroll.js"></script>
+    <script src="assets/js/vendor/imagesloaded-pkgd.js"></script>
+    <script src="assets/js/vendor/wow.min.js"></script>
+    <script src="assets/js/vendor/jquery.carouselTicker.js"></script>
+    <script src="assets/js/vendor/nice-select.js"></script>
+    <script src="assets/js/vendor/swiper.min.js"></script>
+    <script src="assets/js/contact.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        $(function () {
+            // Override the contact.js success handler for book page
+            $('#ajax_contact').on('submit', function (event) {
+                event.preventDefault();
+
+                var form = $(this);
+                var formMessages = $('#form-messages');
+                var formData = form.serialize();
+
+                $.ajax({
+                    type: 'POST',
+                    url: form.attr('action'),
+                    data: formData
+                })
+                    .done(function (response) {
+                        // Redirect to success page after 1 second
+                        setTimeout(function () {
+                            window.location.href = 'success-send.html';
+                        }, 1000);
+                    })
+                    .fail(function (data) {
+                        formMessages.removeClass('alert-success');
+                        formMessages.addClass('alert-danger');
+
+                        if (data.responseText !== '') {
+                            formMessages.text(data.responseText);
+                        } else {
+                            formMessages.text('Oops! An error occurred and your booking could not be sent.');
+                        }
+                    });
+            });
+        });
+    </script>
+</body>
+
+</html>

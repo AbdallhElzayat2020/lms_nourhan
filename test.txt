@@ -1,0 +1,138 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "EducationalOrganization",
+      "@id": "https://sisternourhan.academy/#organization",
+      "name": "Sister Nourhan Academy",
+      "url": "https://sisternourhan.academy",
+      "logo": "https://sisternourhan.academy/storage/settings/November2025/HOZ2QgSKHwdJ9L5qfwiv.png"
+    },
+    {
+      "@type": "Course",
+      "@id": "https://sisternourhan.academy/courses/arabic-courses/learn-arabic-online#course",
+      "name": "Learn Arabic Online",
+      "description": "An interactive online Arabic course designed for non-native speakers to speak, read, write, and understand Modern Standard Arabic (MSA) through live one-on-one lessons with certified native instructors.",
+      "inLanguage": ["en", "ar"],
+      "educationalLevel": "Beginner to Advanced",
+      "teaches": [
+        "Modern Standard Arabic",
+        "Arabic Speaking Skills",
+        "Arabic Reading and Writing",
+        "Arabic Grammar",
+        "Arabic Listening Comprehension"
+      ],
+      "provider": {
+        "@id": "https://sisternourhan.academy/#organization"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Arabic language",
+          "sameAs": "https://en.wikipedia.org/wiki/Arabic"
+        },
+        {
+          "@type": "Thing",
+          "name": "Modern Standard Arabic",
+          "sameAs": "https://en.wikipedia.org/wiki/Modern_Standard_Arabic"
+        }
+      ],
+      "mentions": [
+        {
+          "@type": "Thing",
+          "name": "Quran",
+          "sameAs": "https://en.wikipedia.org/wiki/Quran"
+        },
+        {
+          "@type": "Thing",
+          "name": "Arabic culture",
+          "sameAs": "https://en.wikipedia.org/wiki/Arab_culture"
+        }
+      ],
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "Online",
+        "location": {
+          "@type": "VirtualLocation",
+          "url": "https://sisternourhan.academy/courses/arabic-courses/learn-arabic-online"
+        }
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://sisternourhan.academy/courses/arabic-courses/learn-arabic-online#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://sisternourhan.academy"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Courses",
+          "item": "https://sisternourhan.academy/courses/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Arabic Courses",
+          "item": "https://sisternourhan.academy/courses/arabic-courses/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Learn Arabic Online",
+          "item": "https://sisternourhan.academy/courses/arabic-courses/learn-arabic-online"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://sisternourhan.academy/courses/arabic-courses/learn-arabic-online#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Who is the Learn Arabic Online program for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This program is designed for non-native speakers who want to learn Modern Standard Arabic for communication, study, or personal growth."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What teaching method do you use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We use an interactive approach that focuses on speaking, listening, reading, and writing through real-life dialogues and cultural topics, not rote memorization."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are the teachers native Arabic speakers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. All instructors are native Arabic speakers with academic qualifications and experience teaching Arabic to non-native learners worldwide."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take to become fluent in Arabic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Progress depends on consistency and learning goals. Most students see significant improvement within 3 to 6 months of regular practice."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a free trial before enrollment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. You can book a free trial class to meet your instructor, experience the learning platform, and receive a personalized learning plan."
+          }
+        }
+      ]
+    }
+  ]
+}

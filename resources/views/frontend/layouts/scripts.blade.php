@@ -1,0 +1,20 @@
+<script src="{{asset('assets/frontend')}}/js/vendor/jquary-3.6.0.min.js"></script>
+<script src="{{asset('assets/frontend')}}/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+<script src="{{asset('assets/frontend')}}/js/vendor/bootstrap-bundle.js"></script>
+<script src="{{asset('assets/frontend')}}/js/vendor/jquery.isotope.js"></script>
+<script src="{{asset('assets/frontend')}}/js/vendor/waypoints.min.js"></script>
+<script src="{{asset('assets/frontend')}}/js/vendor/moment.min.js"></script>
+<script src="{{asset('assets/frontend')}}/js/vendor/daterangepicker.min.js"></script>
+<script src="{{asset('assets/frontend')}}/js/vendor/venobox.min.js"></script>
+<script src="{{asset('assets/frontend')}}/js/vendor/odometer.min.js"></script>
+<script src="{{asset('assets/frontend')}}/js/vendor/countdown.js"></script>
+<script src="{{asset('assets/frontend')}}/js/vendor/meanmenu.js"></script>
+<script src="{{asset('assets/frontend')}}/js/vendor/smooth-scroll.js"></script>
+<script src="{{asset('assets/frontend')}}/js/vendor/imagesloaded-pkgd.js"></script>
+<script src="{{asset('assets/frontend')}}/js/vendor/wow.min.js"></script>
+<script src="{{asset('assets/frontend')}}/js/vendor/jquery.carouselTicker.js"></script>
+<script src="{{asset('assets/frontend')}}/js/vendor/nice-select.js"></script>
+<script src="{{asset('assets/frontend')}}/js/vendor/swiper.min.js"></script>
+<script src="{{asset('assets/frontend')}}/js/slider.js"></script>
+<script src="{{asset('assets/frontend')}}/js/main.js"></script>
+@stack('js')
