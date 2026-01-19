@@ -64,7 +64,7 @@
                 <div class="card-body">
                     <div class="card-title d-flex align-items-start justify-content-between">
                         <div class="avatar flex-shrink-0">
-                            <i class="ti ti-users text-success" style="font-size: 2rem;"></i>
+                            <i class="ti ti-shield-lock text-success" style="font-size: 2rem;"></i>
                         </div>
                     </div>
                     <span class="fw-semibold d-block mb-1">Total Users</span>
@@ -140,7 +140,7 @@
                 <div class="card-body">
                     <div class="card-title d-flex align-items-start justify-content-between">
                         <div class="avatar flex-shrink-0">
-                            <i class="ti ti-calendar-check text-primary" style="font-size: 2rem;"></i>
+                            <i class="ti ti-ticket text-primary" style="font-size: 2rem;"></i>
                         </div>
                     </div>
                     <span class="fw-semibold d-block mb-1">Event Bookings</span>
@@ -159,7 +159,7 @@
                 <div class="card-body">
                     <div class="card-title d-flex align-items-start justify-content-between">
                         <div class="avatar flex-shrink-0">
-                            <i class="ti ti-bookmark text-success" style="font-size: 2rem;"></i>
+                            <i class="ti ti-calendar text-success" style="font-size: 2rem;"></i>
                         </div>
                     </div>
                     <span class="fw-semibold d-block mb-1">Course Bookings</span>
@@ -197,7 +197,7 @@
                 <div class="card-body">
                     <div class="card-title d-flex align-items-start justify-content-between">
                         <div class="avatar flex-shrink-0">
-                            <i class="ti ti-user-star text-warning" style="font-size: 2rem;"></i>
+                            <i class="ti ti-user text-warning" style="font-size: 2rem;"></i>
                         </div>
                     </div>
                     <span class="fw-semibold d-block mb-1">Total Teachers</span>
@@ -216,7 +216,7 @@
                 <div class="card-body">
                     <div class="card-title d-flex align-items-start justify-content-between">
                         <div class="avatar flex-shrink-0">
-                            <i class="ti ti-message-quote text-primary" style="font-size: 2rem;"></i>
+                            <i class="ti ti-message-circle text-primary" style="font-size: 2rem;"></i>
                         </div>
                     </div>
                     <span class="fw-semibold d-block mb-1">Testimonials</span>
