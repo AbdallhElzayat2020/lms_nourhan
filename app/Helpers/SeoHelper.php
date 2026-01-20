@@ -11,10 +11,17 @@ class SeoHelper
      */
     public static function getPageSeo($pageName, $fallbackTitle = null, $fallbackDescription = null)
     {
+        // Simple per-request cache to avoid duplicate queries for the same page
+        static $cache = [];
+
+        if (isset($cache[$pageName])) {
+            return $cache[$pageName];
+        }
+
         $seoPage = SeoPage::getPageSeo($pageName);
 
         if (!$seoPage) {
-            return [
+            return $cache[$pageName] = [
                 'meta_title' => $fallbackTitle ?: config('app.name'),
                 'meta_description' => $fallbackDescription ?: 'Default description for ' . config('app.name'),
                 'meta_keywords' => null,
@@ -23,7 +30,7 @@ class SeoHelper
             ];
         }
 
-        return [
+        return $cache[$pageName] = [
             'meta_title' => $seoPage->final_meta_title,
             'meta_description' => $seoPage->meta_description,
             'meta_keywords' => $seoPage->meta_keywords,
