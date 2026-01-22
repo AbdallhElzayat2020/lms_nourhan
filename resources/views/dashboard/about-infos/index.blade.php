@@ -33,9 +33,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($aboutInfos as $info)
+                        @forelse($aboutInfos as $index => $info)
                             <tr>
-                                <td>{{ $info->id }}</td>
+                                <td>{{ $index + 1 }}</td>
                                 <td>{{ $info->title }}</td>
                                 <td><code>{{ $info->slug }}</code></td>
                                 <td>{{ $info->icon_class }}</td>

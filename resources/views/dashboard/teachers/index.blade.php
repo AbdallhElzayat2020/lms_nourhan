@@ -34,9 +34,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($teachers as $teacher)
+                        @forelse($teachers as $index => $teacher)
                             <tr>
-                                <td>{{ $teacher->id }}</td>
+                                <td>{{ $index + 1 }}</td>
                                 <td>
                                     @if ($teacher->image)
                                         <img src="{{ asset('uploads/teachers/' . $teacher->image) }}"

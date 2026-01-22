@@ -33,9 +33,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($pricingPlans as $plan)
+                        @forelse($pricingPlans as $index => $plan)
                             <tr>
-                                <td>{{ $plan->id }}</td>
+                                <td>{{ $index + 1 }}</td>
                                 <td><strong>{{ $plan->name }}</strong></td>
                                 <td>${{ number_format($plan->price, 2) }} <span class="text-muted">{{ $plan->price_period }}</span></td>
                                 <td>

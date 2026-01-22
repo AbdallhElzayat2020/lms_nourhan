@@ -24,6 +24,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Page Name</th>
                             <th>Page Title</th>
                             <th>Meta Title</th>
@@ -33,8 +34,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($seoPages as $seoPage)
+                        @forelse($seoPages as $index => $seoPage)
                             <tr>
+                                <td>{{ $index + 1 }}</td>
                                 <td>
                                     <span class="badge bg-label-info">{{ $seoPage->page_name }}</span>
                                 </td>

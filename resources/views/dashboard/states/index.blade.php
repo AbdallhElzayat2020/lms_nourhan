@@ -33,9 +33,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($states as $state)
+                        @forelse($states as $index => $state)
                             <tr>
-                                <td>{{ $state->id }}</td>
+                                <td>{{ $index + 1 }}</td>
                                 <td>{{ $state->name }}</td>
                                 <td>
                                     <code>{{ $state->slug }}</code>

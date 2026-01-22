@@ -34,9 +34,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($testimonials as $testimonial)
+                        @forelse($testimonials as $index => $testimonial)
                             <tr>
-                                <td>{{ $testimonial->id }}</td>
+                                <td>{{ $index + 1 }}</td>
                                 <td>
                                     @if($testimonial->image)
                                         <img src="{{ asset('uploads/testimonials/' . $testimonial->image) }}"

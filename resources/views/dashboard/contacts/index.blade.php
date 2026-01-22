@@ -31,9 +31,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($contacts as $contact)
+                        @forelse($contacts as $index => $contact)
                             <tr class="{{ $contact->is_read ? '' : 'table-warning' }}" style="{{ $contact->is_read ? '' : 'background-color: #fff3cd !important;' }}">
-                                <td>{{ $contact->id }}</td>
+                                <td>{{ $index + 1 }}</td>
                                 <td>
                                     <strong>{{ $contact->name }}</strong>
                                     @if(!$contact->is_read)

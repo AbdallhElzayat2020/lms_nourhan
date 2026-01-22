@@ -35,9 +35,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($countries as $country)
+                        @forelse($countries as $index => $country)
                             <tr>
-                                <td>{{ $country->id }}</td>
+                                <td>{{ $index + 1 }}</td>
                                 <td>
                                     @if($country->flag)
                                         <img src="{{ asset('uploads/countries/' . $country->flag) }}" alt="{{ $country->name }}"

@@ -29,9 +29,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($subscribers as $subscriber)
+                        @forelse($subscribers as $index => $subscriber)
                             <tr>
-                                <td>{{ $subscriber->id }}</td>
+                                <td>{{ $index + 1 }}</td>
                                 <td>
                                     <a href="mailto:{{ $subscriber->email }}">{{ $subscriber->email }}</a>
                                 </td>

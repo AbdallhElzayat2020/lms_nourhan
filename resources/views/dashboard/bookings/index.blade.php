@@ -31,9 +31,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($bookings as $booking)
+                        @forelse($bookings as $index => $booking)
                             <tr>
-                                <td>{{ $booking->id }}</td>
+                                <td>{{ $index + 1 }}</td>
                                 <td><strong>{{ $booking->fullname }}</strong></td>
                                 <td>{{ $booking->email }}</td>
                                 <td>{{ $booking->phone }}</td>

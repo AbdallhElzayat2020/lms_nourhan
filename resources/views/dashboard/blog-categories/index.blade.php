@@ -35,9 +35,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($categories as $category)
+                        @forelse($categories as $index => $category)
                             <tr>
-                                <td>{{ $category->id }}</td>
+                                <td>{{ $index + 1 }}</td>
                                 <td>
                                     @if($category->image)
                                         <img src="{{ asset('uploads/blog-categories/' . $category->image) }}" alt="{{ $category->image_alt ?? $category->name }}"

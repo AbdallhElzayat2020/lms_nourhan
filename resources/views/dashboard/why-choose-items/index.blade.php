@@ -25,9 +25,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @forelse($items as $item)
+                    @forelse($items as $index => $item)
                         <tr>
-                            <td>{{ $item->id }}</td>
+                            <td>{{ $index + 1 }}</td>
                             <td>{{ $item->title }}</td>
                             <td>{{ $item->subtitle }}</td>
                             <td>

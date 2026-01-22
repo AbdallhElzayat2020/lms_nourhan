@@ -35,9 +35,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($courses as $course)
+                        @forelse($courses as $index => $course)
                             <tr>
-                                <td>{{ $course->id }}</td>
+                                <td>{{ $index + 1 }}</td>
                                 <td>
                                     @if($course->banner_image)
                                         <img src="{{ asset('uploads/courses/' . $course->banner_image) }}" alt="{{ $course->title }}"

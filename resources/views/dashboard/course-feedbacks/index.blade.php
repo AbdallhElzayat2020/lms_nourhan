@@ -34,9 +34,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($feedbacks as $feedback)
+                        @forelse($feedbacks as $index => $feedback)
                             <tr>
-                                <td>{{ $feedback->id }}</td>
+                                <td>{{ $index + 1 }}</td>
                                 <td>
                                     @if($feedback->image)
                                         <img src="{{ asset('uploads/course-feedbacks/' . $feedback->image) }}" alt="{{ $feedback->title }}"

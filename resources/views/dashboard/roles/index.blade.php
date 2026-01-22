@@ -40,9 +40,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($roles as $role)
+                        @forelse($roles as $index => $role)
                             <tr>
-                                <td>{{ $role->id }}</td>
+                                <td>{{ $index + 1 }}</td>
                                 <td>{{ $role->name }}</td>
                                 <td><code>{{ $role->slug }}</code></td>
                                 <td>{{ $role->description ?? '-' }}</td>

@@ -34,9 +34,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($sliders as $slider)
+                        @forelse($sliders as $index => $slider)
                             <tr>
-                                <td>{{ $slider->id }}</td>
+                                <td>{{ $index + 1 }}</td>
                                 <td>
                                     @if($slider->image)
                                         <img src="{{ asset('uploads/sliders/' . $slider->image) }}" alt="{{ $slider->title }}"

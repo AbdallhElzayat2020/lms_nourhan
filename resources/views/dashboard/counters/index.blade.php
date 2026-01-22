@@ -34,9 +34,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($counters as $counter)
+                        @forelse($counters as $index => $counter)
                             <tr>
-                                <td>{{ $counter->id }}</td>
+                                <td>{{ $index + 1 }}</td>
                                 <td>{{ $counter->title }}</td>
                                 <td>{{ $counter->subtitle }}</td>
                                 <td>{{ $counter->value }}</td>

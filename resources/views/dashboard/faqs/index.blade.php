@@ -32,9 +32,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($faqs as $faq)
+                        @forelse($faqs as $index => $faq)
                             <tr>
-                                <td>{{ $faq->id }}</td>
+                                <td>{{ $index + 1 }}</td>
                                 <td><strong>{{ $faq->question }}</strong></td>
                                 <td>
                                     {{ \Illuminate\Support\Str::limit($faq->answer, 80) }}

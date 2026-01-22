@@ -36,9 +36,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($events as $event)
+                        @forelse($events as $index => $event)
                             <tr>
-                                <td>{{ $event->id }}</td>
+                                <td>{{ $index + 1 }}</td>
                                 <td>
                                     @if($event->image)
                                         <img src="{{ asset('uploads/events/' . $event->image) }}" alt="{{ $event->name }}"
