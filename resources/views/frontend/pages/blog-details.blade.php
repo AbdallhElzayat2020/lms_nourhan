@@ -62,10 +62,6 @@
                             </ul>
                         </div>
                         <div class="blog-details-content" style="margin-top: 20px !important;">
-                            <h2 class="details-title">{{ $blog->title }}</h2>
-                            @if ($blog->short_description)
-                                <p class="mb-20 lead">{{ $blog->short_description }}</p>
-                            @endif
                             @if ($blog->description)
                                 <div class="blog-content">
                                     {!! $blog->description !!}

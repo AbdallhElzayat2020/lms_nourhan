@@ -28,8 +28,7 @@ class BlogController extends Controller
             }
         }
 
-        $blogs = $query->orderBy('sort_order')
-            ->latest()
+        $blogs = $query->latest('created_at')
             ->paginate(15)
             ->appends($request->query());
 

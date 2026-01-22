@@ -18,8 +18,7 @@ class CourseController extends Controller
     public function index(Request $request)
     {
         $courses = Course::with('category')
-            ->orderBy('sort_order')
-            ->latest()
+            ->latest('created_at')
             ->paginate(15)
             ->appends($request->query());
         return view('dashboard.courses.index', compact('courses'));
