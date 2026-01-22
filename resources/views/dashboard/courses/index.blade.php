@@ -86,6 +86,9 @@
                                             onsubmit="return confirm('Are you sure you want to delete this course?');">
                                             @csrf
                                             @method('DELETE')
+                                            @if(request('page'))
+                                                <input type="hidden" name="page" value="{{ request('page') }}">
+                                            @endif
                                             <button type="submit" class="btn btn-sm btn-label-danger">
                                                 <i class="ti ti-trash"></i>
                                             </button>

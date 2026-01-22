@@ -221,7 +221,7 @@ class BlogController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $id)
     {
         try {
             $blog = Blog::findOrFail($id);
@@ -233,7 +233,47 @@ class BlogController extends Controller
 
             $blog->delete();
 
-            return redirect()->route('admin.blogs.index')
+            // Get query parameters from POST data, referer URL, or request query
+            $queryParams = [];
+
+            // First, check POST data (from hidden inputs in form)
+            if ($request->has('page')) {
+                $queryParams['page'] = $request->input('page');
+            }
+            if ($request->has('category')) {
+                $queryParams['category'] = $request->input('category');
+            }
+
+            // If not in POST, try to get from referer URL
+            if (empty($queryParams)) {
+                $referer = $request->header('referer');
+                if ($referer) {
+                    $parsedUrl = parse_url($referer);
+                    if (isset($parsedUrl['query'])) {
+                        parse_str($parsedUrl['query'], $queryParams);
+                    }
+                }
+            }
+
+            // Fallback to request query if still empty
+            if (empty($queryParams)) {
+                $queryParams = $request->query();
+            }
+
+            // If we're on a page and it might be empty after deletion, go to previous page
+            if (isset($queryParams['page']) && $queryParams['page'] > 1) {
+                $currentPage = (int) $queryParams['page'];
+                $totalAfterDelete = Blog::count();
+
+                // If the page might be empty, go to previous page
+                // Calculate items per page (15 in this case)
+                $itemsPerPage = 15;
+                if ($totalAfterDelete <= ($currentPage - 1) * $itemsPerPage) {
+                    $queryParams['page'] = max(1, $currentPage - 1);
+                }
+            }
+
+            return redirect()->route('admin.blogs.index', $queryParams)
                 ->with('success', 'Blog deleted successfully.');
         } catch (\Exception $e) {
             Log::error('Error deleting blog: ' . $e->getMessage());

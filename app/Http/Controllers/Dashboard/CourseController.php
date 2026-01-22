@@ -15,12 +15,13 @@ class CourseController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $courses = Course::with('category')
             ->orderBy('sort_order')
             ->latest()
-            ->paginate(15);
+            ->paginate(15)
+            ->appends($request->query());
         return view('dashboard.courses.index', compact('courses'));
     }
 
@@ -231,7 +232,7 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Course $course)
+    public function destroy(Request $request, Course $course)
     {
         // Delete images
         if ($course->banner_image) {
@@ -249,7 +250,44 @@ class CourseController extends Controller
 
         $course->delete();
 
-        return redirect()->route('admin.courses.index')
+        // Get query parameters from POST data, referer URL, or request query
+        $queryParams = [];
+
+        // First, check POST data (from hidden inputs in form)
+        if ($request->has('page')) {
+            $queryParams['page'] = $request->input('page');
+        }
+
+        // If not in POST, try to get from referer URL
+        if (empty($queryParams)) {
+            $referer = $request->header('referer');
+            if ($referer) {
+                $parsedUrl = parse_url($referer);
+                if (isset($parsedUrl['query'])) {
+                    parse_str($parsedUrl['query'], $queryParams);
+                }
+            }
+        }
+
+        // Fallback to request query if still empty
+        if (empty($queryParams)) {
+            $queryParams = $request->query();
+        }
+
+        // If we're on a page and it might be empty after deletion, go to previous page
+        if (isset($queryParams['page']) && $queryParams['page'] > 1) {
+            $currentPage = (int) $queryParams['page'];
+            $totalAfterDelete = Course::count();
+
+            // If the page might be empty, go to previous page
+            // Calculate items per page (15 in this case)
+            $itemsPerPage = 15;
+            if ($totalAfterDelete <= ($currentPage - 1) * $itemsPerPage) {
+                $queryParams['page'] = max(1, $currentPage - 1);
+            }
+        }
+
+        return redirect()->route('admin.courses.index', $queryParams)
             ->with('success', 'Course deleted successfully');
     }
 }
