@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 
 class CategoryController extends Controller
@@ -60,6 +61,11 @@ class CategoryController extends Controller
         }
 
         Category::create($validated);
+
+        // Clear related cache
+        Cache::forget('home_categories');
+        Cache::forget('course_categories');
+        Cache::forget('blog_categories');
 
         return redirect()->route('admin.categories.index')
             ->with('success', 'Category created successfully');
@@ -138,6 +144,11 @@ class CategoryController extends Controller
         }
 
         $category->delete();
+
+        // Clear related cache
+        Cache::forget('home_categories');
+        Cache::forget('course_categories');
+        Cache::forget('blog_categories');
 
         return redirect()->route('admin.categories.index')
             ->with('success', 'Category deleted successfully');

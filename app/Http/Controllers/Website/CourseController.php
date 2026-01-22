@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class CourseController extends Controller
 {
@@ -40,21 +41,28 @@ class CourseController extends Controller
         if ($sort == 'oldest') {
             $query->orderBy('created_at', 'asc');
         } else {
-            $query->orderBy('sort_order')->latest();
+            $query->latest('created_at');
         }
 
         $courses = $query->paginate(9)->appends($request->query());
 
-        // Get all categories for filter with courses count
-        $categories = Category::active()
-            ->withCount(['courses' => function ($query) {
-                $query->where('status', 'active')->whereNull('deleted_at');
-            }])
-            ->orderBy('name')
-            ->get();
+        // Cache categories with courses count (5 minutes)
+        $categories = Cache::remember('course_categories', 300, function () {
+            return Category::active()
+                ->withCount(['courses' => function ($query) {
+                    $query->where('status', 'active')->whereNull('deleted_at');
+                }])
+                ->orderBy('name')
+                ->get();
+        });
 
         // Set SEO page name for this view
         view()->share('seoPageName', 'courses');
+
+        // Add noindex meta tag if search is active
+        if ($request->has('search') && $request->search) {
+            view()->share('noindex', true);
+        }
 
         return view('frontend.pages.courses', compact('courses', 'categories', 'selectedCategory'));
     }

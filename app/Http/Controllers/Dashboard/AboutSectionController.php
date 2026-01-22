@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\AboutSection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class AboutSectionController extends Controller
 {
@@ -55,6 +56,9 @@ class AboutSectionController extends Controller
         ]);
 
         $aboutSection->update($validated);
+
+        // Clear related cache
+        Cache::forget('home_about_section');
 
         return redirect()->route('admin.about-sections.index')
             ->with('success', 'About section updated successfully');

@@ -12,8 +12,24 @@
         <meta name="description" content="@yield('description', 'Nourhan Academy - English Learning & Travel Services')">
     @endif
 
+    <!-- Noindex for search pages -->
+    @if(isset($noindex) && $noindex)
+        <meta name="robots" content="noindex, nofollow">
+    @endif
+
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/frontend/img/favicon.png') }}">
+
+    <!-- Resource Hints for Faster Navigation -->
+    <link rel="dns-prefetch" href="{{ url('/') }}">
+    <link rel="preconnect" href="{{ url('/') }}" crossorigin>
+
+    <!-- Prefetch common pages for faster navigation -->
+    <link rel="prefetch" href="{{ route('frontend.courses') }}">
+    <link rel="prefetch" href="{{ route('frontend.blog') }}">
+    <link rel="prefetch" href="{{ route('frontend.about') }}">
+    <link rel="prefetch" href="{{ route('frontend.contact') }}">
+
     @stack('css')
     <!-- CSS here -->
     <link rel="stylesheet" href="{{asset('assets/frontend/css/bootstrap.min.css')}}">
@@ -29,6 +45,16 @@
 
     <!-- Floating Buttons + Scroll Top CSS -->
     <style>
+        /* Optimized Preloader - Faster hide animation */
+        #preloader {
+            transition: opacity 0.15s ease-out, visibility 0.15s ease-out;
+        }
+        #preloader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
         .floating-buttons {
             position: fixed;
             bottom: 80px;

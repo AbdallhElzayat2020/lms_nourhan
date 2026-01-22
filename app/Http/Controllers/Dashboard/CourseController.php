@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Faq;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 
 class CourseController extends Controller
@@ -119,6 +120,11 @@ class CourseController extends Controller
         if (!empty($faqs)) {
             $course->faqs()->attach($faqs);
         }
+
+        // Clear related cache
+        Cache::forget('home_featured_courses');
+        Cache::forget('course_categories');
+        Cache::forget('home_categories');
 
         return redirect()->route('admin.courses.index')
             ->with('success', 'Course created successfully');
@@ -246,6 +252,11 @@ class CourseController extends Controller
         // Sync FAQs
         $course->faqs()->sync($faqs);
 
+        // Clear related cache
+        Cache::forget('home_featured_courses');
+        Cache::forget('course_categories');
+        Cache::forget('home_categories');
+
         return redirect()->route('admin.courses.index')
             ->with('success', 'Course updated successfully');
     }
@@ -307,6 +318,11 @@ class CourseController extends Controller
                 $queryParams['page'] = max(1, $currentPage - 1);
             }
         }
+
+        // Clear related cache
+        Cache::forget('home_featured_courses');
+        Cache::forget('course_categories');
+        Cache::forget('home_categories');
 
         return redirect()->route('admin.courses.index', $queryParams)
             ->with('success', 'Course deleted successfully');

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 
 class EventController extends Controller
@@ -64,6 +65,9 @@ class EventController extends Controller
         }
 
         Event::create($validated);
+
+        // Clear related cache
+        Cache::forget('home_upcoming_events');
 
         return redirect()->route('admin.events.index')
             ->with('success', 'Event created successfully');
@@ -140,6 +144,9 @@ class EventController extends Controller
         }
 
         $event->delete();
+
+        // Clear related cache
+        Cache::forget('home_upcoming_events');
 
         return redirect()->route('admin.events.index')
             ->with('success', 'Event deleted successfully');

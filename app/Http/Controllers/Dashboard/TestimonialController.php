@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Cache;
 
 class TestimonialController extends Controller
 {
@@ -51,6 +52,9 @@ class TestimonialController extends Controller
         $validated['source'] = 'admin';
 
         Testimonial::create($validated);
+
+        // Clear related cache
+        Cache::forget('home_testimonials');
 
         return redirect()->route('admin.testimonials.index')
             ->with('success', 'Testimonial created successfully');
@@ -112,6 +116,9 @@ class TestimonialController extends Controller
         }
 
         $testimonial->delete();
+
+        // Clear related cache
+        Cache::forget('home_testimonials');
 
         return redirect()->route('admin.testimonials.index')
             ->with('success', 'Testimonial deleted successfully');

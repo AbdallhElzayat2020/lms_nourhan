@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class BlogController extends Controller
 {
@@ -38,18 +39,27 @@ class BlogController extends Controller
             ->paginate(6)
             ->appends($request->query());
 
-        // Get all categories for filter
-        $categories = Category::active()->orderBy('name')->get();
+        // Cache categories (5 minutes)
+        $categories = Cache::remember('blog_categories', 300, function () {
+            return Category::active()->orderBy('name')->get();
+        });
 
-        // Get recent blogs for sidebar
-        $recentBlogs = Blog::active()
-            ->published()
-            ->latest('published_at')
-            ->take(3)
-            ->get();
+        // Cache recent blogs for sidebar (3 minutes)
+        $recentBlogs = Cache::remember('blog_recent_sidebar', 180, function () {
+            return Blog::active()
+                ->published()
+                ->latest('published_at')
+                ->take(3)
+                ->get();
+        });
 
         // Set SEO page name for this view
         view()->share('seoPageName', 'blog');
+
+        // Add noindex meta tag if search is active
+        if ($request->has('search') && $request->search) {
+            view()->share('noindex', true);
+        }
 
         return view('frontend.pages.blog', compact('blogs', 'recentBlogs', 'categories', 'selectedCategory'));
     }

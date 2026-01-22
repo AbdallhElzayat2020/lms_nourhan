@@ -7,6 +7,7 @@ use App\Models\Teacher;
 use App\Models\TeacherCertificate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Cache;
 
 class TeacherController extends Controller
 {
@@ -70,6 +71,9 @@ class TeacherController extends Controller
 
         // Handle certificates
         $this->handleCertificates($request, $teacher);
+
+        // Clear related cache
+        Cache::forget('home_teachers');
 
         return redirect()->route('admin.teachers.index')
             ->with('success', 'Teacher created successfully');
@@ -139,6 +143,9 @@ class TeacherController extends Controller
         // Handle certificates
         $this->handleCertificates($request, $teacher);
 
+        // Clear related cache
+        Cache::forget('home_teachers');
+
         return redirect()->route('admin.teachers.index')
             ->with('success', 'Teacher updated successfully');
     }
@@ -153,6 +160,9 @@ class TeacherController extends Controller
         }
 
         $teacher->delete();
+
+        // Clear related cache
+        Cache::forget('home_teachers');
 
         return redirect()->route('admin.teachers.index')
             ->with('success', 'Teacher deleted successfully');

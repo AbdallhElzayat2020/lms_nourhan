@@ -8,6 +8,7 @@ use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Str;
 
@@ -106,6 +107,10 @@ class BlogController extends Controller
             // Create blog
             Blog::create($validated);
 
+            // Clear related cache
+            Cache::forget('home_recent_blogs');
+            Cache::forget('blog_recent_sidebar');
+
             return redirect()->route('admin.blogs.index')
                 ->with('success', 'Blog created successfully.');
         } catch (ValidationException $e) {
@@ -201,6 +206,10 @@ class BlogController extends Controller
             // Update blog
             $blog->update($validated);
 
+            // Clear related cache
+            Cache::forget('home_recent_blogs');
+            Cache::forget('blog_recent_sidebar');
+
             return redirect()->route('admin.blogs.index')
                 ->with('success', 'Blog updated successfully.');
         } catch (ValidationException $e) {
@@ -271,6 +280,10 @@ class BlogController extends Controller
                     $queryParams['page'] = max(1, $currentPage - 1);
                 }
             }
+
+            // Clear related cache
+            Cache::forget('home_recent_blogs');
+            Cache::forget('blog_recent_sidebar');
 
             return redirect()->route('admin.blogs.index', $queryParams)
                 ->with('success', 'Blog deleted successfully.');

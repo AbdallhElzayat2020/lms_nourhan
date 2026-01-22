@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Partner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Cache;
 
 class PartnerController extends Controller
 {
@@ -46,6 +47,9 @@ class PartnerController extends Controller
         }
 
         Partner::create($validated);
+
+        // Clear related cache
+        Cache::forget('home_partners');
 
         return redirect()->route('admin.partners.index')
             ->with('success', 'Partner created successfully');
@@ -91,6 +95,9 @@ class PartnerController extends Controller
 
         $partner->update($validated);
 
+        // Clear related cache
+        Cache::forget('home_partners');
+
         return redirect()->route('admin.partners.index')
             ->with('success', 'Partner updated successfully');
     }
@@ -105,6 +112,9 @@ class PartnerController extends Controller
         }
 
         $partner->delete();
+
+        // Clear related cache
+        Cache::forget('home_partners');
 
         return redirect()->route('admin.partners.index')
             ->with('success', 'Partner deleted successfully');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\WhyChooseItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class WhyChooseItemController extends Controller
 {
@@ -34,6 +35,9 @@ class WhyChooseItemController extends Controller
 
         WhyChooseItem::create($validated);
 
+        // Clear related cache
+        Cache::forget('home_why_choose');
+
         return redirect()->route('admin.why-choose-items.index')
             ->with('success', 'Why Choose item created successfully.');
     }
@@ -58,6 +62,9 @@ class WhyChooseItemController extends Controller
 
         $whyChooseItem->update($validated);
 
+        // Clear related cache
+        Cache::forget('home_why_choose');
+
         return redirect()->route('admin.why-choose-items.index')
             ->with('success', 'Why Choose item updated successfully.');
     }
@@ -65,6 +72,9 @@ class WhyChooseItemController extends Controller
     public function destroy(WhyChooseItem $whyChooseItem)
     {
         $whyChooseItem->delete();
+
+        // Clear related cache
+        Cache::forget('home_why_choose');
 
         return redirect()->route('admin.why-choose-items.index')
             ->with('success', 'Why Choose item deleted successfully.');

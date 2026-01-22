@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Counter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class CounterController extends Controller
 {
@@ -41,6 +42,9 @@ class CounterController extends Controller
         ]);
 
         Counter::create($validated);
+
+        // Clear related cache
+        Cache::forget('home_counters');
 
         return redirect()->route('admin.counters.index')
             ->with('success', 'Counter created successfully');
@@ -80,6 +84,9 @@ class CounterController extends Controller
     public function destroy(Counter $counter)
     {
         $counter->delete();
+
+        // Clear related cache
+        Cache::forget('home_counters');
 
         return redirect()->route('admin.counters.index')
             ->with('success', 'Counter deleted successfully');

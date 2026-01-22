@@ -14,14 +14,32 @@
     var windowOn = $(window);
 
 /*======================================
-    Preloader activation
+    Preloader activation - Optimized for faster hide
 ========================================*/
+    // Hide preloader as soon as DOM is ready (faster than waiting for all resources)
+    $(document).ready(function() {
+        // Minimum display time for smooth UX (50ms)
+        setTimeout(function() {
+            $("#preloader").addClass('fade-out');
+            setTimeout(function() {
+                $("#preloader").remove();
+            }, 150);
+        }, 50);
+    });
+
+    // Fallback: Hide preloader when all resources are loaded (max wait time)
     $(window).on("load", function (event) {
-        $("#preloader").delay(300).fadeOut(200);
+        $("#preloader").addClass('fade-out');
+        setTimeout(function() {
+            $("#preloader").remove();
+        }, 150);
     });
 
     $(".preloader-close").on("click", function () {
-        $("#preloader").delay(0).fadeOut(500);
+        $("#preloader").addClass('fade-out');
+        setTimeout(function() {
+            $("#preloader").remove();
+        }, 150);
     });
 
     $(document).ready(function () {

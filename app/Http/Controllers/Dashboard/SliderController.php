@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Cache;
 
 class SliderController extends Controller
 {
@@ -51,6 +52,9 @@ class SliderController extends Controller
         }
 
         Slider::create($validated);
+
+        // Clear related cache
+        Cache::forget('home_sliders');
 
         return redirect()->route('admin.sliders.index')
             ->with('success', 'Slider created successfully');
@@ -101,6 +105,9 @@ class SliderController extends Controller
 
         $slider->update($validated);
 
+        // Clear related cache
+        Cache::forget('home_sliders');
+
         return redirect()->route('admin.sliders.index')
             ->with('success', 'Slider updated successfully');
     }
@@ -115,6 +122,9 @@ class SliderController extends Controller
         }
 
         $slider->delete();
+
+        // Clear related cache
+        Cache::forget('home_sliders');
 
         return redirect()->route('admin.sliders.index')
             ->with('success', 'Slider deleted successfully');
