@@ -102,6 +102,17 @@ class CourseController extends Controller
         $faqs = $validated['faqs'] ?? [];
         unset($validated['faqs']);
 
+        // Convert empty strings to null for nullable fields
+        if (isset($validated['lessons_count']) && $validated['lessons_count'] === '') {
+            $validated['lessons_count'] = null;
+        }
+        if (isset($validated['duration_hours']) && $validated['duration_hours'] === '') {
+            $validated['duration_hours'] = null;
+        }
+        if (isset($validated['language']) && $validated['language'] === '') {
+            $validated['language'] = null;
+        }
+
         $course = Course::create($validated);
 
         // Attach FAQs
@@ -218,6 +229,17 @@ class CourseController extends Controller
         // Remove faqs from validated array before updating
         $faqs = $validated['faqs'] ?? [];
         unset($validated['faqs']);
+
+        // Convert empty strings to null for nullable fields
+        if (isset($validated['lessons_count']) && ($validated['lessons_count'] === '' || $validated['lessons_count'] === null)) {
+            $validated['lessons_count'] = null;
+        }
+        if (isset($validated['duration_hours']) && ($validated['duration_hours'] === '' || $validated['duration_hours'] === null)) {
+            $validated['duration_hours'] = null;
+        }
+        if (isset($validated['language']) && ($validated['language'] === '' || $validated['language'] === null)) {
+            $validated['language'] = null;
+        }
 
         $course->update($validated);
 
