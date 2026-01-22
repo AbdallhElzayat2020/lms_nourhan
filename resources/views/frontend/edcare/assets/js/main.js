@@ -29,13 +29,13 @@
         if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
             $('body').addClass('firefox');
         }
-        
+
         var header = $(".header"),
             stickyHeader = $(".primary-header");
 
         function menuSticky(w) {
             if (w.matches) {
-                
+
                 $(window).on("scroll", function () {
                     var scroll = $(window).scrollTop();
                     if (scroll >= 110) {
@@ -44,9 +44,9 @@
                         stickyHeader.removeClass("fixed");
                     }
                 });
-                if ($(".header").length > 0) {    
+                if ($(".header").length > 0) {
                     var  headerHeight = document.querySelector(".header"),
-                        setHeaderHeight = headerHeight.offsetHeight;	
+                        setHeaderHeight = headerHeight.offsetHeight;
                     header.each(function () {
                         $(this).css({
                             'height' : setHeaderHeight + 'px'
@@ -127,18 +127,6 @@
             $(this).css("background-image", "url( " + $(this).attr("data-background") + "  )");
         });
 
-        // Custom Cursor
-        $("body").append('<div class="mt-cursor"></div>');
-        var cursor = $(".mt-cursor"),
-            linksCursor = $("a, .swiper-nav, button, .cursor-effect"),
-            crossCursor = $(".cross-cursor");
-
-        $(window).on("mousemove", function (e) {
-            cursor.css({
-                transform: "translate(" + (e.clientX - 15) + "px," + (e.clientY - 15) + "px)",
-                visibility: "inherit",
-            });
-        });
 
         /* Odometer */
         $(".odometer").waypoint(
@@ -161,13 +149,13 @@
         // Nice Select Js
         $("select").niceSelect();
 
-        // carouselTicker initail 
+        // carouselTicker initail
         $('.carouselTicker-nav').carouselTicker({
         });
         $(".carouselTicker-start").carouselTicker({
             direction: "next",
         });
-        
+
 
         // Course Carousel
         var swiperCourse = new Swiper(".course-carousel", {
@@ -923,7 +911,7 @@
             watchSlidesProgress: true,
             direction: 'vertical',
         });
-        
+
         var swiper2 = new Swiper(".product-gallary", {
             spaceBetween: 10,
             loop: true,
