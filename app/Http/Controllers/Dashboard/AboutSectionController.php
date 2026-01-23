@@ -48,7 +48,7 @@ class AboutSectionController extends Controller
         $validated = $request->validate([
             'subtitle' => 'nullable|string|max:255',
             'title' => 'required|string|max:500',
-            'description' => 'nullable|string|max:3000',
+            'description' => 'nullable|string|max:5000',
             'button_text' => 'nullable|string|max:255',
             'button_link' => 'nullable|string|max:500',
             'video_url' => 'nullable|string|max:2000',
