@@ -55,6 +55,11 @@ class AboutSectionController extends Controller
             'status' => 'required|in:active,inactive',
         ]);
 
+        // Normalize YouTube URL to embeddable format so the admin can paste any link
+        if (!empty($validated['video_url'])) {
+            $validated['video_url'] = $this->normalizeYouTubeUrl($validated['video_url']);
+        }
+
         $aboutSection->update($validated);
 
         // Clear related cache
@@ -62,5 +67,46 @@ class AboutSectionController extends Controller
 
         return redirect()->route('admin.about-sections.index')
             ->with('success', 'About section updated successfully');
+    }
+
+    /**
+     * Convert any common YouTube URL format to an embeddable URL.
+     */
+    protected function normalizeYouTubeUrl(string $url): string
+    {
+        $url = trim($url);
+
+        // If it's already an embed URL, return as-is
+        if (str_contains($url, 'youtube.com/embed/')) {
+            return $url;
+        }
+
+        $videoId = null;
+
+        // Short URL: https://youtu.be/VIDEO_ID
+        if (preg_match('~https?://youtu\.be/([^?&/]+)~i', $url, $matches)) {
+            $videoId = $matches[1];
+        }
+
+        // Watch URL: https://www.youtube.com/watch?v=VIDEO_ID
+        if (!$videoId && preg_match('~[?&]v=([^?&/]+)~i', $url, $matches)) {
+            $videoId = $matches[1];
+        }
+
+        // Shorts URL: https://www.youtube.com/shorts/VIDEO_ID
+        if (!$videoId && preg_match('~youtube\.com/shorts/([^?&/]+)~i', $url, $matches)) {
+            $videoId = $matches[1];
+        }
+
+        // Fallback: use the last path segment if possible
+        if (!$videoId && preg_match('~youtube\.com/.+?/([^?&/]+)~i', $url, $matches)) {
+            $videoId = $matches[1];
+        }
+
+        if (!$videoId) {
+            return $url;
+        }
+
+        return 'https://www.youtube.com/embed/' . $videoId;
     }
 }

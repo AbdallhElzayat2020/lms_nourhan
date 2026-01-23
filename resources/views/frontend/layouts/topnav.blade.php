@@ -12,9 +12,9 @@
                 <div class="top-social-wrap">
                     <span>Follow Us</span>
                     <ul class="social-list">
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="https://www.instagram.com/sister.nourhan.academy/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.facebook.com/sister.nourhan.academy" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="https://www.youtube.com/@sister.nourhan" target="_blank"><i class="fab fa-youtube"></i></a></li>
                     </ul>
                 </div>
             </div>

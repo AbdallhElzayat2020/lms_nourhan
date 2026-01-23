@@ -41,14 +41,11 @@
                             <div class="about-img">
                                 @if($aboutSection->video_url)
                                     <iframe style="position: absolute; top: 0; border-radius: 10px; left: 0; width: 100%; height: 100%; border: 0;"
-                                            src="{{ $aboutSection->video_url }}"
+                                            src="{{ $aboutSection->embed_video_url }}"
                                             title="About video"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                                     </iframe>
-                                @else
-                                    <img class="main-img" src="{{ asset('assets/frontend/img/images/about-img-3.png') }}"
-                                        alt="about">
                                 @endif
                             </div>
                         </div>
