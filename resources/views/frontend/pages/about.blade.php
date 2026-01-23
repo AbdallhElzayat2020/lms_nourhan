@@ -41,7 +41,7 @@
                             <div class="about-img">
                                 @if($aboutSection->video_url)
                                     <iframe style="position: absolute; top: 0; border-radius: 10px; left: 0; width: 100%; height: 100%; border: 0;"
-                                            src="{{ $aboutSection->embed_video_url }}"
+                                            src="{{ $aboutSection->embed_video_url_with_autoplay }}"
                                             title="About video"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>

@@ -20,10 +20,10 @@
 
 <!-- Floating Action Buttons -->
 <div class="floating-buttons">
-    <a href="https://wa.me/201000000000" target="_blank" class="floating-btn whatsapp-btn" title="Contact us on WhatsApp">
+    <a href="https://wa.me/201065537718" target="_blank" class="floating-btn whatsapp-btn" title="Contact us on WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
-    <a href="tel:+201000000000" class="floating-btn call-btn" title="Contact us on Phone">
+    <a href="tel:+201065537718" class="floating-btn call-btn" title="Contact us on Phone">
         <i class="fa-solid fa-phone"></i>
     </a>
 </div>

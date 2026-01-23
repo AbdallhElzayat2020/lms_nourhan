@@ -34,6 +34,15 @@
                 </div>
 
                 <div class="mb-3">
+                    <label class="form-label">Video URL (YouTube)</label>
+                    <input type="text" name="video_url" class="form-control @error('video_url') is-invalid @enderror"
+                           value="{{ old('video_url') }}"
+                           placeholder="e.g. https://youtu.be/-EElWLA7BQ4 or https://www.youtube.com/watch?v=VIDEO_ID">
+                    <small class="text-muted">يمكنك وضع أي رابط يوتيوب (watch, youtu.be, shorts) وسيتم تحويله تلقائياً</small>
+                    @error('video_url') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
+
+                <div class="mb-3">
                     <label class="form-label">Icon Class</label>
                     <input type="text" name="icon_class" class="form-control @error('icon_class') is-invalid @enderror"
                            value="{{ old('icon_class') }}" placeholder="e.g. fa-solid fa-star">

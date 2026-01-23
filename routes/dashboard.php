@@ -167,8 +167,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
         Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
         Route::put('settings', [SettingController::class, 'update'])->name('settings.update');
 
-        // Why Choose Us (part of Website Settings)
-        Route::resource('why-choose-items', WhyChooseItemController::class)->except(['show']);
+        // Why Choose Us (part of Website Settings) - Edit only, no create/delete
+        Route::get('why-choose-items', [WhyChooseItemController::class, 'index'])->name('why-choose-items.index');
+        Route::get('why-choose-items/{whyChooseItem}/edit', [WhyChooseItemController::class, 'edit'])->name('why-choose-items.edit');
+        Route::put('why-choose-items/{whyChooseItem}', [WhyChooseItemController::class, 'update'])->name('why-choose-items.update');
     });
 
     // Redirects Routes - requires redirects.manage or dashboard.access permission

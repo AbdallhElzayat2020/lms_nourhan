@@ -81,4 +81,20 @@ class AboutSection extends Model
 
         return 'https://www.youtube.com/embed/' . $videoId;
     }
+
+    /**
+     * Get the embed video URL with autoplay enabled.
+     */
+    public function getEmbedVideoUrlWithAutoplayAttribute(): ?string
+    {
+        $embedUrl = $this->embed_video_url;
+
+        if (!$embedUrl) {
+            return null;
+        }
+
+        // Add autoplay parameter
+        $separator = str_contains($embedUrl, '?') ? '&' : '?';
+        return $embedUrl . $separator . 'autoplay=1&mute=1';
+    }
 }

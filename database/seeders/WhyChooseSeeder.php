@@ -16,7 +16,8 @@ class WhyChooseSeeder extends Seeder
             [
                 'title' => 'Expert Instructors',
                 'subtitle' => 'Learn from certified teachers',
-                'description' => 'Our courses are led by qualified, experienced instructors who are passionate about teaching Qur’an, Arabic, and Islamic studies with clarity, patience, and care.',
+                'description' => 'Our courses are led by qualified, experienced instructors who are passionate about teaching Qur\'an, Arabic, and Islamic studies with clarity, patience, and care.',
+                'video_url' => 'https://www.youtube.com/watch?v=qjxDcU4m2FQ',
                 'icon_class' => 'fa-solid fa-chalkboard-user',
                 'status' => 'active',
                 'sort_order' => 1,
@@ -37,14 +38,6 @@ class WhyChooseSeeder extends Seeder
                 'status' => 'active',
                 'sort_order' => 3,
             ],
-            [
-                'title' => 'Personalized Support',
-                'subtitle' => 'We grow with you',
-                'description' => 'Receive one‑to‑one feedback, regular progress tracking, and a caring community that keeps you motivated and accountable on your learning journey.',
-                'icon_class' => 'fa-solid fa-hand-holding-heart',
-                'status' => 'active',
-                'sort_order' => 4,
-            ],
         ];
 
         foreach ($items as $item) {
@@ -53,6 +46,9 @@ class WhyChooseSeeder extends Seeder
                 $item
             );
         }
+
+        // Delete any items that are not in the seeder list (to keep only 3 items)
+        $allowedTitles = array_column($items, 'title');
+        WhyChooseItem::whereNotIn('title', $allowedTitles)->delete();
     }
 }
-

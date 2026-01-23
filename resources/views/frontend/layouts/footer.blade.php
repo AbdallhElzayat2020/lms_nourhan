@@ -1,26 +1,85 @@
-<footer class="footer-section pt-120" id="footer-section" data-background="{{asset('assets/frontend/img/bg-img/footer-bg.png')}}">
+<footer class="footer-section pt-120" id="footer-section"
+    data-background="{{ asset('assets/frontend/img/bg-img/footer-bg.png') }}">
+    <style>
+        .footer-logo {
+            max-width: 200px;
+            height: auto;
+            width: 100%;
+            object-fit: contain;
+            display: block;
+        }
+        .footer-logo-link {
+            display: inline-block;
+            transition: opacity 0.3s ease;
+        }
+        .footer-logo-link:hover {
+            opacity: 0.8;
+        }
+        .footer-wrap .col-lg-3:first-child .footer-widget {
+            padding-left: 0 !important;
+            margin-left: 0 !important;
+        }
+        .footer-wrap .col-lg-3:first-child .footer-widget * {
+            margin-left: 0;
+            padding-left: 0;
+        }
+        .footer-wrap .col-lg-3:first-child {
+            padding-left: 0 !important;
+        }
+        .footer-contact-info .contact-item {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .footer-contact-info .contact-item i {
+            color: var(--ed-color-theme-primary, #006D64);
+            font-size: 18px;
+            min-width: 24px;
+        }
+        .footer-contact-info .contact-item a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-contact-info .contact-item a:hover {
+            color: var(--ed-color-theme-primary, #006D64);
+        }
+        .footer-contact-info .contact-item span {
+            color: #fff;
+        }
+        @media (max-width: 768px) {
+            .footer-logo {
+                max-width: 180px;
+            }
+        }
+    </style>
     <div class="footer-top-wrap">
         <div class="container">
             <div class="footer-top text-center" id="subscribe-form-section">
                 <h2 class="title">Subscribe Our Newsletter For <br>Latest Updates</h2>
                 <div class="footer-form-wrap">
-                    @if(session('success_subscribe'))
+                    @if (session('success_subscribe'))
                         <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
                             {{ session('success_subscribe') }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
                         </div>
                     @endif
-                    @if($errors->has('email'))
+                    @if ($errors->has('email'))
                         <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
                             {{ $errors->first('email') }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
                         </div>
                     @endif
-                    <form action="{{ route('frontend.subscribe') }}" method="POST" class="footer-form" id="subscribe-form">
+                    <form action="{{ route('frontend.subscribe') }}" method="POST" class="footer-form"
+                        id="subscribe-form">
                         @csrf
                         <div class="form-item">
-                            <input type="email" id="email-2" name="email" class="form-control @error('email') is-invalid @enderror"
-                                   placeholder="Enter Your E-mail" value="{{ old('email') }}" required>
+                            <input type="email" id="email-2" name="email"
+                                class="form-control @error('email') is-invalid @enderror"
+                                placeholder="Enter Your E-mail" value="{{ old('email') }}" required>
                             <div class="icon"><i class="fa-light fa-envelope"></i></div>
                         </div>
                         <button type="submit" class="ed-primary-btn">Subscribe Now</button>
@@ -30,30 +89,21 @@
             <div class="row footer-wrap">
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget">
-                        <h3 class="widget-header">Get in touch!</h3>
+                        <a href="{{ route('frontend.home') }}" class="footer-logo-link">
+                            <img src="{{ asset('assets/frontend/img/logo_horezntal.webp') }}" alt="Sister Nourhan Academy Logo" class="footer-logo mb-30">
+                        </a>
                         <p class="mb-30">Fusce varius, dolor tempor interdum tristiquei bibendum.</p>
-                        <div class="footer-contact">
-                                <span class="number"><i class="fa-regular fa-phone"></i><a href="tel:0000000">
-                                        000000000
-                                    </a></span>
-                            <a href="mailto:info@company.com" class="mail">info@company.com</a>
-                        </div>
-                        <ul class="footer-social">
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                        </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget widget-2">
                         <h3 class="widget-header">Company Info</h3>
                         <ul class="footer-list">
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="#">Resource Center</a></li>
-                            <li><a href="team.html">Team</a></li>
-                            <li><a href="teachers.html">Instructor</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="{{ route('frontend.about') }}">About Us</a></li>
+                            <li><a href="{{ route('frontend.courses') }}">Courses</a></li>
+                            <li><a href="{{ route('frontend.pricing') }}">Pricing</a></li>
+                            <li><a href="{{ route('frontend.teachers') }}">Instructor</a></li>
+                            <li><a href="{{ route('frontend.contact') }}">Contact</a></li>
                         </ul>
                     </div>
                 </div>
@@ -61,34 +111,36 @@
                     <div class="footer-widget widget-2">
                         <h3 class="widget-header">Useful Links</h3>
                         <ul class="footer-list">
-                            <li><a href="#">All Courses</a></li>
-                            <li><a href="#">Digital Marketing</a></li>
-                            <li><a href="#">Design & Branding</a></li>
-                            <li><a href="#">Storytelling & Voice Over</a></li>
-                            <li><a href="#">News & Blogs</a></li>
+                            <li><a href="{{ route('frontend.courses') }}">Courses</a></li>
+                            @php
+                                $footerCategories = \App\Models\Category::active()->orderBy('sort_order')->take(5)->get();
+                            @endphp
+                            @foreach($footerCategories as $category)
+                                <li><a href="{{ route('frontend.courses', ['category' => $category->slug]) }}">{{ $category->name }}</a></li>
+                            @endforeach
+                            <li><a href="{{ route('frontend.blog') }}">News & Blogs</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget">
-                        <h3 class="widget-header">Recent Post</h3>
-                        <div class="sidebar-post mb-20">
-                            <img src="{{asset('assets/frontend/img/images/footer-post-1.png')}}" alt="post">
-                            <div class="post-content">
-                                <h3 class="title"><a href="#">Where Dreams Find a Home</a></h3>
-                                <ul class="post-meta">
-                                    <li><i class="fa-light fa-calendar"></i>20 April, 2025</li>
-                                </ul>
+                        <h3 class="widget-header">Contact Us</h3>
+                        <div class="footer-contact-info">
+                            <div class="contact-item mb-3">
+                                <i class="fa-regular fa-phone me-2"></i>
+                                <a href="tel:+201065537718">+20 10 65537718</a>
+                            </div>
+                            <div class="contact-item mb-3">
+                                <i class="fa-light fa-envelope me-2"></i>
+                                <a href="mailto:info@sisternourhan.com">info@sisternourhan.com</a>
                             </div>
                         </div>
-                        <div class="sidebar-post">
-                            <img src="{{asset('assets/frontend/img/images/footer-post-2.png')}}" alt="post">
-                            <div class="post-content">
-                                <h3 class="title"><a href="#">Where Dreams Find a Home</a></h3>
-                                <ul class="post-meta">
-                                    <li><i class="fa-light fa-calendar"></i>20 April, 2025</li>
-                                </ul>
-                            </div>
+                        <div class="mt-4">
+                            <ul class="footer-social">
+                                <li><a href="https://www.facebook.com/sister.nourhan.academy" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="https://www.instagram.com/sister.nourhan.academy/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="https://www.youtube.com/@sister.nourhan" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -104,19 +156,19 @@
     </div>
 </footer>
 
-@if(session('success_subscribe') || session('scroll_to_footer') || $errors->has('email'))
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Scroll to footer section smoothly
-        const footerSection = document.getElementById('footer-section');
-        if (footerSection) {
-            setTimeout(function() {
-                footerSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }, 100);
-        }
-    });
-</script>
+@if (session('success_subscribe') || session('scroll_to_footer') || $errors->has('email'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Scroll to footer section smoothly
+            const footerSection = document.getElementById('footer-section');
+            if (footerSection) {
+                setTimeout(function() {
+                    footerSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 100);
+            }
+        });
+    </script>
 @endif
