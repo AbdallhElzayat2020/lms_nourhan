@@ -89,7 +89,7 @@
             <div class="row footer-wrap">
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget">
-                        <a href="{{ route('frontend.home') }}" class="footer-logo-link">
+                        <a href="javascript:void(0)" class="footer-logo-link">
                             <img src="{{ asset('assets/frontend/img/logo_horezntal.webp') }}" alt="Sister Nourhan Academy Logo" class="footer-logo mb-30">
                         </a>
                         <p class="mb-30">Fusce varius, dolor tempor interdum tristiquei bibendum.</p>
