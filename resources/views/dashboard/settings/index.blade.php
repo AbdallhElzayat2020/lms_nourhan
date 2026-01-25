@@ -8,10 +8,6 @@
             <h5 class="mb-0">Website Settings</h5>
         </div>
         <div class="card-body">
-            <div class="alert alert-info mb-4">
-                <strong>Why Choose Us:</strong>
-                Manage items from <a href="{{ route('admin.why-choose-items.index') }}">Website Settings → Why Choose Us</a>.
-            </div>
             <form action="{{ route('admin.settings.update') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
@@ -70,7 +66,7 @@
                             @if($currentImage)
                                 <div class="current-image mt-2">
                                     <p class="small text-muted mb-1">Current Image:</p>
-                                    <img src="{{ asset('storage/settings/' . $currentImage) }}"
+                                    <img src="{{ asset('uploads/settings/' . $currentImage) }}"
                                         alt="Author Image" class="img-thumbnail" style="max-width: 150px; max-height: 150px;">
                                 </div>
                             @endif

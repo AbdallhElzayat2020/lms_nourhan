@@ -11,9 +11,16 @@
         .footer-logo-link {
             display: inline-block;
             transition: opacity 0.3s ease;
+            margin-left: 0;
+            padding-left: 0;
         }
         .footer-logo-link:hover {
             opacity: 0.8;
+        }
+        .footer-widget p {
+            margin-left: 0;
+            padding-left: 0;
+            text-align: left;
         }
         .footer-wrap .col-lg-3:first-child .footer-widget {
             padding-left: 0 !important;

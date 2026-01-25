@@ -40,10 +40,19 @@ class SettingController extends Controller
             if ($request->hasFile('author_image')) {
                 \Log::info('Processing image upload');
 
+                // Ensure uploads/settings directory exists
+                $settingsPath = public_path('uploads/settings');
+                if (!file_exists($settingsPath)) {
+                    mkdir($settingsPath, 0755, true);
+                }
+
                 // Delete old image if exists
                 $oldImage = Setting::get('author_image');
                 if ($oldImage) {
-                    Storage::disk('settings')->delete($oldImage);
+                    $oldImagePath = public_path('uploads/settings/' . $oldImage);
+                    if (file_exists($oldImagePath)) {
+                        unlink($oldImagePath);
+                    }
                     \Log::info('Deleted old image: ' . $oldImage);
                 }
 

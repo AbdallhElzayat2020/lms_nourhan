@@ -157,8 +157,8 @@ return [
 
         'settings' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/settings'),
-            'url' => env('APP_URL') . '/storage/settings',
+            'root' => public_path('uploads/settings'),
+            'url' => env('APP_URL') . '/uploads/settings',
             'visibility' => 'public',
             'throw' => false,
             'report' => false,

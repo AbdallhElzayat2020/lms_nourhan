@@ -85,7 +85,7 @@
                                 @endphp
 
                                 @if($authorImage)
-                                    <img src="{{ asset('storage/settings/' . $authorImage) }}" alt="{{ $authorName }}">
+                                    <img src="{{ asset('uploads/settings/' . $authorImage) }}" alt="{{ $authorName }}">
                                 @else
                                     <div class="author-placeholder">
                                         <span>{{ substr($authorName, 0, 2) }}</span>
