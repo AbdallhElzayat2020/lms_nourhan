@@ -111,6 +111,7 @@
                             <li><a href="{{ route('frontend.pricing') }}">Pricing</a></li>
                             <li><a href="{{ route('frontend.teachers') }}">Instructor</a></li>
                             <li><a href="{{ route('frontend.contact') }}">Contact</a></li>
+                            <li><a href="{{ route('frontend.terms') }}">Terms &amp; Conditions</a></li>
                         </ul>
                     </div>
                 </div>
@@ -157,7 +158,8 @@
     <div class="copyright-area">
         <div class="container">
             <div class="copyright-content">
-                <p>Copyright © 2026 <a href="#">Abdullah Elzayat</a>. All Rights Reserved.</p>
+                <p>Copyright © 2026 <a href="javascript:void(0)">Sister Nourhan Academy</a>. All Rights Reserved.</p>
+
             </div>
         </div>
     </div>

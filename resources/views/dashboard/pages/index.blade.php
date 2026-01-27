@@ -457,57 +457,6 @@
             </div>
         </div>
 
-        <!-- Recent Blogs -->
-        <div class="col-lg-6 col-md-12 mb-4">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">Recent Blogs</h5>
-                    <a href="{{ route('admin.blogs.index') }}" class="btn btn-sm btn-label-primary">
-                        View All
-                    </a>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-borderless">
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Status</th>
-                                    <th>Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse($recentBlogs as $blog)
-                                    <tr>
-                                        <td>
-                                            <div>
-                                                <h6 class="mb-0">{{ Str::limit($blog->title, 30) }}</h6>
-                                                <small class="text-muted">{{ Str::limit($blog->slug, 25) }}</small>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            @if($blog->status == 'published')
-                                                <span class="badge bg-label-success">Published</span>
-                                            @else
-                                                <span class="badge bg-label-warning">Draft</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <small class="text-muted">{{ $blog->created_at->format('Y-m-d') }}</small>
-                                        </td>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="3" class="text-center">No blogs found</td>
-                                    </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Recent Event Bookings -->
         <div class="col-lg-6 col-md-12 mb-4">
             <div class="card">

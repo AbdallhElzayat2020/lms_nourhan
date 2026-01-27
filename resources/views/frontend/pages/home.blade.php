@@ -382,7 +382,7 @@
                         Why Choose Sister Nourhan Academy
                     </h2>
                 </div>
-                <div class="row">
+                <div class="row align-items-center">
                     <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
                         <ul class="offer-nav nav nav-tabs mb-0" id="myTab" role="tablist">
                             @foreach($whyChooseItems as $index => $item)
@@ -552,7 +552,7 @@
                 </div>
                 <div class="row gy-lg-0 gy-4">
                     @foreach ($recentTeachers as $teacher)
-                        <div class="col-lg-3 col-md-6">
+                        <div class="col-lg-3 col-md-6 my-3">
                             <div class="team-item-3 wow fade-in-bottom" data-wow-delay="200ms">
                                 <a href="{{ route('frontend.teacher.details', $teacher->slug) }}">
                                     <div class="team-thumb-wrap">
@@ -744,7 +744,7 @@
 
     {{-- <!--blogs (dynamic from DB) --> --}}
     @if ($recentBlogs->count() > 0)
-        <section class="blog-section  pb-120">
+        <section class="blog-section pt-5 pb-120">
             <div class="container">
                 <div class="section-heading text-center">
                     <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i

@@ -67,6 +67,9 @@ Route::prefix('')->name('frontend.')->group(function () {
     // Pricing
     Route::get('/pricing', [PricingController::class, 'index'])->name('pricing');
 
+    // Terms & Conditions (static page)
+    Route::view('/terms-and-conditions', 'frontend.pages.terms-and-conditions')->name('terms');
+
     // Blog
     Route::get('/blog', [BlogController::class, 'index'])->name('blog');
     Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.details');

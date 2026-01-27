@@ -3,15 +3,15 @@
 @section('content')
     <section class="page-header">
         <div class="bg-item">
-            <div class="bg-img" data-background="{{ asset('assets/frontend/img/bg-img/page-header-bg.png') }}"></div>
+            <div class="bg-img" data-background="{{ asset('assets/frontend/img/banner_top.jpeg') }}"></div>
             <div class="overlay"></div>
             <div class="shapes">
                 <div class="shape shape-1"><img src="{{ asset('assets/frontend/img/shapes/page-header-shape-1.png') }}"
                         alt="shape"></div>
-                <div class="shape shape-2"><img src="{{ asset('assets/frontend/img/shapes/page-header-shape-2.png') }}"
-                        alt="shape"></div>
-                <div class="shape shape-3"><img src="{{ asset('assets/frontend/img/shapes/page-header-shape-3.png') }}"
-                        alt="shape"></div>
+                {{-- <div class="shape shape-2"><img src="{{ asset('assets/frontend/img/shapes/page-header-shape-2.png') }}"
+                        alt="shape"></div> --}}
+                {{-- <div class="shape shape-3"><img src="{{ asset('assets/frontend/img/shapes/page-header-shape-3.png') }}"
+                        alt="shape"></div> --}}
             </div>
         </div>
         <div class="container">

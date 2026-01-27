@@ -5,7 +5,7 @@
         <div class="container">
             <div class="primary-header-inner">
                 <div class="header-logo d-lg-block">
-                    <a href="index.html">
+                    <a href="{{ route('frontend.home') }}">
                         <img src="{{ asset('assets/frontend/img/logo_horezntal.webp') }}" alt="Logo">
                     </a>
                 </div>
@@ -43,8 +43,8 @@
                     <div class="header-right">
                         <a href="{{ route('frontend.book') }}" class="ed-primary-btn header-btn">Book Now</a>
                         <div class="header-logo d-none d-lg-none">
-                            <a href="index.html">
-                                <img src="assets/img/logo/logo-1.png" alt="Logo">
+                            <a href="{{ route('frontend.home') }}">
+                                <img src="{{ asset('assets/frontend/img/logo_horezntal.webp') }}" alt="Logo">
                             </a>
                         </div>
                         <div class="header-right-item d-lg-none d-md-block">
@@ -74,7 +74,7 @@
 <div class="mobile-side-menu">
     <div class="side-menu-content">
         <div class="side-menu-head">
-            <a href="index.html"><img src="{{ asset('assets/frontend/img/logo_horezntal.webp') }}" alt="logo"></a>
+            <a href="{{ route('frontend.home') }}"><img src="{{ asset('assets/frontend/img/logo_horezntal.webp') }}" alt="logo"></a>
             <button class="mobile-side-menu-close"><i class="fa-regular fa-xmark"></i></button>
         </div>
         <div class="side-menu-wrap"></div>
