@@ -92,10 +92,46 @@
                             commercial use of this content without written permission is strictly prohibited.
                         </p>
                         <h4 class="mb-10">Use of Website</h4>
-                        <p>
+                        <p class="mb-20">
                             You may use our website strictly for personal and educational purposes.
                             Unauthorized use may result in legal action, including claims for damages or other appropriate measures.
                         </p>
+
+                        <h3 class="mb-15">Privacy Policy</h3>
+                        <h4 class="mb-10">Data Collection</h4>
+                        <p class="mb-15">
+                            We collect personal information from students only for the purpose of providing and improving our
+                            services. All collected information is kept secure and confidential.
+                        </p>
+                        <h4 class="mb-10">Use of Data</h4>
+                        <p class="mb-15">
+                            Your personal data is used exclusively for communication, account management, payment processing,
+                            and service improvement. We do not share personal data with third parties without explicit consent,
+                            except where required by law.
+                        </p>
+                        <h4 class="mb-10">Data Deletion</h4>
+                        <p class="mb-20">
+                            Students have the right to request the deletion of their personal data from our records, and such
+                            requests will be processed according to our internal procedures.
+                        </p>
+
+                        <h3 class="mb-15">Amendments to Terms and Conditions</h3>
+                        <h4 class="mb-10">Changes to Policies</h4>
+                        <p class="mb-15">
+                            Sister Nourhan Academy reserves the right to update or modify these terms at any time.
+                            Any changes will be posted on this page, and continued use of the website or services will be
+                            considered acceptance of the updated terms.
+                        </p>
+
+                        <h3 class="mb-15">Contact Information</h3>
+                        <p>
+                            If you have any questions or concerns regarding these terms and conditions, please contact us at:
+                        </p>
+                        <ul class="mb-0" style="margin-left: 1.2rem;">
+                            <li>Email: <a href="mailto:info@sisternourhan.academy">info@sisternourhan.academy</a></li>
+                            <li>WhatsApp: <a href="https://wa.me/201065537718" target="_blank">+20 106 553 7718</a></li>
+                            <li>Website: <a href="https://sisternourhan.academy/" target="_blank">sisternourhan.academy</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>

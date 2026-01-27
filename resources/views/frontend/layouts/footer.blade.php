@@ -112,6 +112,7 @@
                             <li><a href="{{ route('frontend.teachers') }}">Instructor</a></li>
                             <li><a href="{{ route('frontend.contact') }}">Contact</a></li>
                             <li><a href="{{ route('frontend.terms') }}">Terms &amp; Conditions</a></li>
+                            <li><a href="{{ route('frontend.privacy') }}">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>

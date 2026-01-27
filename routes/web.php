@@ -70,6 +70,9 @@ Route::prefix('')->name('frontend.')->group(function () {
     // Terms & Conditions (static page)
     Route::view('/terms-and-conditions', 'frontend.pages.terms-and-conditions')->name('terms');
 
+    // Privacy Policy (static page)
+    Route::view('/privacy-policy', 'frontend.pages.privacy-policy')->name('privacy');
+
     // Blog
     Route::get('/blog', [BlogController::class, 'index'])->name('blog');
     Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.details');
