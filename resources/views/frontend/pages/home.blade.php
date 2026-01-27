@@ -16,7 +16,7 @@
                                     <div class="slider-content">
                                         <div class="sub-heading-wrap" data-animation="edcare-fadeInDown" data-delay="1000ms"
                                             data-duration="1200ms">
-                                            <h4 class="sub-heading">{{ $slider->title }}</h4>
+                                            <h1 class="sub-heading">{{ $slider->title }}</h1>
                                         </div>
                                         <div class="edcare-caption heading">
                                             <div class="inner-layer">
@@ -72,7 +72,7 @@
                                     <div class="slider-content">
                                         <div class="sub-heading-wrap" data-animation="edcare-fadeInDown" data-delay="1000ms"
                                             data-duration="1200ms">
-                                            <h4 class="sub-heading">Welcome to Sister Nourhan Academy</h4>
+                                            <h1 class="sub-heading">Welcome to Sister Nourhan Academy</h1>
                                         </div>
                                         <div class="edcare-caption heading">
                                             <div class="inner-layer">
@@ -274,10 +274,10 @@
                         <div class="about-content-3">
                             <div class="section-heading mb-20">
                                 @if ($aboutSection->subtitle)
-                                    <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="300ms"><span
+                                    <p class="sub-heading wow fade-in-bottom" data-wow-delay="300ms"><span
                                             class="heading-icon"><i
                                                 class="fa-sharp fa-solid fa-bolt"></i></span>{{ $aboutSection->subtitle }}
-                                    </h4>
+                                    </p>
                                 @endif
                                 <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">
                                     {!! nl2br(e($aboutSection->title)) !!}</h2>
@@ -328,8 +328,8 @@
         <section class="course-section-11 pt-120 pb-120 overflow-hidden">
             <div class="container">
                 <div class="section-heading text-center">
-                    <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
-                                class="fa-sharp fa-solid fa-bolt"></i></span>Popular Categories</h4>
+                    <p class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
+                                class="fa-sharp fa-solid fa-bolt"></i></span>Popular Categories</p>
                     <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Browse Categories</h2>
                 </div>
                 <div class="course-carousel-4 swiper">
@@ -374,10 +374,10 @@
         <section class="offer-section pt-120 pb-120 pt-md-80 pb-md-80 pt-sm-60 pb-sm-60">
             <div class="container">
                 <div class="section-heading text-center">
-                    <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="200ms">
+                    <p class="sub-heading wow fade-in-bottom" data-wow-delay="200ms">
                         <span class="heading-icon"><i class="fa-sharp fa-solid fa-bolt"></i></span>
                         Why Choose US
-                    </h4>
+                    </p>
                     <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">
                         Why Choose Sister Nourhan Academy
                     </h2>
@@ -458,8 +458,8 @@
         </div>
         <div class="container">
             <div class="section-heading text-center white-content">
-                <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
-                            class="fa-sharp fa-solid fa-bolt"></i></span>Top Class Courses</h4>
+                <p class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
+                            class="fa-sharp fa-solid fa-bolt"></i></span>Top Class Courses</p>
                 <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Explore Featured Courses</h2>
             </div>
             <div class="course-tab-content">
@@ -546,8 +546,8 @@
         <section class="team-section pt-5 pb-5">
             <div class="container">
                 <div class="section-heading text-center">
-                    <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
-                                class="fa-sharp fa-solid fa-bolt"></i></span>Our Instructors</h4>
+                    <p class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
+                                class="fa-sharp fa-solid fa-bolt"></i></span>Our Instructors</p>
                     <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Meet Our Expert Instructors</h2>
                 </div>
                 <div class="row gy-lg-0 gy-4">
@@ -586,12 +586,12 @@
         <section class="testimonial-section-2 py-5">
             <div class="container">
                 <div class="section-heading text-center">
-                    <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="200ms">
+                    <p class="sub-heading wow fade-in-bottom" data-wow-delay="200ms">
                         <span class="heading-icon">
                             <i class="fa-sharp fa-solid fa-bolt"></i>
                         </span>
                         Our Testimonials
-                    </h4>
+                    </p>
                     <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">
                         Feedback’s From Our Student
                     </h2>
@@ -694,8 +694,8 @@
     <section class="features-event pt-5 pb-5">
         <div class="container">
             <div class="section-heading text-center">
-                <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
-                            class="fa-sharp fa-solid fa-bolt"></i></span>Events</h4>
+                <p class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
+                            class="fa-sharp fa-solid fa-bolt"></i></span>Events</p>
                 <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Upcoming Events</h2>
             </div>
             <div class="row gy-4 justify-content-center">
@@ -747,8 +747,8 @@
         <section class="blog-section pt-5 pb-120">
             <div class="container">
                 <div class="section-heading text-center">
-                    <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
-                                class="fa-sharp fa-solid fa-bolt"></i></span>News & Blogs</h4>
+                    <p class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
+                                class="fa-sharp fa-solid fa-bolt"></i></span>News & Blogs</p>
                     <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Latest News Updates</h2>
                 </div>
                 <div class="row gy-lg-0 gy-4 justify-content-center post-card-2-wrap">
