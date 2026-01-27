@@ -8,50 +8,61 @@
             object-fit: contain;
             display: block;
         }
+
         .footer-logo-link {
             display: inline-block;
             transition: opacity 0.3s ease;
             margin-left: 0;
             padding-left: 0;
         }
+
         .footer-logo-link:hover {
             opacity: 0.8;
         }
+
         .footer-widget p {
             margin-left: 0;
             padding-left: 0;
             text-align: left;
         }
+
         .footer-wrap .col-lg-3:first-child .footer-widget {
             padding-left: 0 !important;
             margin-left: 0 !important;
         }
+
         .footer-wrap .col-lg-3:first-child .footer-widget * {
             margin-left: 0;
-            padding-left: 0;
+            padding-left: 14px;
         }
+
         .footer-wrap .col-lg-3:first-child {
             padding-left: 0 !important;
         }
+
         .footer-contact-info .contact-item {
             display: flex;
             align-items: center;
             color: #fff;
             margin-bottom: 10px;
         }
+
         .footer-contact-info .contact-item i {
             color: var(--ed-color-theme-primary, #006D64);
             font-size: 18px;
             min-width: 24px;
         }
+
         .footer-contact-info .contact-item a {
             color: #fff;
             text-decoration: none;
             transition: color 0.3s ease;
         }
+
         .footer-contact-info .contact-item a:hover {
             color: var(--ed-color-theme-primary, #006D64);
         }
+
         .footer-contact-info .contact-item span {
             color: #fff;
         }
@@ -60,28 +71,38 @@
             .footer-wrap {
                 row-gap: 30px;
             }
+
             .footer-wrap .footer-widget {
-                text-align: center;
+                text-align: left;
+                padding-left: 16px;
             }
+
             .footer-wrap .footer-widget p {
-                text-align: center;
+                text-align: left;
             }
+
             .footer-wrap .footer-widget .footer-list {
+                display: inline-block;
+                text-align: left;
                 padding-left: 0;
             }
+
             .footer-wrap .footer-widget .footer-list li {
                 margin-bottom: 6px;
             }
+
             .footer-contact-info .contact-item {
-                justify-content: center;
+                justify-content: flex-start;
             }
+
             .footer-social {
-                justify-content: center;
+                justify-content: flex-start;
             }
+
             .footer-logo {
                 max-width: 180px;
-                margin-left: auto;
-                margin-right: auto;
+                margin-left: 0;
+                margin-right: 0;
             }
         }
     </style>
@@ -121,7 +142,8 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget">
                         <a href="javascript:void(0)" class="footer-logo-link">
-                            <img src="{{ asset('assets/frontend/img/logo_horezntal.webp') }}" alt="Sister Nourhan Academy Logo" class="footer-logo mb-30">
+                            <img src="{{ asset('assets/frontend/img/logo_horezntal.webp') }}"
+                                alt="Sister Nourhan Academy Logo" class="footer-logo mb-30">
                         </a>
                         <p class="mb-30">Fusce varius, dolor tempor interdum tristiquei bibendum.</p>
                     </div>
@@ -130,10 +152,8 @@
                     <div class="footer-widget widget-2">
                         <h3 class="widget-header">Company Info</h3>
                         <ul class="footer-list">
+                            <li><a href="{{ route('frontend.blog') }}">Blog</a></li>
                             <li><a href="{{ route('frontend.about') }}">About Us</a></li>
-                            <li><a href="{{ route('frontend.courses') }}">Courses</a></li>
-                            <li><a href="{{ route('frontend.pricing') }}">Pricing</a></li>
-                            <li><a href="{{ route('frontend.teachers') }}">Instructor</a></li>
                             <li><a href="{{ route('frontend.contact') }}">Contact</a></li>
                             <li><a href="{{ route('frontend.terms') }}">Terms &amp; Conditions</a></li>
                             <li><a href="{{ route('frontend.privacy') }}">Privacy Policy</a></li>
@@ -146,15 +166,20 @@
                         <ul class="footer-list">
                             <li><a href="{{ route('frontend.courses') }}">Courses</a></li>
                             @php
-                                $footerCategories = \Illuminate\Support\Facades\Cache::remember('footer_categories', 600, function () {
-                                    return \App\Models\Category::active()
-                                        ->orderBy('sort_order')
-                                        ->take(5)
-                                        ->get();
-                                });
+                                $footerCategories = \Illuminate\Support\Facades\Cache::remember(
+                                    'footer_categories',
+                                    600,
+                                    function () {
+                                        return \App\Models\Category::active()->orderBy('sort_order')->take(5)->get();
+                                    },
+                                );
                             @endphp
-                            @foreach($footerCategories as $category)
-                                <li><a href="{{ route('frontend.courses', ['category' => $category->slug]) }}">{{ $category->name }}</a></li>
+                            @foreach ($footerCategories as $category)
+                                <li>
+                                    <a href="{{ route('frontend.courses', ['category' => $category->slug]) }}">
+                                        {{ $category->name }}
+                                    </a>
+                                </li>
                             @endforeach
                             <li><a href="{{ route('frontend.blog') }}">News & Blogs</a></li>
                         </ul>
@@ -175,9 +200,12 @@
                         </div>
                         <div class="mt-4">
                             <ul class="footer-social">
-                                <li><a href="https://www.facebook.com/sister.nourhan.academy" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="https://www.instagram.com/sister.nourhan.academy/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a></li>
-                                <li><a href="https://www.youtube.com/@sister.nourhan" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a></li>
+                                <li><a href="https://www.facebook.com/sister.nourhan.academy" target="_blank"
+                                        title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="https://www.instagram.com/sister.nourhan.academy/" target="_blank"
+                                        title="Instagram"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="https://www.youtube.com/@sister.nourhan" target="_blank" title="YouTube"><i
+                                            class="fab fa-youtube"></i></a></li>
                             </ul>
                         </div>
                     </div>
