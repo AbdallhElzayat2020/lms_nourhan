@@ -55,9 +55,33 @@
         .footer-contact-info .contact-item span {
             color: #fff;
         }
-        @media (max-width: 768px) {
+
+        @media (max-width: 991.98px) {
+            .footer-wrap {
+                row-gap: 30px;
+            }
+            .footer-wrap .footer-widget {
+                text-align: center;
+            }
+            .footer-wrap .footer-widget p {
+                text-align: center;
+            }
+            .footer-wrap .footer-widget .footer-list {
+                padding-left: 0;
+            }
+            .footer-wrap .footer-widget .footer-list li {
+                margin-bottom: 6px;
+            }
+            .footer-contact-info .contact-item {
+                justify-content: center;
+            }
+            .footer-social {
+                justify-content: center;
+            }
             .footer-logo {
                 max-width: 180px;
+                margin-left: auto;
+                margin-right: auto;
             }
         }
     </style>

@@ -159,6 +159,15 @@
             z-index: 9999;
         }
 
+        #scrollup.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #scrollup.show {
+            opacity: 1;
+        }
+
         #scroll-top.scroll-to-top {
             width: 42px;
             height: 42px;
@@ -176,6 +185,13 @@
 
         #scroll-top.scroll-to-top:hover {
             transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            #scrollup {
+                bottom: 100px;
+                right: 16px;
+            }
         }
     </style>
 

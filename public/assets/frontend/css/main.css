@@ -23041,7 +23041,7 @@ START: Footer CSS
   padding-bottom: 15px;
   position: relative;
 }
-.footer-widget .widget-header:before {
+/* .footer-widget .widget-header:before {
   background-color: var(--ed-color-common-white);
   content: "";
   width: 60px;
@@ -23049,7 +23049,7 @@ START: Footer CSS
   position: absolute;
   bottom: 0;
   left: 0;
-}
+} */
 .footer-widget .widget-header.logo {
   margin-bottom: 0;
 }
