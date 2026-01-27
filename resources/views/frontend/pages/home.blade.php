@@ -416,8 +416,8 @@
                             <div class="offer-video"
                                 style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000;">
                                 @php
-                                    // Get video URL from first active item that has a video
-                                    $whyChooseVideo = $whyChooseItems->firstWhere('video_url', '!=', null);
+    // Get video URL from first active item that has a video
+    $whyChooseVideo = $whyChooseItems->firstWhere('video_url', '!=', null);
                                 @endphp
                                 @if($whyChooseVideo && $whyChooseVideo->embed_video_url)
                                     <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
@@ -449,96 +449,96 @@
 
     {{-- <!--our courses --> --}}
     @if(isset($featuredCourses) && $featuredCourses->count() > 0)
-    <section class="feature-course feature-course-2 pt-120 pb-120">
-        <div class="shapes">
-            <div class="shape-1"><img src="{{ asset('assets/frontend/img/shapes/feature-shape-1.png') }}"
-                    alt="shape"></div>
-            <div class="shape-2"><img src="{{ asset('assets/frontend/img/shapes/feature-shape-2.png') }}"
-                    alt="shape"></div>
-        </div>
-        <div class="container">
-            <div class="section-heading text-center white-content">
-                <p class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
-                            class="fa-sharp fa-solid fa-bolt"></i></span>Top Class Courses</p>
-                <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Explore Featured Courses</h2>
+        <section class="feature-course feature-course-2 pt-120 pb-120">
+            <div class="shapes">
+                <div class="shape-1"><img src="{{ asset('assets/frontend/img/shapes/feature-shape-1.png') }}"
+                        alt="shape"></div>
+                <div class="shape-2"><img src="{{ asset('assets/frontend/img/shapes/feature-shape-2.png') }}"
+                        alt="shape"></div>
             </div>
-            <div class="course-tab-content">
-                <div class="row gy-4 justify-content-center">
-                    @foreach($featuredCourses as $index => $course)
-                        <div class="col-lg-4 col-md-6">
-                            <div class="course-item dark-item wow fade-in-bottom" data-wow-delay="{{ 300 + $index * 100 }}ms">
-                                <div class="course-thumb-wrap">
-                                    <div class="course-thumb">
-                                        <a href="{{ route('frontend.course.details', ['slug' => $course->slug]) }}">
-                                            @php
-        $courseImage = $course->banner_image
-            ? asset('uploads/courses/' . $course->banner_image)
-            : asset('assets/frontend/img/service/course-img-8.png');
-                                            @endphp
-                                            <img src="{{ $courseImage }}" alt="{{ $course->title }}">
+            <div class="container">
+                <div class="section-heading text-center">
+                    <p class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
+                                class="fa-sharp fa-solid fa-bolt"></i></span>Popular Courses</p>
+                    <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Popular Courses</h2>
+                </div>
+                <div class="course-tab-content">
+                    <div class="row gy-4 justify-content-center">
+                        @foreach($featuredCourses as $index => $course)
+                            <div class="col-lg-4 col-md-6">
+                                <div class="course-item dark-item wow fade-in-bottom" data-wow-delay="{{ 300 + $index * 100 }}ms">
+                                    <div class="course-thumb-wrap">
+                                        <div class="course-thumb">
+                                            <a href="{{ route('frontend.course.details', ['slug' => $course->slug]) }}">
+                                                @php
+            $courseImage = $course->banner_image
+                ? asset('uploads/courses/' . $course->banner_image)
+                : asset('assets/frontend/img/service/course-img-8.png');
+                                                @endphp
+                                                <img src="{{ $courseImage }}" alt="{{ $course->title }}">
+                                            </a>
+                                        </div>
+                                        @if($course->category)
+                                            <div class="course-category-badge">
+                                                <i class="fa-sharp fa-solid fa-tag me-1"></i>
+                                                {{ $course->category->name }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="course-content">
+                                        <h3 class="title">
+                                            <a href="{{ route('frontend.course.details', ['slug' => $course->slug]) }}">
+                                                {{ $course->title }}
+                                            </a>
+                                        </h3>
+                                        @if($course->subtitle)
+                                            <p class="course-subtitle">{{ Str::limit($course->subtitle, 70) }}</p>
+                                        @endif
+                                        @if($course->short_description)
+                                            <p class="course-description">{{ Str::limit($course->short_description, 90) }}</p>
+                                        @endif
+                                        <ul class="course-list">
+                                            @if($course->lessons_count)
+                                                <li>
+                                                    <i class="fa-light fa-file"></i>
+                                                    <span>{{ $course->lessons_count }} Lessons</span>
+                                                </li>
+                                            @endif
+                                            <li>
+                                                <i class="fa-light fa-user"></i>
+                                                <span>
+                                                    @if($course->course_type == 'both')
+                                                        Private & Live
+                                                    @elseif($course->course_type == 'private')
+                                                        Private
+                                                    @elseif($course->course_type == 'live')
+                                                        Live
+                                                    @else
+                                                        {{ $course->course_type ?: 'Course' }}
+                                                    @endif
+                                                </span>
+                                            </li>
+                                            @if($course->duration_hours)
+                                                <li>
+                                                    <i class="fa-light fa-clock"></i>
+                                                    <span>{{ $course->duration_hours }} Hours</span>
+                                                </li>
+                                            @endif
+                                        </ul>
+                                    </div>
+                                    <div class="bottom-content">
+                                        <a href="{{ route('frontend.course.details', ['slug' => $course->slug]) }}" class="course-btn">
+                                            View Details
+                                            <i class="fa-regular fa-arrow-right ms-2"></i>
                                         </a>
                                     </div>
-                                    @if($course->category)
-                                        <div class="course-category-badge">
-                                            <i class="fa-sharp fa-solid fa-tag me-1"></i>
-                                            {{ $course->category->name }}
-                                        </div>
-                                    @endif
-                                </div>
-                                <div class="course-content">
-                                    <h3 class="title">
-                                        <a href="{{ route('frontend.course.details', ['slug' => $course->slug]) }}">
-                                            {{ $course->title }}
-                                        </a>
-                                    </h3>
-                                    @if($course->subtitle)
-                                        <p class="course-subtitle">{{ Str::limit($course->subtitle, 70) }}</p>
-                                    @endif
-                                    @if($course->short_description)
-                                        <p class="course-description">{{ Str::limit($course->short_description, 90) }}</p>
-                                    @endif
-                                    <ul class="course-list">
-                                        @if($course->lessons_count)
-                                            <li>
-                                                <i class="fa-light fa-file"></i>
-                                                <span>{{ $course->lessons_count }} Lessons</span>
-                                            </li>
-                                        @endif
-                                        <li>
-                                            <i class="fa-light fa-user"></i>
-                                            <span>
-                                                @if($course->course_type == 'both')
-                                                    Private & Live
-                                                @elseif($course->course_type == 'private')
-                                                    Private
-                                                @elseif($course->course_type == 'live')
-                                                    Live
-                                                @else
-                                                    {{ $course->course_type ?: 'Course' }}
-                                                @endif
-                                            </span>
-                                        </li>
-                                        @if($course->duration_hours)
-                                            <li>
-                                                <i class="fa-light fa-clock"></i>
-                                                <span>{{ $course->duration_hours }} Hours</span>
-                                            </li>
-                                        @endif
-                                    </ul>
-                                </div>
-                                <div class="bottom-content">
-                                    <a href="{{ route('frontend.course.details', ['slug' => $course->slug]) }}" class="course-btn">
-                                        View Details
-                                        <i class="fa-regular fa-arrow-right ms-2"></i>
-                                    </a>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
     @endif
 
     @if (isset($recentTeachers) && $recentTeachers->count() > 0)
