@@ -31,17 +31,42 @@
     <link rel="prefetch" href="{{ route('frontend.contact') }}">
 
     @stack('css')
-    <!-- CSS here -->
-    <link rel="stylesheet" href="{{asset('assets/frontend/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/frontend/css/fontawesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/frontend/css/venobox.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/frontend/css/animate.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/frontend/css/keyframe-animation.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/frontend/css/odometer.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/frontend/css/nice-select.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/frontend/css/daterangepicker.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/frontend/css/swiper.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/frontend/css/main.css')}}">
+    <!-- Critical CSS (load immediately) -->
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/main.css') }}">
+
+    <!-- Non‑critical CSS (loaded asynchronously to reduce render‑blocking) -->
+    <link rel="preload" href="{{ asset('assets/frontend/css/fontawesome.min.css') }}" as="style"
+          onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ asset('assets/frontend/css/fontawesome.min.css') }}"></noscript>
+
+    <link rel="preload" href="{{ asset('assets/frontend/css/venobox.min.css') }}" as="style"
+          onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ asset('assets/frontend/css/venobox.min.css') }}"></noscript>
+
+    <link rel="preload" href="{{ asset('assets/frontend/css/animate.min.css') }}" as="style"
+          onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ asset('assets/frontend/css/animate.min.css') }}"></noscript>
+
+    <link rel="preload" href="{{ asset('assets/frontend/css/keyframe-animation.css') }}" as="style"
+          onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ asset('assets/frontend/css/keyframe-animation.css') }}"></noscript>
+
+    <link rel="preload" href="{{ asset('assets/frontend/css/odometer.min.css') }}" as="style"
+          onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ asset('assets/frontend/css/odometer.min.css') }}"></noscript>
+
+    <link rel="preload" href="{{ asset('assets/frontend/css/nice-select.css') }}" as="style"
+          onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ asset('assets/frontend/css/nice-select.css') }}"></noscript>
+
+    <link rel="preload" href="{{ asset('assets/frontend/css/daterangepicker.css') }}" as="style"
+          onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ asset('assets/frontend/css/daterangepicker.css') }}"></noscript>
+
+    <link rel="preload" href="{{ asset('assets/frontend/css/swiper.min.css') }}" as="style"
+          onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ asset('assets/frontend/css/swiper.min.css') }}"></noscript>
 
     <!-- Floating Buttons + Scroll Top CSS -->
     <style>
