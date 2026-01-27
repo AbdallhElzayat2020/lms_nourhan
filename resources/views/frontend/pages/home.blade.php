@@ -129,8 +129,7 @@
                 @empty
                     <div class="swiper-slide">
                         <div class="slider-thumb-item">
-                            <img src="{{ asset('assets/frontend/img/new-update-2/slider-bullet-1.png') }}"
-                                alt="Slide">
+                            <img src="{{ asset('assets/frontend/img/new-update-2/slider-bullet-1.png') }}" alt="Slide">
                         </div>
                     </div>
                 @endforelse
@@ -143,8 +142,10 @@
     <style>
         /* Full height slider minus navbar */
         .slider-section {
-            height: calc(90vh - 120px) !important; /* Subtract navbar height */
-            min-height: 600px; /* Minimum height for small screens */
+            height: calc(90vh - 120px) !important;
+            /* Subtract navbar height */
+            min-height: 600px;
+            /* Minimum height for small screens */
         }
 
         .slider-section .slider-item {
@@ -181,10 +182,12 @@
                 height: calc(90vh - 100px) !important;
                 min-height: 500px;
             }
+
             .slider-section .slider-item {
                 height: calc(90vh - 100px) !important;
                 min-height: 500px;
             }
+
             .slider-section .edcare-slider-thumb {
                 height: 320px !important;
             }
@@ -195,10 +198,12 @@
                 height: calc(90vh - 80px) !important;
                 min-height: 450px;
             }
+
             .slider-section .slider-item {
                 height: calc(90vh - 80px) !important;
                 min-height: 450px;
             }
+
             .slider-section .edcare-slider-thumb {
                 height: 300px !important;
             }
@@ -209,6 +214,7 @@
                 height: calc(90vh - 70px) !important;
                 min-height: 400px;
             }
+
             .slider-section .slider-item {
                 height: calc(90vh - 70px) !important;
                 min-height: 400px;
@@ -302,7 +308,7 @@
     <!-- about section -->
 
     {{-- counter section (dynamic) --}}
-    @if(isset($counters) && $counters->count() > 0)
+    @if (isset($counters) && $counters->count() > 0)
         <section class="counter-section">
             <div class="container">
                 <div class="row counter-wrap gy-lg-0 gy-5">
@@ -311,7 +317,8 @@
                             <div
                                 class="counter-item {{ $index === 0 ? 'item-1' : ($index === 3 ? 'item-4' : '') }} white-content">
                                 <h3 class="title">
-                                    <span class="odometer" data-count="{{ $counter->value }}">0</span>{{ $counter->suffix }}
+                                    <span class="odometer"
+                                        data-count="{{ $counter->value }}">0</span>{{ $counter->suffix }}
                                 </h3>
                                 <p>{{ $counter->subtitle }}</p>
                             </div>
@@ -369,7 +376,7 @@
     @endif
     {{-- ./ categories section --}}
 
-    @if(isset($whyChooseItems) && $whyChooseItems->count() > 0)
+    @if (isset($whyChooseItems) && $whyChooseItems->count() > 0)
         <!-- WHY choose us -->
         <section class="offer-section pt-120 pb-120 pt-md-80 pb-md-80 pt-sm-60 pb-sm-60">
             <div class="container">
@@ -385,20 +392,20 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
                         <ul class="offer-nav nav nav-tabs mb-0" id="myTab" role="tablist">
-                            @foreach($whyChooseItems as $index => $item)
+                            @foreach ($whyChooseItems as $index => $item)
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link {{ $loop->first ? 'active' : '' }}" type="button"
-                                            aria-selected="{{ $loop->first ? 'true' : 'false' }}">
+                                        aria-selected="{{ $loop->first ? 'true' : 'false' }}">
                                         <div class="offer-tab-btn">
                                             <div class="icon">
                                                 <i class="{{ $item->icon_class ?: 'fa-solid fa-star' }}"></i>
                                             </div>
                                             <div class="content">
                                                 <h3 class="title">{{ $item->title }}</h3>
-                                                @if($item->subtitle)
+                                                @if ($item->subtitle)
                                                     <p class="mb-1"><strong>{{ $item->subtitle }}</strong></p>
                                                 @endif
-                                                @if($item->description)
+                                                @if ($item->description)
                                                     <p class="mb-0">{{ $item->description }}</p>
                                                 @endif
                                             </div>
@@ -408,38 +415,39 @@
                             @endforeach
                         </ul>
                     </div>
-                <div class="col-lg-6 col-md-12">
-                    <div class="offer-tab-content tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel"
-                            aria-labelledby="home-tab">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="offer-tab-content tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel"
+                                aria-labelledby="home-tab">
 
-                            <div class="offer-video"
-                                style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000;">
-                                @php
-    // Get video URL from first active item that has a video
-    $whyChooseVideo = $whyChooseItems->firstWhere('video_url', '!=', null);
-                                @endphp
-                                @if($whyChooseVideo && $whyChooseVideo->embed_video_url)
-                                    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
-                                        src="{{ $whyChooseVideo->embed_video_url }}"
-                                        title="YouTube video player"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                                    </iframe>
-                                @else
-                                    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
-                                        src="https://www.youtube.com/embed/qjxDcU4m2FQ?si=9JC0uy-hV0SeDxQR"
-                                        title="YouTube video player"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                                    </iframe>
-                                @endif
+                                <div class="offer-video"
+                                    style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000;">
+                                    @php
+                                        // Get video URL from first active item that has a video
+                                        $whyChooseVideo = $whyChooseItems->firstWhere('video_url', '!=', null);
+                                    @endphp
+                                    @if ($whyChooseVideo && $whyChooseVideo->embed_video_url)
+                                        <iframe
+                                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+                                            src="{{ $whyChooseVideo->embed_video_url }}" title="YouTube video player"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                                        </iframe>
+                                    @else
+                                        <iframe
+                                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+                                            src="https://www.youtube.com/embed/qjxDcU4m2FQ?si=9JC0uy-hV0SeDxQR"
+                                            title="YouTube video player"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                                        </iframe>
+                                    @endif
+                                </div>
+
                             </div>
-
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
         </section>
     @endif
@@ -448,7 +456,7 @@
 
 
     {{-- <!--our courses --> --}}
-    @if(isset($featuredCourses) && $featuredCourses->count() > 0)
+    @if (isset($featuredCourses) && $featuredCourses->count() > 0)
         <section class="feature-course feature-course-2 pt-120 pb-120">
             <div class="shapes">
                 <div class="shape-1"><img src="{{ asset('assets/frontend/img/shapes/feature-shape-1.png') }}"
@@ -460,25 +468,28 @@
                 <div class="section-heading text-center">
                     <p class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
                                 class="fa-sharp fa-solid fa-bolt"></i></span>Top Class Courses</p>
-                    <h2 class="section-title text-white wow fade-in-bottom" data-wow-delay="400ms">Popular Courses</h2>
+                    <h2 class="section-title text-white wow fade-in-bottom" data-wow-delay="400ms">Explore Featured
+                        Courses
+                    </h2>
                 </div>
                 <div class="course-tab-content">
                     <div class="row gy-4 justify-content-center">
-                        @foreach($featuredCourses as $index => $course)
+                        @foreach ($featuredCourses as $index => $course)
                             <div class="col-lg-4 col-md-6">
-                                <div class="course-item dark-item wow fade-in-bottom" data-wow-delay="{{ 300 + $index * 100 }}ms">
+                                <div class="course-item dark-item wow fade-in-bottom"
+                                    data-wow-delay="{{ 300 + $index * 100 }}ms">
                                     <div class="course-thumb-wrap">
                                         <div class="course-thumb">
                                             <a href="{{ route('frontend.course.details', ['slug' => $course->slug]) }}">
                                                 @php
-            $courseImage = $course->banner_image
-                ? asset('uploads/courses/' . $course->banner_image)
-                : asset('assets/frontend/img/service/course-img-8.png');
+                                                    $courseImage = $course->banner_image
+                                                        ? asset('uploads/courses/' . $course->banner_image)
+                                                        : asset('assets/frontend/img/service/course-img-8.png');
                                                 @endphp
                                                 <img src="{{ $courseImage }}" alt="{{ $course->title }}">
                                             </a>
                                         </div>
-                                        @if($course->category)
+                                        @if ($course->category)
                                             <div class="course-category-badge">
                                                 <i class="fa-sharp fa-solid fa-tag me-1"></i>
                                                 {{ $course->category->name }}
@@ -491,14 +502,15 @@
                                                 {{ $course->title }}
                                             </a>
                                         </h3>
-                                        @if($course->subtitle)
+                                        @if ($course->subtitle)
                                             <p class="course-subtitle">{{ Str::limit($course->subtitle, 70) }}</p>
                                         @endif
-                                        @if($course->short_description)
-                                            <p class="course-description">{{ Str::limit($course->short_description, 90) }}</p>
+                                        @if ($course->short_description)
+                                            <p class="course-description">{{ Str::limit($course->short_description, 90) }}
+                                            </p>
                                         @endif
                                         <ul class="course-list">
-                                            @if($course->lessons_count)
+                                            @if ($course->lessons_count)
                                                 <li>
                                                     <i class="fa-light fa-file"></i>
                                                     <span>{{ $course->lessons_count }} Lessons</span>
@@ -507,7 +519,7 @@
                                             <li>
                                                 <i class="fa-light fa-user"></i>
                                                 <span>
-                                                    @if($course->course_type == 'both')
+                                                    @if ($course->course_type == 'both')
                                                         Private & Live
                                                     @elseif($course->course_type == 'private')
                                                         Private
@@ -518,7 +530,7 @@
                                                     @endif
                                                 </span>
                                             </li>
-                                            @if($course->duration_hours)
+                                            @if ($course->duration_hours)
                                                 <li>
                                                     <i class="fa-light fa-clock"></i>
                                                     <span>{{ $course->duration_hours }} Hours</span>
@@ -527,7 +539,8 @@
                                         </ul>
                                     </div>
                                     <div class="bottom-content">
-                                        <a href="{{ route('frontend.course.details', ['slug' => $course->slug]) }}" class="course-btn">
+                                        <a href="{{ route('frontend.course.details', ['slug' => $course->slug]) }}"
+                                            class="course-btn">
                                             View Details
                                             <i class="fa-regular fa-arrow-right ms-2"></i>
                                         </a>
@@ -600,11 +613,11 @@
                     <div class="swiper-wrapper">
                         @foreach ($testimonials as $testimonial)
                             @php
-        $avatarPath =
-            $testimonial->gender === 'female'
-            ? asset('assets/frontend/img/female.png')
-            : asset('assets/frontend/img/male.png');
-        $rating = 5;
+                                $avatarPath =
+                                    $testimonial->gender === 'female'
+                                        ? asset('assets/frontend/img/female.png')
+                                        : asset('assets/frontend/img/male.png');
+                                $rating = 5;
                             @endphp
                             <div class="swiper-slide">
                                 <div class="testi-item-2">
@@ -661,7 +674,7 @@
                             <div class="sponsor-item text-center"
                                 style="background:#fff;border-radius:16px;padding:20px 15px;box-shadow:0 8px 20px rgba(0,0,0,0.05);">
                                 @php
-        $logoUrl = $partner->logo ? asset('uploads/partners/' . $partner->logo) : null;
+                                    $logoUrl = $partner->logo ? asset('uploads/partners/' . $partner->logo) : null;
                                 @endphp
                                 @if ($partner->link)
                                     <a href="{{ $partner->link }}" target="_blank" rel="noopener">
@@ -690,54 +703,56 @@
     {{-- <!-- ./ sponsor (partners) --> --}}
 
     {{-- <!-- events --> --}}
-    @if(isset($upcomingEvents) && $upcomingEvents->count() > 0)
-    <section class="features-event pt-5 pb-5">
-        <div class="container">
-            <div class="section-heading text-center">
-                <p class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
-                            class="fa-sharp fa-solid fa-bolt"></i></span>Events</p>
-                <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Upcoming Events</h2>
-            </div>
-            <div class="row gy-4 justify-content-center">
-                @foreach($upcomingEvents as $index => $event)
-                    <div class="col-lg-4 col-md-6">
-                        <div class="event-item wow fade-in-bottom" data-wow-delay="{{ 400 + $index * 100 }}ms">
-                            <div class="event-thumb">
-                                @php
-        $eventImage = $event->image
-            ? asset('uploads/events/' . $event->image)
-            : asset('assets/frontend/img/images/event-img-1.png');
-                                @endphp
-                                <img src="{{ $eventImage }}" alt="{{ $event->name }}">
-                                <div class="date-wrap">
-                                    <h5 class="date">
-                                        {{ optional($event->start_date)->format('d') }}
-                                        <span>{{ optional($event->start_date)->format('M') }}</span>
-                                    </h5>
+    @if (isset($upcomingEvents) && $upcomingEvents->count() > 0)
+        <section class="features-event pt-5 pb-5">
+            <div class="container">
+                <div class="section-heading text-center">
+                    <p class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
+                                class="fa-sharp fa-solid fa-bolt"></i></span>Events</p>
+                    <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Upcoming Events</h2>
+                </div>
+                <div class="row gy-4 justify-content-center">
+                    @foreach ($upcomingEvents as $index => $event)
+                        <div class="col-lg-4 col-md-6">
+                            <div class="event-item wow fade-in-bottom" data-wow-delay="{{ 400 + $index * 100 }}ms">
+                                <div class="event-thumb">
+                                    @php
+                                        $eventImage = $event->image
+                                            ? asset('uploads/events/' . $event->image)
+                                            : asset('assets/frontend/img/images/event-img-1.png');
+                                    @endphp
+                                    <img src="{{ $eventImage }}" alt="{{ $event->name }}">
+                                    <div class="date-wrap">
+                                        <h5 class="date">
+                                            {{ optional($event->start_date)->format('d') }}
+                                            <span>{{ optional($event->start_date)->format('M') }}</span>
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div class="event-content">
+                                    @if ($event->time)
+                                        <span class="time"><i class="fa-regular fa-clock"></i>
+                                            {{ $event->time }}</span>
+                                    @endif
+                                    <h3 class="title">
+                                        <a href="{{ route('frontend.event.details', ['slug' => $event->slug]) }}">
+                                            {!! nl2br(e(Str::limit($event->name, 60))) !!}
+                                        </a>
+                                    </h3>
+                                    @if ($event->location)
+                                        <div class="location">
+                                            <span><i class="fa-regular fa-location-dot"></i>{{ $event->location }}</span>
+                                        </div>
+                                    @endif
+                                    <a href="{{ route('frontend.event.details', ['slug' => $event->slug]) }}"
+                                        class="ed-primary-btn">View Details</a>
                                 </div>
                             </div>
-                            <div class="event-content">
-                                @if($event->time)
-                                    <span class="time"><i class="fa-regular fa-clock"></i> {{ $event->time }}</span>
-                                @endif
-                                <h3 class="title">
-                                    <a href="{{ route('frontend.event.details', ['slug' => $event->slug]) }}">
-                                        {!! nl2br(e(Str::limit($event->name, 60))) !!}
-                                    </a>
-                                </h3>
-                                @if($event->location)
-                                    <div class="location">
-                                        <span><i class="fa-regular fa-location-dot"></i>{{ $event->location }}</span>
-                                    </div>
-                                @endif
-                                <a href="{{ route('frontend.event.details', ['slug' => $event->slug]) }}" class="ed-primary-btn">View Details</a>
-                            </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
     @endif
     {{-- <!-- events --> --}}
 
@@ -782,8 +797,7 @@
                                                 <p>{{ Str::limit($blog->short_description, 100) }}</p>
                                             @endif
                                             <a href="{{ route('frontend.blog.details', ['slug' => $blog->slug]) }}"
-                                                class="read-more">Read More <i
-                                                    class="fa-regular fa-arrow-right"></i></a>
+                                                class="read-more">Read More <i class="fa-regular fa-arrow-right"></i></a>
                                         </div>
                                     </div>
                                 </a>
@@ -802,29 +816,29 @@
 @endsection
 
 @push('css')
-<style>
-    /* Category Count Badge */
-    .category-count {
-        margin: 8px 0;
-    }
+    <style>
+        /* Category Count Badge */
+        .category-count {
+            margin: 8px 0;
+        }
 
-    .count-badge {
-        display: inline-block;
-        background: rgba(223, 138, 57, 0.1);
-        color: #DF8A39;
-        padding: 4px 12px;
-        border-radius: 20px;
-        font-size: 13px;
-        font-weight: 600;
-        border: 1px solid rgba(223, 138, 57, 0.3);
-        transition: all 0.3s ease;
-    }
+        .count-badge {
+            display: inline-block;
+            background: rgba(223, 138, 57, 0.1);
+            color: #DF8A39;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid rgba(223, 138, 57, 0.3);
+            transition: all 0.3s ease;
+        }
 
-    .course-item-11:hover .count-badge {
-        background: #DF8A39;
-        color: #fff;
-        border-color: #DF8A39;
-        transform: scale(1.05);
-    }
-</style>
+        .course-item-11:hover .count-badge {
+            background: #DF8A39;
+            color: #fff;
+            border-color: #DF8A39;
+            transform: scale(1.05);
+        }
+    </style>
 @endpush
