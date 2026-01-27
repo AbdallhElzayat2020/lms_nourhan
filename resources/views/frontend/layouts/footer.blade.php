@@ -146,7 +146,12 @@
                         <ul class="footer-list">
                             <li><a href="{{ route('frontend.courses') }}">Courses</a></li>
                             @php
-                                $footerCategories = \App\Models\Category::active()->orderBy('sort_order')->take(5)->get();
+                                $footerCategories = \Illuminate\Support\Facades\Cache::remember('footer_categories', 600, function () {
+                                    return \App\Models\Category::active()
+                                        ->orderBy('sort_order')
+                                        ->take(5)
+                                        ->get();
+                                });
                             @endphp
                             @foreach($footerCategories as $category)
                                 <li><a href="{{ route('frontend.courses', ['category' => $category->slug]) }}">{{ $category->name }}</a></li>
