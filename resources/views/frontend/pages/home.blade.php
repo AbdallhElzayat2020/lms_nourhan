@@ -459,8 +459,8 @@
             <div class="container">
                 <div class="section-heading text-center">
                     <p class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
-                                class="fa-sharp fa-solid fa-bolt"></i></span>Popular Courses</p>
-                    <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Popular Courses</h2>
+                                class="fa-sharp fa-solid fa-bolt"></i></span>Top Class Courses</p>
+                    <h2 class="section-title text-white wow fade-in-bottom" data-wow-delay="400ms">Popular Courses</h2>
                 </div>
                 <div class="course-tab-content">
                     <div class="row gy-4 justify-content-center">
