@@ -16,8 +16,8 @@
         <div class="container">
             <div class="page-header-content">
                 <h1 class="title">Events</h1>
-                <h4 class="sub-title"><a class="home" href="{{ route('frontend.home') }}">Home </a><span
-                        class="icon">/</span><a class="inner-page" href="{{ route('frontend.events') }}"> Events</a></h4>
+                <a class="home" href="{{ route('frontend.home') }}">Home </a><span class="icon">/</span>
+                <a class="inner-page" href="{{ route('frontend.events') }}"> Events</a>
             </div>
         </div>
     </section>
@@ -31,7 +31,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
-         
+
             @if ($events->count() > 0)
                 <div class="row gy-4 justify-content-center">
                     @foreach ($events as $index => $event)

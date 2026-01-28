@@ -14,11 +14,8 @@
         <div class="container">
             <div class="page-header-content">
                 <h1 class="title">Privacy Policy</h1>
-                <h4 class="sub-title">
-                    <a class="home" href="{{ route('frontend.home') }}">Home</a>
-                    <span class="icon">/</span>
+                <a class="home" href="{{ route('frontend.home') }}">Home </a><span class="icon">/</span>
                     <a class="inner-page" href="javascript:void(0)">Privacy Policy</a>
-                </h4>
             </div>
         </div>
     </section>

@@ -16,9 +16,9 @@
         <div class="container">
             <div class="page-header-content">
                 <h1 class="title">{{ $blog->title }}</h1>
-                <h4 class="sub-title"><a class="home" href="{{ route('frontend.home') }}">Home </a><span
-                        class="icon">/</span><a class="inner-page" href="{{ route('frontend.blog') }}"> Blog</a><span
-                        class="icon">/</span><span class="current">{{ Str::limit($blog->title, 30) }}</span></h4>
+                <a class="home" href="{{ route('frontend.home') }}">Home </a><span class="icon">/</span>
+                <a class="inner-page" href="{{ route('frontend.blog') }}"> Blog</a><span class="icon">/</span>
+                <span class="current">{{ Str::limit($blog->title, 30) }}</span>
             </div>
         </div>
     </section>

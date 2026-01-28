@@ -16,11 +16,11 @@
         <div class="container">
             <div class="page-header-content">
                 <h1 class="title">{{ $course->title }}</h1>
-                <h4 class="sub-title">
+
                     <a class="home" href="{{ route('frontend.home') }}">Home </a><span class="icon">/</span>
                     <a class="inner-page" href="{{ route('frontend.courses') }}"> Courses</a><span class="icon">/</span>
                     <span>{{ Str::limit($course->title, 30) }}</span>
-                </h4>
+              
             </div>
         </div>
     </section>
@@ -31,168 +31,150 @@
             <div class="row">
                 <div class="col-12">
                     <!-- Course Image (Single Image - No Swiper) -->
-                    @if($course->banner_image)
+                    @if ($course->banner_image)
                         <div class="course-images-slider mb-50">
                             <div class="course-slide-img">
-                                <img src="{{ asset('uploads/courses/' . $course->banner_image) }}" alt="{{ $course->title }}">
+                                <img src="{{ asset('uploads/courses/' . $course->banner_image) }}"
+                                    alt="{{ $course->title }}">
                             </div>
                         </div>
                     @endif
 
                     <!-- Course Header Info -->
                     <div class="course-header-info mb-50">
-                        <h2 class="title mb-20">{{ $course->title }}</h2>
-                        @if($course->subtitle)
-                            <h4 class="subtitle mb-20" style="color: #DF8A39; font-weight: 600;">{{ $course->subtitle }}</h4>
+
+                        @if ($course->subtitle)
+                            <h4 class="subtitle mb-10" style="color: #DF8A39; font-weight: 600;">{{ $course->subtitle }}
+                            </h4>
                         @endif
                         <div class="course-meta-info">
-                            @if($course->category)
+                            @if ($course->category)
                                 <div class="meta-item">
                                     <i class="fa-solid fa-tags"></i>
                                     <span>Category: <strong>{{ $course->category->name }}</strong></span>
                                 </div>
                             @endif
                         </div>
-                        <div class="course-info-card mt-40">
-                            <div class="info-card">
-                                @if($course->lessons_count)
-                                    <div class="info-item">
-                                        <i class="fa-regular fa-file-lines"></i>
-                                        <div>
-                                            <span class="label">Lessons</span>
-                                            <span class="value">{{ $course->lessons_count }}</span>
-                                        </div>
-                                    </div>
-                                    <div class="info-divider"></div>
-                                @endif
-                                @if($course->duration_hours)
-                                    <div class="info-item">
-                                        <i class="fa-regular fa-clock"></i>
-                                        <div>
-                                            <span class="label">Duration</span>
-                                            <span class="value">{{ $course->duration_hours }} Hours</span>
-                                        </div>
-                                    </div>
-                                    @if($course->language)
-                                        <div class="info-divider"></div>
-                                    @endif
-                                @endif
-                                @if($course->language)
-                                    <div class="info-item">
-                                        <i class="fa-regular fa-globe"></i>
-                                        <div>
-                                            <span class="label">Language</span>
-                                            <span class="value">{{ $course->language }}</span>
-                                        </div>
-                                    </div>
-                                @endif
-                            </div>
-                            <div class="book-now-btn">
-                                <a href="{{ route('frontend.book') }}" class="ed-primary-btn">Book Now</a>
-                            </div>
-                        </div>
+
                     </div>
 
                     <!-- Course Content Sections -->
                     <div class="course-content-sections">
                         <!-- Description Section -->
-                        @if($course->description || $course->short_description)
+                        @if ($course->description || $course->short_description)
                             <div class="course-section mb-60">
-                                <h3 class="section-title mb-30">Description</h3>
                                 <div class="section-content">
                                     <div class="row align-items-center gy-4">
                                         <div class="col-lg-12 col-md-12">
                                             <div class="section-text">
-                                                @if($course->short_description)
-                                                    <p class="mb-20">{{ $course->short_description }}</p>
-                                                @endif
-                                                @if($course->description)
+                                                @if ($course->description)
                                                     {!! $course->description !!}
                                                 @endif
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="book-now-btn">
+                                        <a href="{{ route('frontend.book') }}" class="ed-primary-btn">Book Now</a>
                                     </div>
                                 </div>
                             </div>
                         @endif
 
                         <!-- About the Program Section -->
-                        @if($course->about_program_text || $course->about_program_image)
+                        @if ($course->about_program_text || $course->about_program_image)
                             <div class="course-section mb-60">
                                 <h3 class="section-title mb-30">About the Program</h3>
                                 <div class="section-content">
                                     <div class="row align-items-center gy-4">
-                                        @if($course->about_program_text)
-                                            <div class="{{ $course->about_program_image ? 'col-lg-7 col-md-6' : 'col-lg-12' }}">
+                                        @if ($course->about_program_text)
+                                            <div
+                                                class="{{ $course->about_program_image ? 'col-lg-7 col-md-6' : 'col-lg-12' }}">
                                                 <div class="section-text">
                                                     {!! $course->about_program_text !!}
                                                 </div>
                                             </div>
                                         @endif
-                                        @if($course->about_program_image)
-                                            <div class="{{ $course->about_program_text ? 'col-lg-5 col-md-6' : 'col-lg-12' }}">
+                                        @if ($course->about_program_image)
+                                            <div
+                                                class="{{ $course->about_program_text ? 'col-lg-5 col-md-6' : 'col-lg-12' }}">
                                                 <div class="section-img-wrapper">
-                                                    <img src="{{ asset('uploads/courses/' . $course->about_program_image) }}" alt="about program" class="section-img">
+                                                    <img src="{{ asset('uploads/courses/' . $course->about_program_image) }}"
+                                                        alt="about program" class="section-img">
                                                 </div>
                                             </div>
                                         @endif
+                                    </div>
+                                    <div class="book-now-btn">
+                                        <a href="{{ route('frontend.book') }}" class="ed-primary-btn">Book Now</a>
                                     </div>
                                 </div>
                             </div>
                         @endif
 
                         <!-- How Course Works Section -->
-                        @if($course->how_course_works_text || $course->how_course_works_image)
+                        @if ($course->how_course_works_text || $course->how_course_works_image)
                             <div class="course-section mb-60">
                                 <h3 class="section-title mb-30">How Course Works</h3>
                                 <div class="section-content">
                                     <div class="row align-items-center gy-4">
-                                        @if($course->how_course_works_image)
-                                            <div class="{{ $course->how_course_works_text ? 'col-lg-5 col-md-6' : 'col-lg-12' }}">
+                                        @if ($course->how_course_works_image)
+                                            <div
+                                                class="{{ $course->how_course_works_text ? 'col-lg-5 col-md-6' : 'col-lg-12' }}">
                                                 <div class="section-img-wrapper">
-                                                    <img src="{{ asset('uploads/courses/' . $course->how_course_works_image) }}" alt="how course works" class="section-img">
+                                                    <img src="{{ asset('uploads/courses/' . $course->how_course_works_image) }}"
+                                                        alt="how course works" class="section-img">
                                                 </div>
                                             </div>
                                         @endif
-                                        @if($course->how_course_works_text)
-                                            <div class="{{ $course->how_course_works_image ? 'col-lg-7 col-md-6' : 'col-lg-12' }}">
+                                        @if ($course->how_course_works_text)
+                                            <div
+                                                class="{{ $course->how_course_works_image ? 'col-lg-7 col-md-6' : 'col-lg-12' }}">
                                                 <div class="section-text">
                                                     {!! $course->how_course_works_text !!}
                                                 </div>
                                             </div>
                                         @endif
                                     </div>
+                                    <div class="book-now-btn">
+                                        <a href="{{ route('frontend.book') }}" class="ed-primary-btn">Book Now</a>
+                                    </div>
                                 </div>
                             </div>
                         @endif
 
                         <!-- What You Will Achieve Section -->
-                        @if($course->what_you_achieve_text || $course->what_you_achieve_image)
+                        @if ($course->what_you_achieve_text || $course->what_you_achieve_image)
                             <div class="course-section mb-60">
                                 <h3 class="section-title mb-30">What You Will Achieve</h3>
                                 <div class="section-content">
                                     <div class="row align-items-center gy-4">
-                                        @if($course->what_you_achieve_text)
-                                            <div class="{{ $course->what_you_achieve_image ? 'col-lg-7 col-md-6' : 'col-lg-12' }}">
+                                        @if ($course->what_you_achieve_text)
+                                            <div
+                                                class="{{ $course->what_you_achieve_image ? 'col-lg-7 col-md-6' : 'col-lg-12' }}">
                                                 <div class="section-text">
                                                     {!! $course->what_you_achieve_text !!}
                                                 </div>
                                             </div>
                                         @endif
-                                        @if($course->what_you_achieve_image)
-                                            <div class="{{ $course->what_you_achieve_text ? 'col-lg-5 col-md-6' : 'col-lg-12' }}">
+                                        @if ($course->what_you_achieve_image)
+                                            <div
+                                                class="{{ $course->what_you_achieve_text ? 'col-lg-5 col-md-6' : 'col-lg-12' }}">
                                                 <div class="section-img-wrapper">
-                                                    <img src="{{ asset('uploads/courses/' . $course->what_you_achieve_image) }}" alt="achievements" class="section-img">
+                                                    <img src="{{ asset('uploads/courses/' . $course->what_you_achieve_image) }}"
+                                                        alt="achievements" class="section-img">
                                                 </div>
                                             </div>
                                         @endif
+                                    </div>
+                                    <div class="book-now-btn">
+                                        <a href="{{ route('frontend.book') }}" class="ed-primary-btn">Book Now</a>
                                     </div>
                                 </div>
                             </div>
                         @endif
 
                         <!-- FAQs Section -->
-                        @if($course->faqs->count() > 0)
+                        @if ($course->faqs->count() > 0)
                             <div class="course-section mb-60">
                                 <h3 class="section-title mb-30">FAQ</h3>
                                 <div class="section-content">
@@ -200,17 +182,22 @@
                                         <div class="col-lg-12 col-md-12">
                                             <div class="section-text">
                                                 <div class="accordion" id="faqAccordion">
-                                                    @foreach($course->faqs as $index => $faq)
+                                                    @foreach ($course->faqs as $index => $faq)
                                                         <div class="accordion-item">
                                                             <h2 class="accordion-header" id="faq{{ $faq->id }}">
-                                                                <button class="accordion-button {{ $index == 0 ? '' : 'collapsed' }}" type="button"
-                                                                    data-bs-toggle="collapse" data-bs-target="#collapseFaq{{ $faq->id }}"
-                                                                    aria-expanded="{{ $index == 0 ? 'true' : 'false' }}" aria-controls="collapseFaq{{ $faq->id }}">
+                                                                <button
+                                                                    class="accordion-button {{ $index == 0 ? '' : 'collapsed' }}"
+                                                                    type="button" data-bs-toggle="collapse"
+                                                                    data-bs-target="#collapseFaq{{ $faq->id }}"
+                                                                    aria-expanded="{{ $index == 0 ? 'true' : 'false' }}"
+                                                                    aria-controls="collapseFaq{{ $faq->id }}">
                                                                     {{ $faq->question }}
                                                                 </button>
                                                             </h2>
-                                                            <div id="collapseFaq{{ $faq->id }}" class="accordion-collapse collapse {{ $index == 0 ? 'show' : '' }}"
-                                                                aria-labelledby="faq{{ $faq->id }}" data-bs-parent="#faqAccordion">
+                                                            <div id="collapseFaq{{ $faq->id }}"
+                                                                class="accordion-collapse collapse {{ $index == 0 ? 'show' : '' }}"
+                                                                aria-labelledby="faq{{ $faq->id }}"
+                                                                data-bs-parent="#faqAccordion">
                                                                 <div class="accordion-body">
                                                                     {!! $faq->answer !!}
                                                                 </div>
@@ -220,6 +207,9 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="book-now-btn">
+                                        <a href="{{ route('frontend.book') }}" class="ed-primary-btn">Book Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -232,222 +222,222 @@
 @endsection
 
 @push('css')
-<style>
-    /* Course Image Styles */
-    .course-images-slider {
-        margin-bottom: 50px;
-    }
+    <style>
+        /* Course Image Styles */
+        .course-images-slider {
+            margin-bottom: 50px;
+        }
 
-    .course-slide-img {
-        width: 100%;
-        height: 500px;
-        overflow: hidden;
-        border-radius: 15px;
-    }
+        .course-slide-img {
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 15px;
+        }
 
-    .course-slide-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+        .course-slide-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-    /* Course Header Info */
-    .course-header-info {
-        margin-bottom: 50px;
-    }
+        /* Course Header Info */
+        .course-header-info {
+            margin-bottom: 50px;
+        }
 
-    .course-meta-info {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        margin-bottom: 30px;
-    }
+        .course-meta-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
 
-    .meta-item {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        color: var(--ed-color-text-body);
-    }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--ed-color-text-body);
+        }
 
-    .meta-item i {
-        color: var(--ed-color-theme-primary);
-        font-size: 18px;
-    }
+        .meta-item i {
+            color: var(--ed-color-theme-primary);
+            font-size: 18px;
+        }
 
-    .meta-item strong {
-        color: var(--ed-color-heading-primary);
-        font-weight: 600;
-    }
+        .meta-item strong {
+            color: var(--ed-color-heading-primary);
+            font-weight: 600;
+        }
 
-    /* Course Info Card */
-    .course-info-card {
-        background: var(--ed-color-common-white);
-        border: 1px solid var(--ed-color-border-1);
-        border-radius: 15px;
-        padding: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 30px;
-    }
-
-    .info-card {
-        display: flex;
-        align-items: center;
-        gap: 0;
-        flex: 1;
-    }
-
-    .info-item {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        flex: 1;
-    }
-
-    .info-item i {
-        font-size: 24px;
-        color: var(--ed-color-theme-primary);
-        width: 40px;
-        text-align: center;
-    }
-
-    .info-item .label {
-        display: block;
-        font-size: 14px;
-        color: var(--ed-color-text-body);
-        margin-bottom: 5px;
-    }
-
-    .info-item .value {
-        display: block;
-        font-size: 18px;
-        font-weight: 600;
-        color: var(--ed-color-heading-primary);
-    }
-
-    .info-divider {
-        width: 1px;
-        height: 50px;
-        background: var(--ed-color-border-1);
-        margin: 0 20px;
-    }
-
-    .book-now-btn {
-        flex-shrink: 0;
-    }
-
-    @media (max-width: 991px) {
+        /* Course Info Card */
         .course-info-card {
-            flex-direction: column;
+            background: var(--ed-color-common-white);
+            border: 1px solid var(--ed-color-border-1);
+            border-radius: 15px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
         }
 
         .info-card {
-            width: 100%;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .info-divider {
-            display: none;
+            display: flex;
+            align-items: center;
+            gap: 0;
+            flex: 1;
         }
 
         .info-item {
-            width: 100%;
-            justify-content: space-between;
-            padding: 15px;
-            background: var(--ed-color-grey-1);
-            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 1;
         }
-    }
 
-    /* Course Sections */
-    .course-content-sections {
-        margin-top: 50px;
-    }
+        .info-item i {
+            font-size: 24px;
+            color: var(--ed-color-theme-primary);
+            width: 40px;
+            text-align: center;
+        }
 
-    .course-section {
-        margin-bottom: 60px;
-    }
+        .info-item .label {
+            display: block;
+            font-size: 14px;
+            color: var(--ed-color-text-body);
+            margin-bottom: 5px;
+        }
 
-    .section-title {
-        font-size: 28px;
-        font-weight: 700;
-        color: var(--ed-color-heading-primary);
-        margin-bottom: 30px;
-        padding-bottom: 15px;
-        border-bottom: 2px solid var(--ed-color-border-1);
-    }
+        .info-item .value {
+            display: block;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--ed-color-heading-primary);
+        }
 
-    .section-content {
-        color: var(--ed-color-text-body);
-        line-height: 1.8;
-    }
+        .info-divider {
+            width: 1px;
+            height: 50px;
+            background: var(--ed-color-border-1);
+            margin: 0 20px;
+        }
 
-    .section-content p {
-        margin-bottom: 20px;
-    }
+        .book-now-btn {
+            flex-shrink: 0;
+        }
 
-    /* Section Image Wrapper */
-    .section-img-wrapper {
-        position: relative;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-    }
+        @media (max-width: 991px) {
+            .course-info-card {
+                flex-direction: column;
+            }
 
-    .section-img-wrapper:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
-    }
+            .info-card {
+                width: 100%;
+                flex-direction: column;
+                gap: 20px;
+            }
 
-    .section-img {
-        width: 100%;
-        height: auto;
-        display: block;
-        border-radius: 15px;
-    }
+            .info-divider {
+                display: none;
+            }
 
-    .section-text {
-        padding: 20px 0;
-    }
+            .info-item {
+                width: 100%;
+                justify-content: space-between;
+                padding: 15px;
+                background: var(--ed-color-grey-1);
+                border-radius: 10px;
+            }
+        }
 
-    @media (max-width: 991px) {
-        .section-img-wrapper {
+        /* Course Sections */
+        .course-content-sections {
+            margin-top: 50px;
+        }
+
+        .course-section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--ed-color-heading-primary);
             margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--ed-color-border-1);
         }
-    }
 
-    /* FAQ Accordion */
-    .accordion-item {
-        border: 1px solid var(--ed-color-border-1);
-        border-radius: 10px !important;
-        margin-bottom: 15px;
-        overflow: hidden;
-    }
+        .section-content {
+            color: var(--ed-color-text-body);
+            line-height: 1.8;
+        }
 
-    .accordion-button {
-        background: var(--ed-color-grey-1);
-        color: var(--ed-color-heading-primary);
-        font-weight: 600;
-        border: none;
-        box-shadow: none;
-    }
+        .section-content p {
+            margin-bottom: 20px;
+        }
 
-    .accordion-button:not(.collapsed) {
-        background: var(--ed-color-theme-primary);
-        color: var(--ed-color-common-white);
-    }
+        /* Section Image Wrapper */
+        .section-img-wrapper {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
 
-    .accordion-button:focus {
-        box-shadow: none;
-    }
+        .section-img-wrapper:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        }
 
-    .accordion-body {
-        background: var(--ed-color-common-white);
-        color: var(--ed-color-text-body);
-    }
-</style>
+        .section-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 15px;
+        }
+
+        .section-text {
+            padding: 20px 0;
+        }
+
+        @media (max-width: 991px) {
+            .section-img-wrapper {
+                margin-bottom: 30px;
+            }
+        }
+
+        /* FAQ Accordion */
+        .accordion-item {
+            border: 1px solid var(--ed-color-border-1);
+            border-radius: 10px !important;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .accordion-button {
+            background: var(--ed-color-grey-1);
+            color: var(--ed-color-heading-primary);
+            font-weight: 600;
+            border: none;
+            box-shadow: none;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background: var(--ed-color-theme-primary);
+            color: var(--ed-color-common-white);
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+        }
+
+        .accordion-body {
+            background: var(--ed-color-common-white);
+            color: var(--ed-color-text-body);
+        }
+    </style>
 @endpush

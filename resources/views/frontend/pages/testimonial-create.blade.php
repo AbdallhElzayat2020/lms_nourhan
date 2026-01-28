@@ -16,11 +16,8 @@
         <div class="container">
             <div class="page-header-content text-center">
                 <h1 class="title">Share Your Experience</h1>
-                <h4 class="sub-title">
-                    <a class="home" href="{{ route('frontend.home') }}">Home</a>
-                    <span class="icon">/</span>
-                    <span class="inner-page">Share Testimonial</span>
-                </h4>
+                <a class="home" href="{{ route('frontend.home') }}">Home </a><span class="icon">/</span>
+                <a class="inner-page" href="javascript:void(0)">Share Testimonial</a>
             </div>
         </div>
     </section>

@@ -16,9 +16,9 @@
         <div class="container">
             <div class="page-header-content">
                 <h1 class="title">{{ $category->name }}</h1>
-                <h4 class="sub-title"><a class="home" href="{{ route('frontend.home') }}">Home </a><span
-                        class="icon">/</span><a href="{{ route('frontend.courses') }}">Courses</a><span
-                        class="icon">/</span><span class="inner-page">{{ $category->name }}</span></h4>
+                <a class="home" href="{{ route('frontend.home') }}">Home </a><span class="icon">/</span>
+                <a href="{{ route('frontend.courses') }}">Courses</a><span class="icon">/</span>
+                <span class="inner-page">{{ $category->name }}</span>
             </div>
         </div>
     </section>

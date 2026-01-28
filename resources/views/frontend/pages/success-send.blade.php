@@ -112,8 +112,8 @@
         <div class="container">
             <div class="page-header-content">
                 <h1 class="title">Success</h1>
-                <h4 class="sub-title"><a class="home" href="{{ route('frontend.home') }}">Home </a><span class="icon">/</span><a
-                        class="inner-page" href="{{ route('frontend.success.send') }}"> Success</a></h4>
+                <a class="home" href="{{ route('frontend.home') }}">Home </a><span class="icon">/</span>
+                <a class="inner-page" href="{{ route('frontend.success.send') }}"> Success</a>
             </div>
         </div>
     </section>

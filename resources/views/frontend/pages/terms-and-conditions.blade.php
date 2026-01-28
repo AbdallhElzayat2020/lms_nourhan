@@ -14,11 +14,8 @@
         <div class="container">
             <div class="page-header-content">
                 <h1 class="title">Terms &amp; Conditions</h1>
-                <h4 class="sub-title">
-                    <a class="home" href="{{ route('frontend.home') }}">Home</a>
-                    <span class="icon">/</span>
-                    <a class="inner-page" href="javascript:void(0)">Terms &amp; Conditions</a>
-                </h4>
+                <a class="home" href="{{ route('frontend.home') }}">Home </a><span class="icon">/</span>
+                <a class="inner-page" href="javascript:void(0)">Terms &amp; Conditions</a>
             </div>
         </div>
     </section>

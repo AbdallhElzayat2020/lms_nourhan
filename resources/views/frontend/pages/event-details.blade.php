@@ -17,8 +17,9 @@
         <div class="container">
             <div class="page-header-content">
                 <h1 class="title">{{ $event->name }}</h1>
-                <h4 class="sub-title"><a class="home" href="{{ route('frontend.home') }}">Home </a><span
-                        class="icon">/</span><a class="inner-page" href="{{ route('frontend.events') }}"> Events</a><span class="icon">/</span><span>{{ $event->name }}</span></h4>
+                <a class="home" href="{{ route('frontend.home') }}">Home </a><span class="icon">/</span>
+                <a class="inner-page" href="{{ route('frontend.events') }}"> Events</a><span class="icon">/</span>
+                <span>{{ $event->name }}</span>
             </div>
         </div>
     </section>

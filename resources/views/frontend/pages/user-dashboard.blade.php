@@ -15,11 +15,8 @@
         <div class="container">
             <div class="page-header-content">
                 <h1 class="title">My Dashboard</h1>
-                <h4 class="sub-title">
-                    <a class="home" href="{{ route('frontend.home') }}">Home </a>
-                    <span class="icon">/</span>
-                    <a class="inner-page" href="{{ route('frontend.user.dashboard') }}"> My Dashboard</a>
-                </h4>
+                <a class="home" href="{{ route('frontend.home') }}">Home </a><span class="icon">/</span>
+                <a class="inner-page" href="{{ route('frontend.user.dashboard') }}"> My Dashboard</a>
             </div>
         </div>
     </section>
