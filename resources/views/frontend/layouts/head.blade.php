@@ -156,7 +156,7 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            z-index: 9999;
+            z-index: 10001; /* فوق أزرار واتساب/الاتصال */
         }
 
         #scrollup.hide {
@@ -189,7 +189,7 @@
 
         @media (max-width: 768px) {
             #scrollup {
-                bottom: 100px;
+                bottom: 130px; /* نرفعه فوق أزرار التواصل على الموبايل */
                 right: 16px;
             }
         }
