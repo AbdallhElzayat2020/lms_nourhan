@@ -39,7 +39,7 @@
             </div>
 
             @if($courses->count() > 0)
-                <div class="row">
+                <div class="row py-5">
                     @foreach($courses as $course)
                         <div class="col-xl-4 col-lg-6 col-md-6">
                             <div class="course-item">
@@ -68,9 +68,7 @@
                                         </div>
                                     </div>
                                     <h4 class="title"><a href="{{ route('frontend.course.details', $course->slug) }}">{{ $course->title }}</a></h4>
-                                    @if($course->subtitle)
-                                        <p class="subtitle">{{ $course->subtitle }}</p>
-                                    @endif
+
                                     @if($course->short_description)
                                         <p class="description">{{ Str::limit($course->short_description, 120) }}</p>
                                     @endif

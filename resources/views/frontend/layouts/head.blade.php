@@ -189,7 +189,7 @@
 
         @media (max-width: 768px) {
             #scrollup {
-                bottom: 130px; /* نرفعه فوق أزرار التواصل على الموبايل */
+                bottom: 130px;
                 right: 16px;
             }
         }

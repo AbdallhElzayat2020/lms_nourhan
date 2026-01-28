@@ -24,12 +24,34 @@
                                     <li><a href="{{ route('frontend.events') }}">Events</a></li>
                                 </ul>
                             </li>
-                            <li class="menu-item-has-children">
-                                <a href="{{ route('frontend.courses') }}">Courses</a>
-                            </li>
-                              <li class="menu-item-has-children">
-                                <a href="{{ route('frontend.pricing') }}">Pricing</a>
-                            </li>
+                            @isset($navCourseCategories)
+                                @foreach ($navCourseCategories as $navCategory)
+                                    <li class="menu-item-has-children">
+                                        <a href="{{ route('frontend.courses', ['category' => $navCategory->slug]) }}">
+                                            {{ $navCategory->name }} <i class="fa-solid fa-chevron-down"></i>
+                                        </a>
+                                        @if ($navCategory->courses->isNotEmpty())
+                                            <ul>
+                                                @foreach ($navCategory->courses->take(6) as $navCourse)
+                                                    <li>
+                                                        <a href="{{ route('frontend.course.details', $navCourse->slug) }}">
+                                                            {{ $navCourse->title }}
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                                @if ($navCategory->courses->count() > 6)
+                                                    <li>
+                                                        <a href="{{ route('frontend.courses', ['category' => $navCategory->slug]) }}">
+                                                            View all in {{ $navCategory->name }}
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                            </ul>
+                                        @endif
+                                    </li>
+                                @endforeach
+                            @endisset
+                           
                             <li class="menu-item-has-children">
                                 <a href="{{ route('frontend.blog') }}">Blog</a>
 

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Contact;
+use App\Models\Category;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -27,6 +28,22 @@ class AppServiceProvider extends ServiceProvider
         View::composer('dashboard.layouts.sidebar', function ($view) {
             $unreadContactsCount = Contact::where('is_read', false)->count();
             $view->with('unreadContactsCount', $unreadContactsCount);
+        });
+
+        // Share course categories (with active courses) with the main frontend header
+        View::composer('frontend.layouts.header', function ($view) {
+            $navCourseCategories = Category::active()
+                ->with(['courses' => function ($query) {
+                    $query->active()->orderBy('title');
+                }])
+                ->withCount(['courses' => function ($query) {
+                    $query->active();
+                }])
+                ->having('courses_count', '>', 0)
+                ->orderBy('name')
+                ->get();
+
+            $view->with('navCourseCategories', $navCourseCategories);
         });
 
         // Register SEO Blade directives

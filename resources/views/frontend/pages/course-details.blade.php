@@ -17,10 +17,10 @@
             <div class="page-header-content">
                 <h1 class="title">{{ $course->title }}</h1>
 
-                    <a class="home" href="{{ route('frontend.home') }}">Home </a><span class="icon">/</span>
-                    <a class="inner-page" href="{{ route('frontend.courses') }}"> Courses</a><span class="icon">/</span>
-                    <span>{{ Str::limit($course->title, 30) }}</span>
-              
+                <a class="home" href="{{ route('frontend.home') }}">Home </a><span class="icon">/</span>
+                <a class="inner-page" href="{{ route('frontend.courses') }}"> Courses</a><span class="icon">/</span>
+                <span>{{ Str::limit($course->title, 30) }}</span>
+
             </div>
         </div>
     </section>
@@ -117,20 +117,21 @@
                                 <h3 class="section-title mb-30">How Course Works</h3>
                                 <div class="section-content">
                                     <div class="row align-items-center gy-4">
+
+                                        @if ($course->how_course_works_text)
+                                            <div
+                                                class="{{ $course->how_course_works_image ? 'col-lg-7 col-md-6' : 'col-lg-12' }}">
+                                                <div class="section-text">
+                                                    {!! $course->how_course_works_text !!}
+                                                </div>
+                                            </div>
+                                        @endif
                                         @if ($course->how_course_works_image)
                                             <div
                                                 class="{{ $course->how_course_works_text ? 'col-lg-5 col-md-6' : 'col-lg-12' }}">
                                                 <div class="section-img-wrapper">
                                                     <img src="{{ asset('uploads/courses/' . $course->how_course_works_image) }}"
                                                         alt="how course works" class="section-img">
-                                                </div>
-                                            </div>
-                                        @endif
-                                        @if ($course->how_course_works_text)
-                                            <div
-                                                class="{{ $course->how_course_works_image ? 'col-lg-7 col-md-6' : 'col-lg-12' }}">
-                                                <div class="section-text">
-                                                    {!! $course->how_course_works_text !!}
                                                 </div>
                                             </div>
                                         @endif
@@ -404,6 +405,13 @@
             padding: 20px 0;
         }
 
+        /* Text alignment inside course rich-text sections
+               (ensures it matches editor alignment) */
+        .section-text p,
+        .section-text li {
+            text-align: left;
+        }
+
         @media (max-width: 991px) {
             .section-img-wrapper {
                 margin-bottom: 30px;
@@ -439,5 +447,8 @@
             background: var(--ed-color-common-white);
             color: var(--ed-color-text-body);
         }
+        /* .section-text p {
+            margin-bottom: 0 !important;
+        } */
     </style>
 @endpush
