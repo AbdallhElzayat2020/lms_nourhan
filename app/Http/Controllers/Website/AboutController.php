@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Website;
 use App\Http\Controllers\Controller;
 use App\Models\Testimonial;
 use App\Models\AboutSection;
-use App\Models\Partner;
 use App\Models\Blog;
 use App\Models\Counter;
 use App\Models\AboutInfo;
@@ -19,7 +18,6 @@ class AboutController extends Controller
     {
         $testimonials = Testimonial::active()->orderBy('sort_order')->latest()->take(10)->get();
         $aboutSection = AboutSection::active()->first();
-        $partners = Partner::active()->orderBy('sort_order')->get();
         $recentBlogs = Blog::active()->published()->latest()->take(3)->get();
         $counters = Counter::active()->orderBy('sort_order')->get();
         $aboutInfos = AboutInfo::active()->orderBy('sort_order')->get();
@@ -27,6 +25,6 @@ class AboutController extends Controller
         // Set SEO page name for this view
         view()->share('seoPageName', 'about');
 
-        return view('frontend.pages.about', compact('testimonials', 'aboutSection', 'partners', 'recentBlogs', 'counters', 'aboutInfos'));
+        return view('frontend.pages.about', compact('testimonials', 'aboutSection', 'recentBlogs', 'counters', 'aboutInfos'));
     }
 }

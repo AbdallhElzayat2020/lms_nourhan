@@ -9,7 +9,6 @@ use App\Models\Blog;
 use App\Models\Category;
 use App\Models\AboutSection;
 use App\Models\Teacher;
-use App\Models\Partner;
 use App\Models\Counter;
 use App\Models\WhyChooseItem;
 use App\Models\Course;
@@ -58,10 +57,6 @@ class HomeController extends Controller
             return Teacher::active()->latest()->take(8)->get();
         });
 
-        $partners = Cache::remember('home_partners', 600, function () {
-            return Partner::active()->orderBy('sort_order')->get();
-        });
-
         $counters = Cache::remember('home_counters', 600, function () {
             return Counter::active()->orderBy('sort_order')->get();
         });
@@ -96,7 +91,6 @@ class HomeController extends Controller
             'categories',
             'aboutSection',
             'recentTeachers',
-            'partners',
             'counters',
             'whyChooseItems',
             'featuredCourses',

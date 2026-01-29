@@ -555,7 +555,7 @@
 
     @if (isset($recentTeachers) && $recentTeachers->count() > 0)
         <!--  team  -->
-        <section class="team-section pt-5 pb-5">
+        <section class="team-section pt-120 pb-120">
             <div class="container">
                 <div class="section-heading text-center">
                     <p class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
@@ -595,7 +595,7 @@
 
     {{-- <!-- ./ testimonial --> --}}
     @if ($testimonials->count() > 0)
-        <section class="testimonial-section-2 py-5">
+        <section class="testimonial-section-2 pt-120 pb-120">
             <div class="container">
                 <div class="section-heading text-center">
                     <p class="sub-heading wow fade-in-bottom" data-wow-delay="200ms">
@@ -648,62 +648,15 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="swiper-pagination"></div>
                 </div>
             </div>
         </section>
     @endif
     {{-- <!-- ./ testimonial --> --}}
 
-    {{-- <!-- ./ sponsor (partners) --> --}}
-    @if ($partners->count() > 0)
-        <div class="sponsor-section pb-120 bg-grey">
-            <div class="shapes">
-                <div class="bg-shape"><img src="{{ asset('assets/frontend/img/shapes/sponsor-shape.png') }}"
-                        alt="shape"></div>
-                <div class="shape shape-1"><img src="{{ asset('assets/frontend/img/shapes/sponsor-1.png') }}"
-                        alt="shape"></div>
-                <div class="shape shape-2"><img src="{{ asset('assets/frontend/img/shapes/sponsor-2.png') }}"
-                        alt="shape"></div>
-            </div>
-            <div class="container">
-                <div class="row gy-4 justify-content-center">
-                    @foreach ($partners as $partner)
-                        <div class="col-xl-2 col-lg-3 col-md-3 col-6">
-                            <div class="sponsor-item text-center"
-                                style="background:#fff;border-radius:16px;padding:20px 15px;box-shadow:0 8px 20px rgba(0,0,0,0.05);">
-                                @php
-        $logoUrl = $partner->logo ? asset('uploads/partners/' . $partner->logo) : null;
-                                @endphp
-                                @if ($partner->link)
-                                    <a href="{{ $partner->link }}" target="_blank" rel="noopener">
-                                        @if ($logoUrl)
-                                            <img src="{{ $logoUrl }}" alt="{{ $partner->name }}"
-                                                style="max-width:100%;height:60px;object-fit:contain;">
-                                        @else
-                                            <span>{{ $partner->name }}</span>
-                                        @endif
-                                    </a>
-                                @else
-                                    @if ($logoUrl)
-                                        <img src="{{ $logoUrl }}" alt="{{ $partner->name }}"
-                                            style="max-width:100%;height:60px;object-fit:contain;">
-                                    @else
-                                        <span>{{ $partner->name }}</span>
-                                    @endif
-                                @endif
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    @endif
-    {{-- <!-- ./ sponsor (partners) --> --}}
-
     {{-- <!-- events --> --}}
     @if (isset($upcomingEvents) && $upcomingEvents->count() > 0)
-        <section class="features-event pt-5 pb-5">
+        <section class="features-event pt-120 pb-120">
             <div class="container">
                 <div class="section-heading text-center">
                     <p class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
@@ -758,7 +711,7 @@
 
     {{-- <!--blogs (dynamic from DB) --> --}}
     @if ($recentBlogs->count() > 0)
-        <section class="blog-section pt-5 pb-120">
+        <section class="blog-section pt-120 pb-120">
             <div class="container">
                 <div class="section-heading text-center">
                     <p class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
@@ -838,6 +791,14 @@
             color: #fff;
             border-color: #DF8A39;
             transform: scale(1.05);
+        }
+
+        /* Feedback section: hide dots, add spacing below */
+        .testimonial-section-2 .swiper-pagination {
+            display: none !important;
+        }
+        .testimonial-section-2 {
+            margin-bottom: 40px;
         }
     </style>
 @endpush
