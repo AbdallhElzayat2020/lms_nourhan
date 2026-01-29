@@ -101,38 +101,55 @@
                     </div>
 
                     <!-- Recent Posts Widget -->
-                    <div class="sidebar-widget">
-                        <h3 class="widget-title">Recent Posts</h3>
+                    <div class="sidebar-widget recent-posts-widget">
+                        <h3 class="widget-title">
+                            <i class="fa-light fa-clock-rotate-left me-2"></i>
+                            Recent Posts
+                        </h3>
                         @if ($recentBlogs->count() > 0)
-                            @foreach ($recentBlogs as $recentBlog)
-                                <div class="sidebar-post {{ !$loop->last ? 'mb-3' : '' }}">
-                                    @if ($recentBlog->cover_image)
-                                        <img src="{{ asset('uploads/blogs/' . $recentBlog->cover_image) }}"
-                                            alt="{{ $recentBlog->title }}" style="width: 80px; height: 80px; object-fit: cover;">
-                                    @else
-                                        <img src="{{ asset('assets/frontend/img/blog/sidebar-thumb-1.png') }}"
-                                            alt="{{ $recentBlog->title }}" style="width: 80px; height: 80px; object-fit: cover;">
-                                    @endif
-                                    <div class="post-content">
-                                        <h3 class="title">
-                                            <a
-                                                href="{{ route('frontend.blog.details', ['slug' => $recentBlog->slug]) }}">{{ Str::limit($recentBlog->title, 50) }}</a>
-                                        </h3>
-                                        <ul class="post-meta">
-                                            @if ($recentBlog->author)
-                                                <li><i class="fa-light fa-user"></i>{{ $recentBlog->author }}</li>
+                            <div class="recent-posts-list">
+                                @foreach ($recentBlogs as $recentBlog)
+                                    <a href="{{ route('frontend.blog.details', ['slug' => $recentBlog->slug]) }}"
+                                       class="recent-post-card">
+                                        <div class="recent-post-image-wrapper">
+                                            @if ($recentBlog->cover_image)
+                                                <img src="{{ asset('uploads/blogs/' . $recentBlog->cover_image) }}"
+                                                    alt="{{ $recentBlog->title }}" class="recent-post-image">
+                                            @else
+                                                <img src="{{ asset('assets/frontend/img/blog/sidebar-thumb-1.png') }}"
+                                                    alt="{{ $recentBlog->title }}" class="recent-post-image">
                                             @endif
-                                            @if ($recentBlog->published_at)
-                                                <li><i
-                                                        class="fa-sharp fa-regular fa-folder-open"></i>{{ $recentBlog->published_at->format('M d, Y') }}
-                                                </li>
-                                            @endif
-                                        </ul>
-                                    </div>
-                                </div>
-                            @endforeach
+                                            <div class="recent-post-overlay">
+                                                <i class="fa-light fa-arrow-right"></i>
+                                            </div>
+                                        </div>
+                                        <div class="recent-post-content">
+                                            <h4 class="recent-post-title">
+                                                {{ Str::limit($recentBlog->title, 60) }}
+                                            </h4>
+                                            <div class="recent-post-meta">
+                                                @if ($recentBlog->author)
+                                                    <span class="recent-post-author">
+                                                        <i class="fa-light fa-user"></i>
+                                                        {{ $recentBlog->author }}
+                                                    </span>
+                                                @endif
+                                                @if ($recentBlog->published_at)
+                                                    <span class="recent-post-date">
+                                                        <i class="fa-light fa-calendar"></i>
+                                                        {{ $recentBlog->published_at->format('M d, Y') }}
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </a>
+                                @endforeach
+                            </div>
                         @else
-                            <p class="text-muted">No recent posts available.</p>
+                            <div class="no-posts-message">
+                                <i class="fa-light fa-inbox"></i>
+                                <p>No recent posts available.</p>
+                            </div>
                         @endif
                     </div>
                 </div>
@@ -283,6 +300,188 @@
         color: #DF8A39;
     }
 
+    /* Recent Posts Widget - New Beautiful Design */
+    .recent-posts-widget {
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        padding: 30px;
+        margin-bottom: 30px;
+    }
+
+    .recent-posts-widget .widget-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 3px solid #DF8A39;
+        display: flex;
+        align-items: center;
+    }
+
+    .recent-posts-widget .widget-title i {
+        color: #DF8A39;
+        font-size: 20px;
+    }
+
+    .recent-posts-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .recent-post-card {
+        display: flex;
+        gap: 15px;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 12px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .recent-post-card::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(180deg, #DF8A39 0%, #e67e22 100%);
+        transform: scaleY(0);
+        transition: transform 0.3s ease;
+    }
+
+    .recent-post-card:hover {
+        background: #fff;
+        border-color: #DF8A39;
+        box-shadow: 0 8px 25px rgba(223, 138, 57, 0.15);
+        transform: translateY(-3px);
+    }
+
+    .recent-post-card:hover::before {
+        transform: scaleY(1);
+    }
+
+    .recent-post-image-wrapper {
+        position: relative;
+        flex-shrink: 0;
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .recent-post-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .recent-post-card:hover .recent-post-image {
+        transform: scale(1.1);
+    }
+
+    .recent-post-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(223, 138, 57, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .recent-post-overlay i {
+        color: #fff;
+        font-size: 24px;
+        transform: translateX(-10px);
+        transition: transform 0.3s ease;
+    }
+
+    .recent-post-card:hover .recent-post-overlay {
+        opacity: 1;
+    }
+
+    .recent-post-card:hover .recent-post-overlay i {
+        transform: translateX(0);
+    }
+
+    .recent-post-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .recent-post-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #2c3e50;
+        margin: 0 0 10px 0;
+        line-height: 1.4;
+        transition: color 0.3s ease;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .recent-post-card:hover .recent-post-title {
+        color: #DF8A39;
+    }
+
+    .recent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .recent-post-author,
+    .recent-post-date {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        color: #666;
+        font-weight: 500;
+    }
+
+    .recent-post-author i,
+    .recent-post-date i {
+        color: #DF8A39;
+        font-size: 12px;
+    }
+
+    .no-posts-message {
+        text-align: center;
+        padding: 40px 20px;
+        color: #999;
+    }
+
+    .no-posts-message i {
+        font-size: 48px;
+        color: #ddd;
+        margin-bottom: 15px;
+        display: block;
+    }
+
+    .no-posts-message p {
+        margin: 0;
+        font-size: 14px;
+    }
+
     /* Responsive spacing */
     @media (max-width: 768px) {
         .blog-details-content {
@@ -296,6 +495,19 @@
 
         .post-meta {
             margin: 20px 0 !important;
+        }
+
+        .recent-post-image-wrapper {
+            width: 90px;
+            height: 90px;
+        }
+
+        .recent-post-title {
+            font-size: 15px;
+        }
+
+        .recent-posts-widget {
+            padding: 20px;
         }
     }
 </style>
