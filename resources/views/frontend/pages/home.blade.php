@@ -336,7 +336,7 @@
                 <div class="section-heading text-center">
                     <p class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
                                 class="fa-sharp fa-solid fa-bolt"></i></span>Popular Categories</p>
-                    <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Categories Categories</h2>
+                    <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Courses Categories</h2>
                 </div>
                 <div class="course-carousel-4 swiper">
                     <div class="swiper-wrapper">
