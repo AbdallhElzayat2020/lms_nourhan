@@ -16,7 +16,6 @@
                                     <div class="slider-content">
                                         <div class="sub-heading-wrap" data-animation="edcare-fadeInDown" data-delay="1000ms"
                                             data-duration="1200ms">
-                                            <h1 class="sub-heading">{{ $slider->title }}</h1>
                                         </div>
                                         <div class="edcare-caption heading">
                                             <div class="inner-layer">
@@ -279,9 +278,14 @@
                     <div class="col-lg-6 col-md-12">
                         <div class="about-content-3">
                             <div class="section-heading mb-20">
-
-                                <h1 class="section-title wow fade-in-bottom" data-wow-delay="400ms">
-                                    {!! nl2br(e($aboutSection->title)) !!}</h1>
+                                @if ($aboutSection->subtitle)
+                                    <p class="sub-heading wow fade-in-bottom" data-wow-delay="300ms"><span
+                                            class="heading-icon"><i
+                                                class="fa-sharp fa-solid fa-bolt"></i></span>{{ $aboutSection->subtitle }}
+                                    </p>
+                                @endif
+                                <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">
+                                    {!! nl2br(e($aboutSection->title)) !!}</h2>
                             </div>
                             @if ($aboutSection->description)
                                 <p class="mb-30 wow fade-in-bottom" data-wow-delay="500ms">
@@ -332,7 +336,7 @@
                 <div class="section-heading text-center">
                     <p class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
                                 class="fa-sharp fa-solid fa-bolt"></i></span>Popular Categories</p>
-                    <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Browse Categories</h2>
+                    <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Categories Categories</h2>
                 </div>
                 <div class="course-carousel-4 swiper">
                     <div class="swiper-wrapper">
@@ -418,8 +422,8 @@
                                 <div class="offer-video"
                                     style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000;">
                                     @php
-                                        // Get video URL from first active item that has a video
-                                        $whyChooseVideo = $whyChooseItems->firstWhere('video_url', '!=', null);
+    // Get video URL from first active item that has a video
+    $whyChooseVideo = $whyChooseItems->firstWhere('video_url', '!=', null);
                                     @endphp
                                     @if ($whyChooseVideo && $whyChooseVideo->embed_video_url)
                                         <iframe
@@ -477,9 +481,9 @@
                                         <div class="course-thumb">
                                             <a href="{{ route('frontend.course.details', ['slug' => $course->slug]) }}">
                                                 @php
-                                                    $courseImage = $course->banner_image
-                                                        ? asset('uploads/courses/' . $course->banner_image)
-                                                        : asset('assets/frontend/img/service/course-img-8.png');
+        $courseImage = $course->banner_image
+            ? asset('uploads/courses/' . $course->banner_image)
+            : asset('assets/frontend/img/service/course-img-8.png');
                                                 @endphp
                                                 <img src="{{ $courseImage }}" alt="{{ $course->title }}">
                                             </a>
@@ -608,11 +612,11 @@
                     <div class="swiper-wrapper">
                         @foreach ($testimonials as $testimonial)
                             @php
-                                $avatarPath =
-                                    $testimonial->gender === 'female'
-                                        ? asset('assets/frontend/img/female.png')
-                                        : asset('assets/frontend/img/male.png');
-                                $rating = 5;
+        $avatarPath =
+            $testimonial->gender === 'female'
+            ? asset('assets/frontend/img/female.png')
+            : asset('assets/frontend/img/male.png');
+        $rating = 5;
                             @endphp
                             <div class="swiper-slide">
                                 <div class="testi-item-2">
@@ -669,7 +673,7 @@
                             <div class="sponsor-item text-center"
                                 style="background:#fff;border-radius:16px;padding:20px 15px;box-shadow:0 8px 20px rgba(0,0,0,0.05);">
                                 @php
-                                    $logoUrl = $partner->logo ? asset('uploads/partners/' . $partner->logo) : null;
+        $logoUrl = $partner->logo ? asset('uploads/partners/' . $partner->logo) : null;
                                 @endphp
                                 @if ($partner->link)
                                     <a href="{{ $partner->link }}" target="_blank" rel="noopener">
@@ -712,9 +716,9 @@
                             <div class="event-item wow fade-in-bottom" data-wow-delay="{{ 400 + $index * 100 }}ms">
                                 <div class="event-thumb">
                                     @php
-                                        $eventImage = $event->image
-                                            ? asset('uploads/events/' . $event->image)
-                                            : asset('assets/frontend/img/images/event-img-1.png');
+        $eventImage = $event->image
+            ? asset('uploads/events/' . $event->image)
+            : asset('assets/frontend/img/images/event-img-1.png');
                                     @endphp
                                     <img src="{{ $eventImage }}" alt="{{ $event->name }}">
                                     <div class="date-wrap">
