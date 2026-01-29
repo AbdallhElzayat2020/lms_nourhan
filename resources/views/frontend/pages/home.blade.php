@@ -279,14 +279,9 @@
                     <div class="col-lg-6 col-md-12">
                         <div class="about-content-3">
                             <div class="section-heading mb-20">
-                                @if ($aboutSection->subtitle)
-                                    <p class="sub-heading wow fade-in-bottom" data-wow-delay="300ms"><span
-                                            class="heading-icon"><i
-                                                class="fa-sharp fa-solid fa-bolt"></i></span>{{ $aboutSection->subtitle }}
-                                    </p>
-                                @endif
-                                <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">
-                                    {!! nl2br(e($aboutSection->title)) !!}</h2>
+
+                                <h1 class="section-title wow fade-in-bottom" data-wow-delay="400ms">
+                                    {!! nl2br(e($aboutSection->title)) !!}</h1>
                             </div>
                             @if ($aboutSection->description)
                                 <p class="mb-30 wow fade-in-bottom" data-wow-delay="500ms">
