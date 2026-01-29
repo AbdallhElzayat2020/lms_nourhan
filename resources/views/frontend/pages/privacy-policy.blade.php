@@ -7,7 +7,7 @@
             <div class="overlay"></div>
             <div class="shapes">
                 <div class="shape shape-1">
-                    <img src="{{ asset('assets/frontend/img/shapes/page-header-shape-1.png') }}" alt="shape">
+                    {{-- <img src="{{ asset('assets/frontend/img/shapes/page-header-shape-1.png') }}" alt="shape"> --}}
                 </div>
             </div>
         </div>
