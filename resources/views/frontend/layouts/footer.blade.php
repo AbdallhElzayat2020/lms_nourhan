@@ -115,11 +115,46 @@
 
         /* Mobile: 2 boxes side by side */
         @media (max-width: 767.98px) {
-            .footer-wrap .col-lg-3 {
+            .footer-wrap {
+                row-gap: 20px;
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            /* Logo - First row, left side */
+            .footer-wrap .col-lg-3:nth-child(1) {
                 flex: 0 0 50%;
                 max-width: 50%;
                 padding-left: 8px;
                 padding-right: 8px;
+                order: 1;
+            }
+
+            /* Contact Us - First row, right side */
+            .footer-wrap .col-lg-3:nth-child(4) {
+                flex: 0 0 50%;
+                max-width: 50%;
+                padding-left: 8px;
+                padding-right: 8px;
+                order: 2;
+            }
+
+            /* Company Info - Second row, left side */
+            .footer-wrap .col-lg-3:nth-child(2) {
+                flex: 0 0 50%;
+                max-width: 50%;
+                padding-left: 8px;
+                padding-right: 8px;
+                order: 3;
+            }
+
+            /* Useful Links - Second row, right side */
+            .footer-wrap .col-lg-3:nth-child(3) {
+                flex: 0 0 50%;
+                max-width: 50%;
+                padding-left: 8px;
+                padding-right: 8px;
+                order: 4;
             }
 
             .footer-wrap .footer-widget {
@@ -128,10 +163,6 @@
                 overflow: hidden;
                 word-wrap: break-word;
                 max-width: 100%;
-            }
-
-            .footer-wrap {
-                row-gap: 20px;
             }
 
             .footer-contact-info {
@@ -189,7 +220,7 @@
                             <img src="{{ asset('assets/frontend/img/logo_horezntal.webp') }}"
                                 alt="Sister Nourhan Academy Logo" class="footer-logo mb-30">
                         </a>
-                        <p class="mb-30">Fusce varius, dolor tempor interdum tristiquei bibendum.</p>
+                        <p class="mb-30">Trusted online Islamic learning: Qur’an, Arabic, and Islamic studies anytime, anywhere</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -209,13 +240,13 @@
                         <h3 class="widget-header">Useful Links</h3>
                         <ul class="footer-list">
                             @php
-                                $footerCategories = \Illuminate\Support\Facades\Cache::remember(
-                                    'footer_categories',
-                                    600,
-                                    function () {
-                                        return \App\Models\Category::active()->orderBy('sort_order')->take(5)->get();
-                                    },
-                                );
+$footerCategories = \Illuminate\Support\Facades\Cache::remember(
+    'footer_categories',
+    600,
+    function () {
+        return \App\Models\Category::active()->orderBy('sort_order')->take(5)->get();
+    },
+);
                             @endphp
                             @foreach ($footerCategories as $category)
                                 <li>

@@ -162,8 +162,7 @@
                                 </div>
                                 <div class="content">
                                     <h4 class="title">Official Work Time</h4>
-                                    <span>Monday - Friday: 09:00 - 20:00</span>
-                                    <span>Sunday & Saturday: 10:30 - 22:00</span>
+                                    <span>All days: 8:00 AM - 2:00 AM (Egypt Time)</span>
                                 </div>
                             </div>
                         </div>
