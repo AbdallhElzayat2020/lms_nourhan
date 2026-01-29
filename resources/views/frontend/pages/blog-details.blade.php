@@ -566,7 +566,7 @@
 
     @media only screen and (max-width: 767px) {
         .blog-details-top .blog-details-thumb {
-            height: 120px !important;
+            height: 150px !important;
         }
     }
 </style>
