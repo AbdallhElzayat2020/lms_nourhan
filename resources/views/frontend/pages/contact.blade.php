@@ -151,8 +151,8 @@
                                 </div>
                                 <div class="content">
                                     <h4 class="title">Phone Number & Email</h4>
-                                    <span><a href="tel:00000000000">00000000000</a></span>
-                                    <span><a href="mailto:nourhanacademy@gmail.com">nourhanacademy@gmail.com</a></span>
+                                    <span><a href="tel:+201065537718">+20 10 65537718</a></span>
+                                    <span><a href="mailto:info@sisternourhan.com">info@sisternourhan.com</a></span>
                                 </div>
                             </div>
 

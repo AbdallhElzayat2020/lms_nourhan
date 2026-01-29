@@ -45,18 +45,25 @@
             align-items: center;
             color: #fff;
             margin-bottom: 10px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
         }
 
         .footer-contact-info .contact-item i {
             color: var(--ed-color-theme-primary, #006D64);
             font-size: 18px;
             min-width: 24px;
+            flex-shrink: 0;
         }
 
         .footer-contact-info .contact-item a {
             color: #fff;
             text-decoration: none;
             transition: color 0.3s ease;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
         }
 
         .footer-contact-info .contact-item a:hover {
@@ -103,6 +110,43 @@
                 max-width: 180px;
                 margin-left: 0;
                 margin-right: 0;
+            }
+        }
+
+        /* Mobile: 2 boxes side by side */
+        @media (max-width: 767.98px) {
+            .footer-wrap .col-lg-3 {
+                flex: 0 0 50%;
+                max-width: 50%;
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+
+            .footer-wrap .footer-widget {
+                padding-left: 8px;
+                padding-right: 8px;
+                overflow: hidden;
+                word-wrap: break-word;
+                max-width: 100%;
+            }
+
+            .footer-wrap {
+                row-gap: 20px;
+            }
+
+            .footer-contact-info {
+                max-width: 100%;
+                overflow: hidden;
+            }
+
+            .footer-contact-info .contact-item {
+                flex-wrap: wrap;
+                max-width: 100%;
+            }
+
+            .footer-contact-info .contact-item a {
+                font-size: 14px;
+                line-height: 1.4;
             }
         }
     </style>
@@ -164,7 +208,6 @@
                     <div class="footer-widget widget-2">
                         <h3 class="widget-header">Useful Links</h3>
                         <ul class="footer-list">
-                            <li><a href="{{ route('frontend.courses') }}">Courses</a></li>
                             @php
                                 $footerCategories = \Illuminate\Support\Facades\Cache::remember(
                                     'footer_categories',
