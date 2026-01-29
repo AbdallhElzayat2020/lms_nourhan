@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
-use App\Models\Category;
+use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -29,9 +29,9 @@ class BlogController extends Controller
         // Filter by category slug
         $selectedCategory = null;
         if ($request->has('category') && $request->category) {
-            $selectedCategory = Category::where('slug', $request->category)->first();
+            $selectedCategory = BlogCategory::where('slug', $request->category)->first();
             if ($selectedCategory) {
-                $query->where('category_id', $selectedCategory->id);
+                $query->where('blog_category_id', $selectedCategory->id);
             }
         }
 
@@ -41,7 +41,7 @@ class BlogController extends Controller
 
         // Cache categories (5 minutes)
         $categories = Cache::remember('blog_categories', 300, function () {
-            return Category::active()->orderBy('name')->get();
+            return BlogCategory::active()->orderBy('name')->get();
         });
 
         // Cache recent blogs for sidebar (3 minutes)
