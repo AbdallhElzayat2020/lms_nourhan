@@ -284,8 +284,8 @@
                                                 class="fa-sharp fa-solid fa-bolt"></i></span>{{ $aboutSection->subtitle }}
                                     </p>
                                 @endif
-                                <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">
-                                    {!! nl2br(e($aboutSection->title)) !!}</h2>
+                                <h1 class="section-title wow fade-in-bottom" data-wow-delay="400ms">
+                                    {!! nl2br(e($aboutSection->title)) !!}</h1>
                             </div>
                             @if ($aboutSection->description)
                                 <p class="mb-30 wow fade-in-bottom" data-wow-delay="500ms">
