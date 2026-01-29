@@ -39,19 +39,12 @@
                                                         </a>
                                                     </li>
                                                 @endforeach
-                                                @if ($navCategory->courses->count() > 6)
-                                                    <li>
-                                                        <a href="{{ route('frontend.courses', ['category' => $navCategory->slug]) }}">
-                                                            View all in {{ $navCategory->name }}
-                                                        </a>
-                                                    </li>
-                                                @endif
                                             </ul>
                                         @endif
                                     </li>
                                 @endforeach
                             @endisset
-                           
+
                             <li class="menu-item-has-children">
                                 <a href="{{ route('frontend.blog') }}">Blog</a>
 
