@@ -220,12 +220,12 @@
                             <img src="{{ asset('assets/frontend/img/logo_horezntal.webp') }}"
                                 alt="Sister Nourhan Academy Logo" class="footer-logo mb-30">
                         </a>
-                        <p class="mb-30">Trusted online Islamic learning: Qur’an, Arabic, and Islamic studies anytime, anywhere</p>
+                        <p class="mb-30">Trusted online Islamic learning: Qur’an, Arabic, and Islamic studies anytime,
+                            anywhere</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget widget-2">
-                        <h3 class="widget-header">Company Info</h3>
                         <ul class="footer-list">
                             <li><a href="{{ route('frontend.blog') }}">Blog</a></li>
                             <li><a href="{{ route('frontend.about') }}">About Us</a></li>
@@ -237,16 +237,15 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget widget-2">
-                        <h3 class="widget-header">Useful Links</h3>
                         <ul class="footer-list">
                             @php
-$footerCategories = \Illuminate\Support\Facades\Cache::remember(
-    'footer_categories',
-    600,
-    function () {
-        return \App\Models\Category::active()->orderBy('sort_order')->take(5)->get();
-    },
-);
+                                $footerCategories = \Illuminate\Support\Facades\Cache::remember(
+                                    'footer_categories',
+                                    600,
+                                    function () {
+                                        return \App\Models\Category::active()->orderBy('sort_order')->take(5)->get();
+                                    },
+                                );
                             @endphp
                             @foreach ($footerCategories as $category)
                                 <li>
