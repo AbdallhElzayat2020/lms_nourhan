@@ -522,6 +522,12 @@
 
     /* Responsive spacing */
     @media (max-width: 768px) {
+        /* Reduce large padding on mobile */
+        .blog-details {
+            padding-top: 40px !important;
+            padding-bottom: 40px !important;
+        }
+
         .blog-details-content {
             margin-top: 25px !important;
             padding-top: 20px;
@@ -546,6 +552,21 @@
 
         .recent-posts-widget {
             padding: 20px;
+        }
+
+        /* Reduce spacing in blog content on mobile */
+        .blog-content {
+            margin-bottom: 0;
+        }
+
+        .blog-content p {
+            margin-bottom: 15px;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .blog-details-top .blog-details-thumb {
+            height: 120px !important;
         }
     }
 </style>
