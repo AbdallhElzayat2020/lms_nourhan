@@ -122,7 +122,7 @@
                                         <a href="{{ route('admin.blogs.show', $blog->id) }}" class="btn btn-sm btn-label-info">
                                             <i class="ti ti-eye"></i>
                                         </a>
-                                        <a href="{{ route('admin.blogs.edit', $blog->id) }}"
+                                        <a href="{{ route('admin.blogs.edit', $blog->id) }}?{{ http_build_query(request()->only(['page','category'])) }}"
                                             class="btn btn-sm btn-label-primary">
                                             <i class="ti ti-edit"></i>
                                         </a>

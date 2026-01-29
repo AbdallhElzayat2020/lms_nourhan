@@ -210,7 +210,15 @@ class BlogController extends Controller
             Cache::forget('home_recent_blogs');
             Cache::forget('blog_recent_sidebar');
 
-            return redirect()->route('admin.blogs.index')
+            $queryParams = [];
+            if ($request->has('page')) {
+                $queryParams['page'] = $request->input('page');
+            }
+            if ($request->has('category')) {
+                $queryParams['category'] = $request->input('category');
+            }
+
+            return redirect()->route('admin.blogs.index', $queryParams)
                 ->with('success', 'Blog updated successfully.');
         } catch (ValidationException $e) {
             return redirect()->back()

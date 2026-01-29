@@ -267,6 +267,13 @@
                             @csrf
                             @method('PUT')
 
+                            @if(request('page'))
+                                <input type="hidden" name="page" value="{{ request('page') }}">
+                            @endif
+                            @if(request('category'))
+                                <input type="hidden" name="category" value="{{ request('category') }}">
+                            @endif
+
                             <!-- Basic Information Section -->
                             <div class="section-card mt-3">
                                 <div class="section-header info">
@@ -491,7 +498,7 @@
 
                             <!-- Submit Button -->
                             <div class="d-flex justify-content-end gap-2 mt-4">
-                                <a href="{{ route('admin.blogs.index') }}" class="btn btn-label-secondary">
+                                <a href="{{ route('admin.blogs.index', request()->only(['page','category'])) }}" class="btn btn-label-secondary">
                                     <i class="ti ti-x me-1"></i>
                                     Cancel
                                 </a>
