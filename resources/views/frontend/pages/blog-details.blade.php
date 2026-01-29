@@ -265,6 +265,44 @@
         margin-bottom: 20px;
     }
 
+    /* Reset li styles to match dashboard editor - remove any overrides */
+    .blog-content ul,
+    .blog-content ol {
+        list-style-position: outside;
+        padding-left: 2em;
+        margin: 1em 0;
+    }
+
+    .blog-content ul {
+        list-style-type: disc;
+    }
+
+    .blog-content ol {
+        list-style-type: decimal;
+    }
+
+    .blog-content li {
+        display: list-item;
+        margin-bottom: 0.5em;
+        margin-top: 0;
+        padding-left: 0;
+        font-size: inherit;
+        font-weight: inherit;
+        color: inherit;
+        line-height: inherit;
+        text-transform: none;
+        white-space: normal;
+    }
+
+    .blog-content li::before {
+        display: none !important;
+        content: none !important;
+    }
+
+    .blog-content ul li::marker {
+        color: inherit;
+    }
+
     .blog-content h1, .blog-content h2, .blog-content h3,
     .blog-content h4, .blog-content h5, .blog-content h6 {
         margin-top: 30px;
