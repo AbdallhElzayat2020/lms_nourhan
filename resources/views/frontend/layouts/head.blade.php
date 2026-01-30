@@ -3,7 +3,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- SEO Meta Tags -->
-    @if(isset($seoPageName))
+    @if (isset($seoPageName))
         @seoMeta($seoPageName)
     @elseif(isset($dynamicSeoModel))
         @dynamicSeoMeta($dynamicSeoModel)
@@ -13,7 +13,7 @@
     @endif
 
     <!-- Noindex for search pages -->
-    @if(isset($noindex) && $noindex)
+    @if (isset($noindex) && $noindex)
         <meta name="robots" content="noindex, nofollow">
     @endif
 
@@ -37,36 +37,52 @@
 
     <!-- Non‑critical CSS (loaded asynchronously to reduce render‑blocking) -->
     <link rel="preload" href="{{ asset('assets/frontend/css/fontawesome.min.css') }}" as="style"
-          onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ asset('assets/frontend/css/fontawesome.min.css') }}"></noscript>
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="{{ asset('assets/frontend/css/fontawesome.min.css') }}">
+    </noscript>
 
     <link rel="preload" href="{{ asset('assets/frontend/css/venobox.min.css') }}" as="style"
-          onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ asset('assets/frontend/css/venobox.min.css') }}"></noscript>
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="{{ asset('assets/frontend/css/venobox.min.css') }}">
+    </noscript>
 
     <link rel="preload" href="{{ asset('assets/frontend/css/animate.min.css') }}" as="style"
-          onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ asset('assets/frontend/css/animate.min.css') }}"></noscript>
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="{{ asset('assets/frontend/css/animate.min.css') }}">
+    </noscript>
 
     <link rel="preload" href="{{ asset('assets/frontend/css/keyframe-animation.css') }}" as="style"
-          onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ asset('assets/frontend/css/keyframe-animation.css') }}"></noscript>
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="{{ asset('assets/frontend/css/keyframe-animation.css') }}">
+    </noscript>
 
     <link rel="preload" href="{{ asset('assets/frontend/css/odometer.min.css') }}" as="style"
-          onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ asset('assets/frontend/css/odometer.min.css') }}"></noscript>
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="{{ asset('assets/frontend/css/odometer.min.css') }}">
+    </noscript>
 
     <link rel="preload" href="{{ asset('assets/frontend/css/nice-select.css') }}" as="style"
-          onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ asset('assets/frontend/css/nice-select.css') }}"></noscript>
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="{{ asset('assets/frontend/css/nice-select.css') }}">
+    </noscript>
 
     <link rel="preload" href="{{ asset('assets/frontend/css/daterangepicker.css') }}" as="style"
-          onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ asset('assets/frontend/css/daterangepicker.css') }}"></noscript>
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="{{ asset('assets/frontend/css/daterangepicker.css') }}">
+    </noscript>
 
     <link rel="preload" href="{{ asset('assets/frontend/css/swiper.min.css') }}" as="style"
-          onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ asset('assets/frontend/css/swiper.min.css') }}"></noscript>
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="{{ asset('assets/frontend/css/swiper.min.css') }}">
+    </noscript>
 
     <!-- Floating Buttons + Scroll Top CSS -->
     <style>
@@ -74,6 +90,7 @@
         #preloader {
             transition: opacity 0.15s ease-out, visibility 0.15s ease-out;
         }
+
         #preloader.fade-out {
             opacity: 0;
             visibility: hidden;
@@ -156,7 +173,8 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            z-index: 10001; /* فوق أزرار واتساب/الاتصال */
+            z-index: 10001;
+            /* فوق أزرار واتساب/الاتصال */
         }
 
         #scrollup.hide {
@@ -193,10 +211,19 @@
                 right: 16px;
             }
         }
+
+        @media only screen and (max-width: 992px) {
+            .mobile-side-menu .side-menu-head {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 10px !important;
+            }
+        }
     </style>
 
     <!-- SEO Schema Markup -->
-    @if(isset($seoPageName))
+    @if (isset($seoPageName))
         @seoSchema($seoPageName)
     @elseif(isset($dynamicSeoModel))
         @dynamicSeoSchema($dynamicSeoModel)
