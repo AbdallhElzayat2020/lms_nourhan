@@ -44,12 +44,6 @@
                                                     {{ $slider->button_text_2 }}
                                                     <i class="fa-sharp fa-regular fa-arrow-right"></i>
                                                 </a>
-                                            @else
-                                                <!-- Fallback to default courses button -->
-                                                <a class="ed-primary-btn slider-btn" href="{{ route('frontend.courses') }}">
-                                                    Our Courses
-                                                    <i class="fa-sharp fa-regular fa-arrow-right"></i>
-                                                </a>
                                             @endif
                                         </div>
                                     </div>
