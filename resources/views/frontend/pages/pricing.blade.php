@@ -28,7 +28,7 @@
                 <div class="section-heading text-center">
                     <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
                                 class="fa-sharp fa-solid fa-bolt"></i></span>Pricing Plans</h4>
-                    <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Choose the best plan for you</h2>
+                    <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Flexible hourly rates. Learn at your pace</h2>
                 </div>
             <div class="tab-content wow fadeInUp" id="priceTabContent" data-wow-delay=".5s">
                 <div class="tab-pane fade show active" id="monthly" role="tabpanel" aria-labelledby="monthly-tab">

@@ -257,7 +257,7 @@ $footerCategories = \Illuminate\Support\Facades\Cache::remember(
                                     </a>
                                 </li>
                             @endforeach
-                            <li><a href="{{ route('frontend.blog') }}">News & Blogs</a></li>
+                            <li><a href="{{ route('frontend.blog') }}">Blogs</a></li>
                         </ul>
                     </div>
                 </div>

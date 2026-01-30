@@ -15,9 +15,9 @@
         </div>
         <div class="container">
             <div class="page-header-content">
-                <h1 class="title">Course Feedbacks</h1>
+                <h1 class="title">Testimonials</h1>
                 <a class="home" href="{{ route('frontend.home') }}">Home </a><span class="icon">/</span>
-                <a class="inner-page" href="{{ route('frontend.course-feedbacks') }}"> Course Feedbacks</a>
+                <a class="inner-page" href="javascript:void(0)">Testimonials</a>
             </div>
         </div>
     </section>
@@ -27,9 +27,9 @@
         <div class="container">
             <div class="section-heading text-center">
                 <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
-                            class="fa-sharp fa-solid fa-bolt"></i></span>Our Features</h4>
+                            class="fa-sharp fa-solid fa-bolt"></i></span>Testimonials</h4>
                 <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Founded by Industry Leaders With
-                    <br>Large Scale Business
+                    <br>Testimonials from our students
                 </h2>
             </div>
             @if($feedbacks->count() > 0)
@@ -67,7 +67,7 @@
                 </div>
             @else
                 <div class="text-center py-5">
-                    <p class="text-muted">No course feedbacks available at the moment.</p>
+                    <p class="text-muted">No testimonials available at the moment.</p>
                 </div>
             @endif
         </div>

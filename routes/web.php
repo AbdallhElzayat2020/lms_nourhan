@@ -86,7 +86,7 @@ Route::prefix('')->name('frontend.')->group(function () {
     Route::get('/event-details/{slug}', [EventsController::class, 'show'])->name('event.details');
 
     // Course Feedbacks
-    Route::get('/course-feedbacks', [CourseFeedbackController::class, 'index'])->name('course-feedbacks');
+    Route::get('/testimonials', [CourseFeedbackController::class, 'index'])->name('course-feedbacks');
     Route::get('/event-booking/{slug}', [EventBookingController::class, 'create'])->name('event.booking');
     Route::post('/event-booking/{slug}', [EventBookingController::class, 'store'])->name('event.booking.store');
 

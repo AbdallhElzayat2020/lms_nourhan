@@ -47,7 +47,9 @@
 
                             <li class="menu-item-has-children">
                                 <a href="{{ route('frontend.blog') }}">Blog</a>
-
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="{{ route('frontend.pricing') }}">Pricing</a>
                             </li>
                             <li><a href="{{ route('frontend.contact') }}">Contact</a></li>
                         </ul>
@@ -56,7 +58,7 @@
                 <!-- /.header-menu-wrap -->
                 <div class="header-right-wrap">
                     <div class="header-right">
-                        <a href="{{ route('frontend.book') }}" class="ed-primary-btn header-btn">Book Now</a>
+                        {{-- <a href="{{ route('frontend.book') }}" class="ed-primary-btn header-btn">Book Now</a> --}}
                         <div class="header-logo d-none d-lg-none">
                             <a href="{{ route('frontend.home') }}">
                                 <img src="{{ asset('assets/frontend/img/logo_horezntal.webp') }}" alt="Logo">
