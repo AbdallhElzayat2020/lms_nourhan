@@ -179,6 +179,9 @@
                 font-size: 14px;
                 line-height: 1.4;
             }
+            .footer-widget .widget-header {
+                margin-top: 15px;
+            }
         }
     </style>
     <div class="footer-top-wrap">
@@ -227,9 +230,9 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget widget-2">
                         <ul class="footer-list">
-                            <li><a href="{{ route('frontend.blog') }}">Blog</a></li>
                             <li><a href="{{ route('frontend.about') }}">About Us</a></li>
                             <li><a href="{{ route('frontend.contact') }}">Contact</a></li>
+                            <li><a href="{{ route('frontend.pricing') }}">Pricing</a></li>
                             <li><a href="{{ route('frontend.terms') }}">Terms &amp; Conditions</a></li>
                             <li><a href="{{ route('frontend.privacy') }}">Privacy Policy</a></li>
                         </ul>
@@ -239,13 +242,13 @@
                     <div class="footer-widget widget-2">
                         <ul class="footer-list">
                             @php
-                                $footerCategories = \Illuminate\Support\Facades\Cache::remember(
-                                    'footer_categories',
-                                    600,
-                                    function () {
-                                        return \App\Models\Category::active()->orderBy('sort_order')->take(5)->get();
-                                    },
-                                );
+$footerCategories = \Illuminate\Support\Facades\Cache::remember(
+    'footer_categories',
+    600,
+    function () {
+        return \App\Models\Category::active()->orderBy('sort_order')->take(5)->get();
+    },
+);
                             @endphp
                             @foreach ($footerCategories as $category)
                                 <li>

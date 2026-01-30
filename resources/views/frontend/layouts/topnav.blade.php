@@ -4,7 +4,7 @@
             <div class="top-bar-left">
                 <ul class="top-bar-list">
                     <li><i class="fa-regular fa-phone"></i><a href="tel:+201065537718">+20 10 65537718</a></li>
-                    <li><i class="fa-regular fa-clock"></i><span>Mon - Sat: 8:00 - 15:00</span></li>
+                    <li><i class="fa-regular fa-clock"></i><span>All days: 8:00 AM - 2:00 AM (Egypt Time)</span></li>
                 </ul>
             </div>
             <div class="top-bar-right">
