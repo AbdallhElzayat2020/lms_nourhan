@@ -28,8 +28,8 @@
             <div class="section-heading text-center">
                 <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
                             class="fa-sharp fa-solid fa-bolt"></i></span>Testimonials</h4>
-                <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Founded by Industry Leaders With
-                    <br>Testimonials from our students
+                <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">
+                    Testimonials from our students
                 </h2>
             </div>
             @if($feedbacks->count() > 0)
