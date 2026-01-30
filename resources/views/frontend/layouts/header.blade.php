@@ -95,10 +95,6 @@
             <button class="mobile-side-menu-close"><i class="fa-regular fa-xmark"></i></button>
         </div>
         <div class="side-menu-wrap"></div>
-        <ul class="side-menu-list">
-            <li><i class="fa-light fa-phone"></i>Phone : <a href="tel:+201065537718">+20 10 65537718</a></li>
-            <li><i class="fa-light fa-envelope"></i>Email : <a href="mailto:info@example.com">info@example.com</a></li>
-        </ul>
     </div>
 </div>
 <!-- /.mobile-side-menu -->
