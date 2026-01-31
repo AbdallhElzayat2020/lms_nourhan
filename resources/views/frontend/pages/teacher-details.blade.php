@@ -158,7 +158,7 @@
                         <div class="row gy-lg-0 gy-4">
                             @foreach ($recentTeachers as $recentTeacher)
                                 <div class="col-lg-3 col-md-6">
-                                    <div class="team-item-3 wow fade-in-bottom" data-wow-delay="200ms">
+                                    <div class="team-item-3">
                                         <a href="{{ route('frontend.teacher.details', $recentTeacher->slug) }}">
                                             <div class="team-thumb-wrap">
                                                 <div class="team-thumb">
@@ -369,6 +369,9 @@
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
         position: sticky;
         top: 100px;
+        /* GPU layer to reduce scroll jank */
+        transform: translateZ(0);
+        will-change: transform;
     }
 
     .team-details-img-wrapper {
@@ -487,3 +490,21 @@
         }
     }
 </style>
+
+@push('js')
+<script>
+(function() {
+    // Disable smooth-scroll on this page for lighter, native scroll (runs after smooth-scroll init)
+    function disableSmoothScroll() {
+        if (window.SmoothScroll && typeof window.SmoothScroll.destroy === 'function') {
+            window.SmoothScroll.destroy();
+        }
+    }
+    if (document.readyState === 'complete') {
+        setTimeout(disableSmoothScroll, 0);
+    } else {
+        window.addEventListener('load', function() { setTimeout(disableSmoothScroll, 0); });
+    }
+})();
+</script>
+@endpush
