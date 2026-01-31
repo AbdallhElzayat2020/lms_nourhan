@@ -405,11 +405,68 @@
             padding: 20px 0;
         }
 
-        /* Text alignment inside course rich-text sections
-               (ensures it matches editor alignment) */
-        .section-text p,
-        .section-text li {
+        .section-text p {
+            margin-bottom: 20px;
             text-align: left;
+        }
+
+        /* Same list/li formatting as blog - match dashboard editor */
+        .section-text ul,
+        .section-text ol {
+            list-style-position: outside;
+            padding-left: 2em;
+            margin: 1em 0;
+        }
+
+        .section-text ul {
+            list-style-type: disc;
+        }
+
+        .section-text ol {
+            list-style-type: decimal;
+        }
+
+        .section-text li {
+            display: list-item;
+            margin-bottom: 0.5em;
+            margin-top: 0;
+            padding-left: 0;
+            font-size: inherit;
+            font-weight: inherit;
+            color: inherit;
+            line-height: inherit;
+            text-transform: none;
+            white-space: normal;
+            text-align: left;
+        }
+
+        .section-text li::before {
+            display: none !important;
+            content: none !important;
+        }
+
+        .section-text ul li::marker,
+        .section-text ol li::marker {
+            color: inherit;
+        }
+
+        .section-text h1, .section-text h2, .section-text h3,
+        .section-text h4, .section-text h5, .section-text h6 {
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .section-text img {
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .section-text blockquote {
+            margin: 30px 0;
+            padding: 20px 30px;
+            background: #f8f9fa;
+            border-left: 4px solid var(--ed-color-theme-primary, #0f4d46);
+            border-radius: 8px;
         }
 
         @media (max-width: 991px) {
