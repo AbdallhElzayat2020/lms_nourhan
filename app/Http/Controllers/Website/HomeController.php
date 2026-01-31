@@ -54,7 +54,7 @@ class HomeController extends Controller
         });
 
         $recentTeachers = Cache::remember('home_teachers', 300, function () {
-            return Teacher::active()->latest()->take(8)->get();
+            return Teacher::active()->orderBy('sort_order')->orderBy('id')->take(8)->get();
         });
 
         $counters = Cache::remember('home_counters', 600, function () {

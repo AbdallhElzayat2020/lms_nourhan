@@ -12,7 +12,7 @@ class TeachersController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::active()->orderBy('sort_order')->latest()->paginate(12);
+        $teachers = Teacher::active()->orderBy('sort_order')->orderBy('id')->paginate(12);
 
         // Ensure all teachers have slugs
         foreach ($teachers as $teacher) {
@@ -58,7 +58,8 @@ class TeachersController extends Controller
 
         $recentTeachers = Teacher::active()
             ->where('id', '!=', $teacher->id)
-            ->latest()
+            ->orderBy('sort_order')
+            ->orderBy('id')
             ->take(8)
             ->get();
 
