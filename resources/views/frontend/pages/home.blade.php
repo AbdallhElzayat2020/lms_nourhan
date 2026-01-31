@@ -592,7 +592,7 @@
 
     {{-- <!-- ./ testimonial --> --}}
     @if ($testimonials->count() > 0)
-        <section class="testimonial-section-2 pt-120 pb-120">
+        <section class="testimonial-section-2 pb-120">
             <div class="container">
                 <div class="section-heading text-center">
                     <p class="sub-heading wow fade-in-bottom" data-wow-delay="200ms">
