@@ -134,9 +134,10 @@
                                                 <div class="section-text">
                                                     {!! $course->how_course_works_text !!}
                                                 </div>
-                                            </div>
-                                            <div class="book-now-btn">
-                                                <a href="{{ route('frontend.book') }}" class="ed-primary-btn">Book Now</a>
+                                                <div class="book-now-btn">
+                                                    <a href="{{ route('frontend.book') }}" class="ed-primary-btn">Book
+                                                        Now</a>
+                                                </div>
                                             </div>
                                         @endif
 
