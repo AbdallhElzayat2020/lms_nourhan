@@ -136,7 +136,7 @@
                                         @endif
 
                                     </div>
-                                    <div class="book-now-btn">
+                                    <div class="book-now-btn mt-3">
                                         <a href="{{ route('frontend.book') }}" class="ed-primary-btn">Book Now</a>
                                     </div>
                                 </div>
