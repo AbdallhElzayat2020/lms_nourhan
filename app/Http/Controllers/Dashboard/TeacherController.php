@@ -75,7 +75,7 @@ class TeacherController extends Controller
         // Clear related cache
         Cache::forget('home_teachers');
 
-        return redirect()->route('admin.teachers.index')
+        return redirect()->route('admin.teachers.index', request()->query())
             ->with('success', 'Teacher created successfully');
     }
 
@@ -146,14 +146,14 @@ class TeacherController extends Controller
         // Clear related cache
         Cache::forget('home_teachers');
 
-        return redirect()->route('admin.teachers.index')
+        return redirect()->route('admin.teachers.index', request()->query())
             ->with('success', 'Teacher updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Teacher $teacher)
+    public function destroy(Request $request, Teacher $teacher)
     {
         if ($teacher->image) {
             Storage::disk('teachers')->delete(basename($teacher->image));
@@ -164,7 +164,18 @@ class TeacherController extends Controller
         // Clear related cache
         Cache::forget('home_teachers');
 
-        return redirect()->route('admin.teachers.index')
+        $queryParams = [];
+        if ($request->filled('index_query')) {
+            parse_str($request->input('index_query'), $queryParams);
+        }
+        if (empty($queryParams) && $request->header('referer')) {
+            $q = parse_url($request->header('referer'), PHP_URL_QUERY);
+            if ($q) {
+                parse_str($q, $queryParams);
+            }
+        }
+
+        return redirect()->route('admin.teachers.index', $queryParams)
             ->with('success', 'Teacher deleted successfully');
     }
 

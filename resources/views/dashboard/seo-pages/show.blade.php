@@ -13,7 +13,7 @@
                     <i class="ti ti-edit me-2"></i>
                     Edit
                 </a>
-                <a href="{{ route('admin.seo-pages.index') }}" class="btn btn-label-secondary">
+                <a href="{{ route('admin.seo-pages.index', request()->query()) }}" class="btn btn-label-secondary">
                     <i class="ti ti-arrow-left me-2"></i>
                     Back to List
                 </a>

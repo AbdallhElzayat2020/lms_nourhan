@@ -69,7 +69,7 @@ class EventController extends Controller
         // Clear related cache
         Cache::forget('home_upcoming_events');
 
-        return redirect()->route('admin.events.index')
+        return redirect()->route('admin.events.index', request()->query())
             ->with('success', 'Event created successfully');
     }
 
@@ -137,7 +137,7 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Event $event)
+    public function destroy(Request $request, Event $event)
     {
         if ($event->image) {
             Storage::disk('events')->delete(basename($event->image));
@@ -148,7 +148,18 @@ class EventController extends Controller
         // Clear related cache
         Cache::forget('home_upcoming_events');
 
-        return redirect()->route('admin.events.index')
+        $queryParams = [];
+        if ($request->filled('index_query')) {
+            parse_str($request->input('index_query'), $queryParams);
+        }
+        if (empty($queryParams) && $request->header('referer')) {
+            $q = parse_url($request->header('referer'), PHP_URL_QUERY);
+            if ($q) {
+                parse_str($q, $queryParams);
+            }
+        }
+
+        return redirect()->route('admin.events.index', $queryParams)
             ->with('success', 'Event deleted successfully');
     }
 }

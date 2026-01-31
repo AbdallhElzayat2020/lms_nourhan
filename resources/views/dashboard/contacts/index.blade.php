@@ -60,7 +60,7 @@
                                 <td>{{ $contact->created_at->format('Y-m-d H:i') }}</td>
                                 <td>
                                     <div class="d-flex gap-2">
-                                        <a href="{{ route('admin.contacts.show', $contact->id) }}"
+                                        <a href="{{ route('admin.contacts.show', $contact->id) }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}"
                                             class="btn btn-sm btn-label-primary">
                                             <i class="ti ti-eye"></i>
                                         </a>
@@ -83,6 +83,7 @@
                                             onsubmit="return confirm('Are you sure you want to delete this contact?');">
                                             @csrf
                                             @method('DELETE')
+                                            <input type="hidden" name="index_query" value="{{ http_build_query(request()->query()) }}">
                                             <button type="submit" class="btn btn-sm btn-label-danger">
                                                 <i class="ti ti-trash"></i>
                                             </button>

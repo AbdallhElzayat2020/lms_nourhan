@@ -36,18 +36,29 @@ class BookingController extends Controller
 
         $booking->update($validated);
 
-        return redirect()->route('admin.bookings.index')
+        return redirect()->route('admin.bookings.index', request()->query())
             ->with('success', 'Booking status updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Booking $booking)
+    public function destroy(Request $request, Booking $booking)
     {
         $booking->delete();
 
-        return redirect()->route('admin.bookings.index')
+        $queryParams = [];
+        if ($request->filled('index_query')) {
+            parse_str($request->input('index_query'), $queryParams);
+        }
+        if (empty($queryParams) && $request->header('referer')) {
+            $q = parse_url($request->header('referer'), PHP_URL_QUERY);
+            if ($q) {
+                parse_str($q, $queryParams);
+            }
+        }
+
+        return redirect()->route('admin.bookings.index', $queryParams)
             ->with('success', 'Booking deleted successfully');
     }
 }

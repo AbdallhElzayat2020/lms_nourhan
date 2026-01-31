@@ -43,7 +43,7 @@ class SeoPageController extends Controller
 
         SeoPage::create($validated);
 
-        return redirect()->route('admin.seo-pages.index')
+        return redirect()->route('admin.seo-pages.index', request()->query())
             ->with('success', 'SEO page created successfully.');
     }
 
@@ -81,18 +81,29 @@ class SeoPageController extends Controller
 
         $seoPage->update($validated);
 
-        return redirect()->route('admin.seo-pages.index')
+        return redirect()->route('admin.seo-pages.index', request()->query())
             ->with('success', 'SEO page updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(SeoPage $seoPage)
+    public function destroy(Request $request, SeoPage $seoPage)
     {
         $seoPage->delete();
 
-        return redirect()->route('admin.seo-pages.index')
+        $queryParams = [];
+        if ($request->filled('index_query')) {
+            parse_str($request->input('index_query'), $queryParams);
+        }
+        if (empty($queryParams) && $request->header('referer')) {
+            $q = parse_url($request->header('referer'), PHP_URL_QUERY);
+            if ($q) {
+                parse_str($q, $queryParams);
+            }
+        }
+
+        return redirect()->route('admin.seo-pages.index', $queryParams)
             ->with('success', 'SEO page deleted successfully.');
     }
 }

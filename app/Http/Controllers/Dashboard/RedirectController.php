@@ -44,7 +44,7 @@ class RedirectController extends Controller
 
         Redirect::create($validated);
 
-        return redirect()->route('admin.redirects.index')
+        return redirect()->route('admin.redirects.index', request()->query())
             ->with('success', 'Redirect created successfully.');
     }
 
@@ -90,11 +90,22 @@ class RedirectController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Redirect $redirect)
+    public function destroy(Request $request, Redirect $redirect)
     {
         $redirect->delete();
 
-        return redirect()->route('admin.redirects.index')
+        $queryParams = [];
+        if ($request->filled('index_query')) {
+            parse_str($request->input('index_query'), $queryParams);
+        }
+        if (empty($queryParams) && $request->header('referer')) {
+            $q = parse_url($request->header('referer'), PHP_URL_QUERY);
+            if ($q) {
+                parse_str($q, $queryParams);
+            }
+        }
+
+        return redirect()->route('admin.redirects.index', $queryParams)
             ->with('success', 'Redirect deleted successfully.');
     }
 

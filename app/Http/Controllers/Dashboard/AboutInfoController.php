@@ -42,7 +42,7 @@ class AboutInfoController extends Controller
 
         AboutInfo::create($validated);
 
-        return redirect()->route('admin.about-infos.index')
+        return redirect()->route('admin.about-infos.index', request()->query())
             ->with('success', 'Item created successfully');
     }
 
@@ -70,7 +70,7 @@ class AboutInfoController extends Controller
 
         $aboutInfo->update($validated);
 
-        return redirect()->route('admin.about-infos.index')
+        return redirect()->route('admin.about-infos.index', request()->query())
             ->with('success', 'Item updated successfully');
     }
 

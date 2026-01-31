@@ -133,7 +133,7 @@
                 </div>
 
                 <div class="d-flex justify-content-end gap-2">
-                    <a href="{{ route('admin.sliders.index') }}" class="btn btn-label-secondary">
+                    <a href="{{ route('admin.sliders.index', request()->query()) }}" class="btn btn-label-secondary">
                         Cancel
                     </a>
                     <button type="submit" class="btn btn-primary">

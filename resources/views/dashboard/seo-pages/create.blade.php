@@ -139,7 +139,7 @@
                 </div>
 
                 <div class="card-footer d-flex justify-content-end gap-2">
-                    <a href="{{ route('admin.seo-pages.index') }}" class="btn btn-label-secondary">
+                    <a href="{{ route('admin.seo-pages.index', request()->query()) }}" class="btn btn-label-secondary">
                         Cancel
                     </a>
                     <button type="submit" class="btn btn-primary">

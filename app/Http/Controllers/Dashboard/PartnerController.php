@@ -51,7 +51,7 @@ class PartnerController extends Controller
         // Clear related cache
         Cache::forget('home_partners');
 
-        return redirect()->route('admin.partners.index')
+        return redirect()->route('admin.partners.index', request()->query())
             ->with('success', 'Partner created successfully');
     }
 
@@ -98,14 +98,14 @@ class PartnerController extends Controller
         // Clear related cache
         Cache::forget('home_partners');
 
-        return redirect()->route('admin.partners.index')
+        return redirect()->route('admin.partners.index', request()->query())
             ->with('success', 'Partner updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Partner $partner)
+    public function destroy(Request $request, Partner $partner)
     {
         if ($partner->logo) {
             Storage::disk('partners')->delete(basename($partner->logo));
@@ -116,7 +116,18 @@ class PartnerController extends Controller
         // Clear related cache
         Cache::forget('home_partners');
 
-        return redirect()->route('admin.partners.index')
+        $queryParams = [];
+        if ($request->filled('index_query')) {
+            parse_str($request->input('index_query'), $queryParams);
+        }
+        if (empty($queryParams) && $request->header('referer')) {
+            $q = parse_url($request->header('referer'), PHP_URL_QUERY);
+            if ($q) {
+                parse_str($q, $queryParams);
+            }
+        }
+
+        return redirect()->route('admin.partners.index', $queryParams)
             ->with('success', 'Partner deleted successfully');
     }
 }

@@ -56,7 +56,7 @@ class TestimonialController extends Controller
         // Clear related cache
         Cache::forget('home_testimonials');
 
-        return redirect()->route('admin.testimonials.index')
+        return redirect()->route('admin.testimonials.index', request()->query())
             ->with('success', 'Testimonial created successfully');
     }
 
@@ -102,14 +102,14 @@ class TestimonialController extends Controller
 
         $testimonial->update($validated);
 
-        return redirect()->route('admin.testimonials.index')
+        return redirect()->route('admin.testimonials.index', request()->query())
             ->with('success', 'Testimonial updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Testimonial $testimonial)
+    public function destroy(Request $request, Testimonial $testimonial)
     {
         if ($testimonial->image) {
             Storage::disk('testimonials')->delete(basename($testimonial->image));
@@ -120,7 +120,18 @@ class TestimonialController extends Controller
         // Clear related cache
         Cache::forget('home_testimonials');
 
-        return redirect()->route('admin.testimonials.index')
+        $queryParams = [];
+        if ($request->filled('index_query')) {
+            parse_str($request->input('index_query'), $queryParams);
+        }
+        if (empty($queryParams) && $request->header('referer')) {
+            $q = parse_url($request->header('referer'), PHP_URL_QUERY);
+            if ($q) {
+                parse_str($q, $queryParams);
+            }
+        }
+
+        return redirect()->route('admin.testimonials.index', $queryParams)
             ->with('success', 'Testimonial deleted successfully');
     }
 }

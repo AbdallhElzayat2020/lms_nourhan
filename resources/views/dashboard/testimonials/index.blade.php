@@ -6,7 +6,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Testimonials</h5>
-            <a href="{{ route('admin.testimonials.create') }}" class="btn btn-primary">
+            <a href="{{ route('admin.testimonials.create') }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}" class="btn btn-primary">
                 <i class="ti ti-plus me-1"></i>
                 Add New Testimonial
             </a>
@@ -68,11 +68,11 @@
                                 <td>{{ $testimonial->sort_order }}</td>
                                 <td>
                                     <div class="d-flex gap-2">
-                                        <a href="{{ route('admin.testimonials.show', $testimonial->id) }}"
+                                        <a href="{{ route('admin.testimonials.show', $testimonial->id) }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}"
                                             class="btn btn-sm btn-label-info">
                                             <i class="ti ti-eye"></i>
                                         </a>
-                                        <a href="{{ route('admin.testimonials.edit', $testimonial->id) }}"
+                                        <a href="{{ route('admin.testimonials.edit', $testimonial->id) }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}"
                                             class="btn btn-sm btn-label-primary">
                                             <i class="ti ti-edit"></i>
                                         </a>
@@ -80,6 +80,7 @@
                                             onsubmit="return confirm('Are you sure you want to delete this testimonial?');">
                                             @csrf
                                             @method('DELETE')
+                                            <input type="hidden" name="index_query" value="{{ http_build_query(request()->query()) }}">
                                             <button type="submit" class="btn btn-sm btn-label-danger">
                                                 <i class="ti ti-trash"></i>
                                             </button>

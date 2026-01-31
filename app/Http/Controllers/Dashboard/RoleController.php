@@ -55,7 +55,7 @@ class RoleController extends Controller
             $role->assignPermissions($permissions);
         }
 
-        return redirect()->route('admin.roles.index')
+        return redirect()->route('admin.roles.index', request()->query())
             ->with('success', 'Role created successfully');
     }
 
@@ -97,32 +97,43 @@ class RoleController extends Controller
 
         $role->assignPermissions($permissions);
 
-        return redirect()->route('admin.roles.index')
+        return redirect()->route('admin.roles.index', request()->query())
             ->with('success', 'Role updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $id)
     {
         $role = Role::findOrFail($id);
 
+        $queryParams = [];
+        if ($request->filled('index_query')) {
+            parse_str($request->input('index_query'), $queryParams);
+        }
+        if (empty($queryParams) && $request->header('referer')) {
+            $q = parse_url($request->header('referer'), PHP_URL_QUERY);
+            if ($q) {
+                parse_str($q, $queryParams);
+            }
+        }
+
         // Prevent deleting admin role
         if ($role->slug === 'admin') {
-            return redirect()->route('admin.roles.index')
+            return redirect()->route('admin.roles.index', $queryParams)
                 ->with('error', 'Cannot delete admin role');
         }
 
         // Check if role has users
         if ($role->users()->count() > 0) {
-            return redirect()->route('admin.roles.index')
+            return redirect()->route('admin.roles.index', $queryParams)
                 ->with('error', 'Cannot delete role with assigned users');
         }
 
         $role->delete();
 
-        return redirect()->route('admin.roles.index')
+        return redirect()->route('admin.roles.index', $queryParams)
             ->with('success', 'Role deleted successfully');
     }
 }

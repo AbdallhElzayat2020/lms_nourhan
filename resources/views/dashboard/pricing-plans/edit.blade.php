@@ -131,7 +131,7 @@
                         <i class="ti ti-check me-1"></i>
                         Update Plan
                     </button>
-                    <a href="{{ route('admin.pricing-plans.index') }}" class="btn btn-label-secondary">
+                    <a href="{{ route('admin.pricing-plans.index', request()->query()) }}" class="btn btn-label-secondary">
                         <i class="ti ti-x me-1"></i>
                         Cancel
                     </a>

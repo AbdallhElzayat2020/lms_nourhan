@@ -11,7 +11,7 @@
                     <i class="ti ti-edit me-1"></i>
                     Edit
                 </a>
-                <a href="{{ route('admin.teachers.index') }}" class="btn btn-label-secondary">
+                <a href="{{ route('admin.teachers.index', request()->query()) }}" class="btn btn-label-secondary">
                     Back to List
                 </a>
             </div>

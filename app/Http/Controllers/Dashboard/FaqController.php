@@ -39,7 +39,7 @@ class FaqController extends Controller
 
         Faq::create($validated);
 
-        return redirect()->route('admin.faqs.index')
+        return redirect()->route('admin.faqs.index', request()->query())
             ->with('success', 'FAQ created successfully');
     }
 
@@ -73,18 +73,29 @@ class FaqController extends Controller
 
         $faq->update($validated);
 
-        return redirect()->route('admin.faqs.index')
+        return redirect()->route('admin.faqs.index', request()->query())
             ->with('success', 'FAQ updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Faq $faq)
+    public function destroy(Request $request, Faq $faq)
     {
         $faq->delete();
 
-        return redirect()->route('admin.faqs.index')
+        $queryParams = [];
+        if ($request->filled('index_query')) {
+            parse_str($request->input('index_query'), $queryParams);
+        }
+        if (empty($queryParams) && $request->header('referer')) {
+            $q = parse_url($request->header('referer'), PHP_URL_QUERY);
+            if ($q) {
+                parse_str($q, $queryParams);
+            }
+        }
+
+        return redirect()->route('admin.faqs.index', $queryParams)
             ->with('success', 'FAQ deleted successfully');
     }
 }

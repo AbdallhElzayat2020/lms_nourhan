@@ -11,7 +11,7 @@
                     <i class="ti ti-edit me-1"></i>
                     Edit
                 </a>
-                <a href="{{ route('admin.testimonials.index') }}" class="btn btn-secondary">
+                <a href="{{ route('admin.testimonials.index', request()->query()) }}" class="btn btn-secondary">
                     <i class="ti ti-arrow-left me-1"></i>
                     Back to List
                 </a>

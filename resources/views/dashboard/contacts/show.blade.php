@@ -24,7 +24,7 @@
                         </button>
                     </form>
                 @endif
-                <a href="{{ route('admin.contacts.index') }}" class="btn btn-secondary">
+                <a href="{{ route('admin.contacts.index', request()->query()) }}" class="btn btn-secondary">
                     <i class="ti ti-arrow-left me-1"></i>
                     Back to List
                 </a>

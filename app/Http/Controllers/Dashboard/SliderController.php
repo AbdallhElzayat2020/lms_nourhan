@@ -56,7 +56,7 @@ class SliderController extends Controller
         // Clear related cache
         Cache::forget('home_sliders');
 
-        return redirect()->route('admin.sliders.index')
+        return redirect()->route('admin.sliders.index', request()->query())
             ->with('success', 'Slider created successfully');
     }
 
@@ -108,14 +108,14 @@ class SliderController extends Controller
         // Clear related cache
         Cache::forget('home_sliders');
 
-        return redirect()->route('admin.sliders.index')
+        return redirect()->route('admin.sliders.index', request()->query())
             ->with('success', 'Slider updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Slider $slider)
+    public function destroy(Request $request, Slider $slider)
     {
         if ($slider->image) {
             Storage::disk('sliders')->delete(basename($slider->image));
@@ -126,7 +126,18 @@ class SliderController extends Controller
         // Clear related cache
         Cache::forget('home_sliders');
 
-        return redirect()->route('admin.sliders.index')
+        $queryParams = [];
+        if ($request->filled('index_query')) {
+            parse_str($request->input('index_query'), $queryParams);
+        }
+        if (empty($queryParams) && $request->header('referer')) {
+            $q = parse_url($request->header('referer'), PHP_URL_QUERY);
+            if ($q) {
+                parse_str($q, $queryParams);
+            }
+        }
+
+        return redirect()->route('admin.sliders.index', $queryParams)
             ->with('success', 'Slider deleted successfully');
     }
 }

@@ -8,7 +8,7 @@
             <h4 class="fw-bold py-3 mb-0">
                 <span class="text-muted fw-light">Dashboard /</span> SEO Management
             </h4>
-            <a href="{{ route('admin.seo-pages.create') }}" class="btn btn-primary">
+            <a href="{{ route('admin.seo-pages.create') }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}" class="btn btn-primary">
                 <i class="ti ti-plus me-2"></i>
                 Add New Page
             </a>
@@ -70,13 +70,13 @@
                                 </td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <a href="{{ route('admin.seo-pages.show', $seoPage) }}"
+                                        <a href="{{ route('admin.seo-pages.show', $seoPage) }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}"
                                            class="btn btn-sm btn-outline-info"
                                            title="View Details"
                                            data-bs-toggle="tooltip">
                                             <i class="ti ti-eye"></i>
                                         </a>
-                                        <a href="{{ route('admin.seo-pages.edit', $seoPage) }}"
+                                        <a href="{{ route('admin.seo-pages.edit', $seoPage) }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}"
                                            class="btn btn-sm btn-outline-primary"
                                            title="Edit SEO Page"
                                            data-bs-toggle="tooltip">
@@ -86,6 +86,7 @@
                                             onsubmit="return confirm('Are you sure you want to delete this SEO page?')" class="d-inline">
                                             @csrf
                                             @method('DELETE')
+                                            <input type="hidden" name="index_query" value="{{ http_build_query(request()->query()) }}">
                                             <button type="submit"
                                                     class="btn btn-sm btn-outline-danger"
                                                     title="Delete SEO Page"

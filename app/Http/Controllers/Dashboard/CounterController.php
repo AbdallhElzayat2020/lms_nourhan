@@ -46,7 +46,7 @@ class CounterController extends Controller
         // Clear related cache
         Cache::forget('home_counters');
 
-        return redirect()->route('admin.counters.index')
+        return redirect()->route('admin.counters.index', request()->query())
             ->with('success', 'Counter created successfully');
     }
 
@@ -74,21 +74,32 @@ class CounterController extends Controller
 
         $counter->update($validated);
 
-        return redirect()->route('admin.counters.index')
+        return redirect()->route('admin.counters.index', request()->query())
             ->with('success', 'Counter updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Counter $counter)
+    public function destroy(Request $request, Counter $counter)
     {
         $counter->delete();
 
         // Clear related cache
         Cache::forget('home_counters');
 
-        return redirect()->route('admin.counters.index')
+        $queryParams = [];
+        if ($request->filled('index_query')) {
+            parse_str($request->input('index_query'), $queryParams);
+        }
+        if (empty($queryParams) && $request->header('referer')) {
+            $q = parse_url($request->header('referer'), PHP_URL_QUERY);
+            if ($q) {
+                parse_str($q, $queryParams);
+            }
+        }
+
+        return redirect()->route('admin.counters.index', $queryParams)
             ->with('success', 'Counter deleted successfully');
     }
 }

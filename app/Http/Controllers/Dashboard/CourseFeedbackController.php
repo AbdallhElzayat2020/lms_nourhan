@@ -48,7 +48,7 @@ class CourseFeedbackController extends Controller
 
         CourseFeedback::create($validated);
 
-        return redirect()->route('admin.course-feedbacks.index')
+        return redirect()->route('admin.course-feedbacks.index', request()->query())
             ->with('success', 'Course Feedback created successfully');
     }
 
@@ -93,14 +93,14 @@ class CourseFeedbackController extends Controller
 
         $courseFeedback->update($validated);
 
-        return redirect()->route('admin.course-feedbacks.index')
+        return redirect()->route('admin.course-feedbacks.index', request()->query())
             ->with('success', 'Course Feedback updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CourseFeedback $courseFeedback)
+    public function destroy(Request $request, CourseFeedback $courseFeedback)
     {
         if ($courseFeedback->image) {
             Storage::disk('course_feedbacks')->delete(basename($courseFeedback->image));
@@ -108,7 +108,18 @@ class CourseFeedbackController extends Controller
 
         $courseFeedback->delete();
 
-        return redirect()->route('admin.course-feedbacks.index')
+        $queryParams = [];
+        if ($request->filled('index_query')) {
+            parse_str($request->input('index_query'), $queryParams);
+        }
+        if (empty($queryParams) && $request->header('referer')) {
+            $q = parse_url($request->header('referer'), PHP_URL_QUERY);
+            if ($q) {
+                parse_str($q, $queryParams);
+            }
+        }
+
+        return redirect()->route('admin.course-feedbacks.index', $queryParams)
             ->with('success', 'Course Feedback deleted successfully');
     }
 }

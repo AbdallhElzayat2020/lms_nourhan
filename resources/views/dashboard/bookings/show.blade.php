@@ -7,7 +7,7 @@
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Booking Details</h5>
             <div class="d-flex gap-2">
-                <a href="{{ route('admin.bookings.index') }}" class="btn btn-label-secondary">
+                <a href="{{ route('admin.bookings.index', request()->query()) }}" class="btn btn-label-secondary">
                     <i class="ti ti-arrow-left me-1"></i>
                     Back
                 </a>

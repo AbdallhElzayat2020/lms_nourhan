@@ -73,7 +73,7 @@
                         <i class="ti ti-check me-1"></i>
                         Update Partner
                     </button>
-                    <a href="{{ route('admin.partners.index') }}" class="btn btn-label-secondary">
+                    <a href="{{ route('admin.partners.index', request()->query()) }}" class="btn btn-label-secondary">
                         <i class="ti ti-x me-1"></i>
                         Cancel
                     </a>

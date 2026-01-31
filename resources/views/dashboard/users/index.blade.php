@@ -6,7 +6,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Users</h5>
-            <a href="{{ route('admin.users.create') }}" class="btn btn-primary">
+            <a href="{{ route('admin.users.create') }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}" class="btn btn-primary">
                 <i class="ti ti-plus me-1"></i>
                 Add New User
             </a>
@@ -54,7 +54,7 @@
                                 <td>{{ $user->created_at->format('Y-m-d') }}</td>
                                 <td>
                                     <div class="d-flex gap-2">
-                                        <a href="{{ route('admin.users.edit', $user->id) }}"
+                                        <a href="{{ route('admin.users.edit', $user->id) }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}"
                                             class="btn btn-sm btn-label-primary">
                                             <i class="ti ti-edit"></i>
                                         </a>
@@ -63,6 +63,7 @@
                                                 onsubmit="return confirm('Are you sure you want to delete this user?');">
                                                 @csrf
                                                 @method('DELETE')
+                                                <input type="hidden" name="index_query" value="{{ http_build_query(request()->query()) }}">
                                                 <button type="submit" class="btn btn-sm btn-label-danger">
                                                     <i class="ti ti-trash"></i>
                                                 </button>

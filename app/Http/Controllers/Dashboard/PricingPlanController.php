@@ -57,7 +57,7 @@ class PricingPlanController extends Controller
 
         PricingPlan::create($validated);
 
-        return redirect()->route('admin.pricing-plans.index')
+        return redirect()->route('admin.pricing-plans.index', request()->query())
             ->with('success', 'Pricing plan created successfully');
     }
 
@@ -109,18 +109,29 @@ class PricingPlanController extends Controller
 
         $pricingPlan->update($validated);
 
-        return redirect()->route('admin.pricing-plans.index')
+        return redirect()->route('admin.pricing-plans.index', request()->query())
             ->with('success', 'Pricing plan updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PricingPlan $pricingPlan)
+    public function destroy(Request $request, PricingPlan $pricingPlan)
     {
         $pricingPlan->delete();
 
-        return redirect()->route('admin.pricing-plans.index')
+        $queryParams = [];
+        if ($request->filled('index_query')) {
+            parse_str($request->input('index_query'), $queryParams);
+        }
+        if (empty($queryParams) && $request->header('referer')) {
+            $q = parse_url($request->header('referer'), PHP_URL_QUERY);
+            if ($q) {
+                parse_str($q, $queryParams);
+            }
+        }
+
+        return redirect()->route('admin.pricing-plans.index', $queryParams)
             ->with('success', 'Pricing plan deleted successfully');
     }
 }

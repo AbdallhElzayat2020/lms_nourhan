@@ -61,7 +61,7 @@ class BlogCategoryController extends Controller
 
         BlogCategory::create($validated);
 
-        return redirect()->route('admin.blog-categories.index')
+        return redirect()->route('admin.blog-categories.index', request()->query())
             ->with('success', 'Blog category created successfully');
     }
 
@@ -129,7 +129,7 @@ class BlogCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $id)
     {
         $category = BlogCategory::findOrFail($id);
 
@@ -139,7 +139,18 @@ class BlogCategoryController extends Controller
 
         $category->delete();
 
-        return redirect()->route('admin.blog-categories.index')
+        $queryParams = [];
+        if ($request->filled('index_query')) {
+            parse_str($request->input('index_query'), $queryParams);
+        }
+        if (empty($queryParams) && $request->header('referer')) {
+            $q = parse_url($request->header('referer'), PHP_URL_QUERY);
+            if ($q) {
+                parse_str($q, $queryParams);
+            }
+        }
+
+        return redirect()->route('admin.blog-categories.index', $queryParams)
             ->with('success', 'Blog category deleted successfully');
     }
 }

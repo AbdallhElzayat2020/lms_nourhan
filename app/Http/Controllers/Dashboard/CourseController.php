@@ -126,7 +126,7 @@ class CourseController extends Controller
         Cache::forget('course_categories');
         Cache::forget('home_categories');
 
-        return redirect()->route('admin.courses.index')
+        return redirect()->route('admin.courses.index', request()->query())
             ->with('success', 'Course created successfully');
     }
 
@@ -257,7 +257,7 @@ class CourseController extends Controller
         Cache::forget('course_categories');
         Cache::forget('home_categories');
 
-        return redirect()->route('admin.courses.index')
+        return redirect()->route('admin.courses.index', request()->query())
             ->with('success', 'Course updated successfully');
     }
 
@@ -282,26 +282,17 @@ class CourseController extends Controller
 
         $course->delete();
 
-        // Get query parameters from POST data, referer URL, or request query
+        // Get query parameters from hidden input (index_query), referer URL, or request query
         $queryParams = [];
-
-        // First, check POST data (from hidden inputs in form)
-        if ($request->has('page')) {
-            $queryParams['page'] = $request->input('page');
+        if ($request->filled('index_query')) {
+            parse_str($request->input('index_query'), $queryParams);
         }
-
-        // If not in POST, try to get from referer URL
         if (empty($queryParams)) {
             $referer = $request->header('referer');
-            if ($referer) {
-                $parsedUrl = parse_url($referer);
-                if (isset($parsedUrl['query'])) {
-                    parse_str($parsedUrl['query'], $queryParams);
-                }
+            if ($referer && isset(parse_url($referer)['query'])) {
+                parse_str(parse_url($referer, PHP_URL_QUERY), $queryParams);
             }
         }
-
-        // Fallback to request query if still empty
         if (empty($queryParams)) {
             $queryParams = $request->query();
         }

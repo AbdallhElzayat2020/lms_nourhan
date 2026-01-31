@@ -86,7 +86,7 @@
 
                 <div class="mt-3">
                     <button type="submit" class="btn btn-primary">Update</button>
-                    <a href="{{ route('admin.course-feedbacks.index') }}" class="btn btn-label-secondary">Cancel</a>
+                    <a href="{{ route('admin.course-feedbacks.index', request()->query()) }}" class="btn btn-label-secondary">Cancel</a>
                 </div>
             </form>
         </div>

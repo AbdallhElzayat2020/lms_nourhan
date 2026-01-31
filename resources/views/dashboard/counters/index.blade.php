@@ -6,7 +6,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Counters</h5>
-            <a href="{{ route('admin.counters.create') }}" class="btn btn-primary">
+            <a href="{{ route('admin.counters.create') }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}" class="btn btn-primary">
                 <i class="ti ti-plus me-1"></i>
                 Add Counter
             </a>
@@ -50,7 +50,7 @@
                                 </td>
                                 <td>{{ $counter->sort_order }}</td>
                                 <td>
-                                    <a href="{{ route('admin.counters.edit', $counter->id) }}"
+                                    <a href="{{ route('admin.counters.edit', $counter->id) }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}"
                                         class="btn btn-sm btn-label-primary">
                                         <i class="ti ti-edit"></i>
                                     </a>
@@ -59,6 +59,7 @@
                                         onsubmit="return confirm('Are you sure you want to delete this counter?');">
                                         @csrf
                                         @method('DELETE')
+                                        <input type="hidden" name="index_query" value="{{ http_build_query(request()->query()) }}">
                                         <button type="submit" class="btn btn-sm btn-label-danger">
                                             <i class="ti ti-trash"></i>
                                         </button>

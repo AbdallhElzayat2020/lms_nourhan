@@ -598,7 +598,7 @@
 
                             <!-- Submit Button -->
                             <div class="d-flex justify-content-end gap-2 mt-4">
-                                <a href="{{ route('admin.courses.index') }}" class="btn btn-label-secondary">
+                                <a href="{{ route('admin.courses.index', request()->query()) }}" class="btn btn-label-secondary">
                                     <i class="ti ti-x me-1"></i>
                                     Cancel
                                 </a>

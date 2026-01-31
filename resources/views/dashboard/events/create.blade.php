@@ -153,7 +153,7 @@
                 ])
 
                 <div class="d-flex justify-content-end gap-2">
-                    <a href="{{ route('admin.events.index') }}" class="btn btn-label-secondary">
+                    <a href="{{ route('admin.events.index', request()->query()) }}" class="btn btn-label-secondary">
                         Cancel
                     </a>
                     <button type="submit" class="btn btn-primary">

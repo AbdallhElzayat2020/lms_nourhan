@@ -11,7 +11,7 @@
                     <i class="ti ti-edit me-1"></i>
                     Edit
                 </a>
-                <a href="{{ route('admin.redirects.index') }}" class="btn btn-label-secondary btn-sm">
+                <a href="{{ route('admin.redirects.index', request()->query()) }}" class="btn btn-label-secondary btn-sm">
                     <i class="ti ti-arrow-left me-1"></i>
                     Back to List
                 </a>

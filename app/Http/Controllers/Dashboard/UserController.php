@@ -46,7 +46,7 @@ class UserController extends Controller
 
         User::create($validated);
 
-        return redirect()->route('admin.users.index')
+        return redirect()->route('admin.users.index', request()->query())
             ->with('success', 'User created successfully');
     }
 
@@ -83,26 +83,36 @@ class UserController extends Controller
 
         $user->update($validated);
 
-        return redirect()->route('admin.users.index')
+        return redirect()->route('admin.users.index', request()->query())
             ->with('success', 'User updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $id)
     {
         $user = User::findOrFail($id);
 
+        $queryParams = request()->query();
+        if ($request->filled('index_query')) {
+            parse_str($request->input('index_query'), $queryParams);
+        } elseif ($request->header('referer')) {
+            $q = parse_url($request->header('referer'), PHP_URL_QUERY);
+            if ($q) {
+                parse_str($q, $queryParams);
+            }
+        }
+
         // Prevent deleting admin user
         if ($user->isAdmin()) {
-            return redirect()->route('admin.users.index')
+            return redirect()->route('admin.users.index', $queryParams)
                 ->with('error', 'Cannot delete admin user');
         }
 
         $user->delete();
 
-        return redirect()->route('admin.users.index')
+        return redirect()->route('admin.users.index', $queryParams)
             ->with('success', 'User deleted successfully');
     }
 }

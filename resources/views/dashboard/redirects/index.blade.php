@@ -6,7 +6,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0">URL Redirects Management</h5>
-            <a href="{{ route('admin.redirects.create') }}" class="btn btn-primary">
+            <a href="{{ route('admin.redirects.create') }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}" class="btn btn-primary">
                 <i class="ti ti-plus me-1"></i>
                 Add New Redirect
             </a>
@@ -57,13 +57,13 @@
                                     </td>
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <a href="{{ route('admin.redirects.show', $redirect) }}"
+                                            <a href="{{ route('admin.redirects.show', $redirect) }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}"
                                                class="btn btn-sm btn-outline-info"
                                                title="View Details"
                                                data-bs-toggle="tooltip">
                                                 <i class="ti ti-eye"></i>
                                             </a>
-                                            <a href="{{ route('admin.redirects.edit', $redirect) }}"
+                                            <a href="{{ route('admin.redirects.edit', $redirect) }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}"
                                                class="btn btn-sm btn-outline-primary"
                                                title="Edit Redirect"
                                                data-bs-toggle="tooltip">
@@ -73,6 +73,7 @@
                                                 onsubmit="return confirm('Are you sure you want to delete this redirect?')" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
+                                                <input type="hidden" name="index_query" value="{{ http_build_query(request()->query()) }}">
                                                 <button type="submit"
                                                         class="btn btn-sm btn-outline-danger"
                                                         title="Delete Redirect"
@@ -97,7 +98,7 @@
                     <i class="ti ti-link-off display-1 text-muted mb-3"></i>
                     <h5 class="text-muted">No redirects found</h5>
                     <p class="text-muted">Create your first redirect to manage URL redirections.</p>
-                    <a href="{{ route('admin.redirects.create') }}" class="btn btn-primary">
+                    <a href="{{ route('admin.redirects.create') }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}" class="btn btn-primary">
                         <i class="ti ti-plus me-1"></i>
                         Add First Redirect
                     </a>

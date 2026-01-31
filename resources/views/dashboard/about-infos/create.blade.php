@@ -74,7 +74,7 @@
 
                 <div class="mt-3">
                     <button type="submit" class="btn btn-primary">Save</button>
-                    <a href="{{ route('admin.about-infos.index') }}" class="btn btn-label-secondary">Cancel</a>
+                    <a href="{{ route('admin.about-infos.index', request()->query()) }}" class="btn btn-label-secondary">Cancel</a>
                 </div>
             </form>
         </div>
