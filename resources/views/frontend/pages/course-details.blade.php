@@ -117,15 +117,6 @@
                                 <h3 class="section-title mb-30">How Course Works</h3>
                                 <div class="section-content">
                                     <div class="row align-items-center gy-4">
-
-                                        @if ($course->how_course_works_text)
-                                            <div
-                                                class="{{ $course->how_course_works_image ? 'col-lg-7 col-md-6' : 'col-lg-12' }}">
-                                                <div class="section-text">
-                                                    {!! $course->how_course_works_text !!}
-                                                </div>
-                                            </div>
-                                        @endif
                                         @if ($course->how_course_works_image)
                                             <div
                                                 class="{{ $course->how_course_works_text ? 'col-lg-5 col-md-6' : 'col-lg-12' }}">
@@ -135,6 +126,15 @@
                                                 </div>
                                             </div>
                                         @endif
+                                        @if ($course->how_course_works_text)
+                                            <div
+                                                class="{{ $course->how_course_works_image ? 'col-lg-7 col-md-6' : 'col-lg-12' }}">
+                                                <div class="section-text">
+                                                    {!! $course->how_course_works_text !!}
+                                                </div>
+                                            </div>
+                                        @endif
+
                                     </div>
                                     <div class="book-now-btn">
                                         <a href="{{ route('frontend.book') }}" class="ed-primary-btn">Book Now</a>
@@ -499,7 +499,7 @@
             margin-bottom: 10px;
             overflow: hidden;
             background: #fff;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
         }
 
         .page-course-details .course-section .accordion-button {
