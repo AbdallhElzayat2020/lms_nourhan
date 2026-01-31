@@ -583,6 +583,9 @@
                         </div>
                     @endforeach
                 </div>
+                <div class="text-center mt-4">
+                    <a href="{{ route('frontend.teachers') }}" class="ed-primary-btn">All Teachers</a>
+                </div>
             </div>
         </section>
     @endif

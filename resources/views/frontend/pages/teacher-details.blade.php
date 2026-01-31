@@ -49,6 +49,9 @@
                             @if ($teacher->short_description)
                                 <span class="teacher-title">{{ $teacher->short_description }}</span>
                             @endif
+                            <div class="mt-3">
+                                <a href="{{ route('frontend.contact') }}" class="ed-primary-btn w-100 text-center d-inline-block">Book</a>
+                            </div>
                         </div>
                     </div>
                 </div>
