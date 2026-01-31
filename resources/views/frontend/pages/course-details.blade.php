@@ -74,7 +74,7 @@
                                         </div>
                                     </div>
                                     <div class="book-now-btn">
-                                        <a href="{{ route('frontend.book') }}" class="ed-primary-btn">Book Now</a>
+                                        <a href="{{ route('frontend.book') }}" class="ed-primary-btn">Book free session</a>
                                     </div>
                                 </div>
                             </div>
@@ -103,7 +103,7 @@
                                                 </div>
                                             </div>
                                             <div class="book-now-btn">
-                                                <a href="{{ route('frontend.book') }}" class="ed-primary-btn">Book Now</a>
+                                                <a href="{{ route('frontend.book') }}" class="ed-primary-btn">Book free session</a>
                                             </div>
                                         @endif
                                     </div>
@@ -135,8 +135,7 @@
                                                     {!! $course->how_course_works_text !!}
                                                 </div>
                                                 <div class="book-now-btn">
-                                                    <a href="{{ route('frontend.book') }}" class="ed-primary-btn">Book
-                                                        Now</a>
+                                                    <a href="{{ route('frontend.book') }}" class="ed-primary-btn">Book free session</a>
                                                 </div>
                                             </div>
                                         @endif
@@ -172,7 +171,7 @@
                                         @endif
                                     </div>
                                     <div class="book-now-btn">
-                                        <a href="{{ route('frontend.book') }}" class="ed-primary-btn">Book Now</a>
+                                        <a href="{{ route('frontend.book') }}" class="ed-primary-btn">Book free session</a>
                                     </div>
                                 </div>
                             </div>
@@ -214,7 +213,7 @@
                                         </div>
                                     </div>
                                     <div class="book-now-btn">
-                                        <a href="{{ route('frontend.book') }}" class="ed-primary-btn">Book Now</a>
+                                        <a href="{{ route('frontend.book') }}" class="ed-primary-btn">Book free session</a>
                                     </div>
                                 </div>
                             </div>
