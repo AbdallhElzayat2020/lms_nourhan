@@ -102,11 +102,12 @@
                                                         alt="about program" class="section-img">
                                                 </div>
                                             </div>
+                                            <div class="book-now-btn">
+                                                <a href="{{ route('frontend.book') }}" class="ed-primary-btn">Book Now</a>
+                                            </div>
                                         @endif
                                     </div>
-                                    <div class="book-now-btn">
-                                        <a href="{{ route('frontend.book') }}" class="ed-primary-btn">Book Now</a>
-                                    </div>
+
                                 </div>
                             </div>
                         @endif
@@ -124,6 +125,7 @@
                                                     <img src="{{ asset('uploads/courses/' . $course->how_course_works_image) }}"
                                                         alt="how course works" class="section-img">
                                                 </div>
+
                                             </div>
                                         @endif
                                         @if ($course->how_course_works_text)
@@ -133,12 +135,13 @@
                                                     {!! $course->how_course_works_text !!}
                                                 </div>
                                             </div>
+                                            <div class="book-now-btn">
+                                                <a href="{{ route('frontend.book') }}" class="ed-primary-btn">Book Now</a>
+                                            </div>
                                         @endif
 
                                     </div>
-                                    <div class="book-now-btn mt-3">
-                                        <a href="{{ route('frontend.book') }}" class="ed-primary-btn">Book Now</a>
-                                    </div>
+
                                 </div>
                             </div>
                         @endif
