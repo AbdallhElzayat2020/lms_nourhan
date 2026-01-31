@@ -184,7 +184,7 @@
                         </h5>
                     </div>
                     <div class="card-body main-card-body">
-                        <form action="{{ route('admin.courses.update', $course->id) }}" method="POST" enctype="multipart/form-data" id="courseForm">
+                        <form action="{{ route('admin.courses.update', $course->id) }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}" method="POST" enctype="multipart/form-data" id="courseForm">
                             @csrf
                             @method('PUT')
 

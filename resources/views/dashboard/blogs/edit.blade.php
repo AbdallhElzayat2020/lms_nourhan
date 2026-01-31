@@ -263,7 +263,7 @@
                             </div>
                         @endif
 
-                        <form action="{{ route('admin.blogs.update', $blog->id) }}" method="POST" enctype="multipart/form-data" id="blogForm">
+                        <form action="{{ route('admin.blogs.update', $blog->id) }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}" method="POST" enctype="multipart/form-data" id="blogForm">
                             @csrf
                             @method('PUT')
 

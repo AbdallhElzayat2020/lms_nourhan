@@ -8,7 +8,7 @@
             <h5 class="mb-0">Edit About Info</h5>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.about-infos.update', $aboutInfo->id) }}" method="POST">
+            <form action="{{ route('admin.about-infos.update', $aboutInfo->id) }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}" method="POST">
                 @csrf
                 @method('PUT')
 

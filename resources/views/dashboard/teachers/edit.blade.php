@@ -8,7 +8,7 @@
             <h5 class="mb-0">Edit Teacher</h5>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.teachers.update', $teacher->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.teachers.update', $teacher->id) }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 

@@ -8,7 +8,7 @@
             <h5 class="mb-0">Edit Counter</h5>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.counters.update', $counter->id) }}" method="POST">
+            <form action="{{ route('admin.counters.update', $counter->id) }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}" method="POST">
                 @csrf
                 @method('PUT')
 

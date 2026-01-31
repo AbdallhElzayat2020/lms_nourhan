@@ -44,7 +44,7 @@
                         <tr>
                             <th>Status</th>
                             <td>
-                                <form action="{{ route('admin.bookings.update', $booking->id) }}" method="POST" class="d-inline">
+                                <form action="{{ route('admin.bookings.update', $booking->id) }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('PUT')
                                     <select name="status" class="form-select d-inline-block" style="width: auto;" onchange="this.form.submit()">

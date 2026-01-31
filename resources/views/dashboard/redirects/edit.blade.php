@@ -8,7 +8,7 @@
             <h5 class="mb-0">Edit URL Redirect</h5>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.redirects.update', $redirect) }}" method="POST">
+            <form action="{{ route('admin.redirects.update', $redirect) }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}" method="POST">
                 @csrf
                 @method('PUT')
 

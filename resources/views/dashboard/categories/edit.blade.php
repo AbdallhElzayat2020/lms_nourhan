@@ -8,7 +8,7 @@
             <h5 class="mb-0">Edit Category</h5>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.categories.update', $category->id) }}" method="POST"
+            <form action="{{ route('admin.categories.update', $category->id) }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}" method="POST"
                 enctype="multipart/form-data">
                 @csrf
                 @method('PUT')

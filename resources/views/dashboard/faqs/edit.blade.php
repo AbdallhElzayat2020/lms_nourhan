@@ -8,7 +8,7 @@
             <h5 class="mb-0">Edit FAQ</h5>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.faqs.update', $faq->id) }}" method="POST">
+            <form action="{{ route('admin.faqs.update', $faq->id) }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}" method="POST">
                 @csrf
                 @method('PUT')
 

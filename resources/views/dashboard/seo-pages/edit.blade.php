@@ -16,7 +16,7 @@
                 </h5>
             </div>
 
-            <form action="{{ route('admin.seo-pages.update', $seoPage) }}" method="POST">
+            <form action="{{ route('admin.seo-pages.update', $seoPage) }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="card-body">

@@ -8,7 +8,7 @@
             <h5 class="mb-0">Edit Slider</h5>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.sliders.update', $slider->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.sliders.update', $slider->id) }}{{ request()->query() ? '?' . http_build_query(request()->query()) : '' }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
